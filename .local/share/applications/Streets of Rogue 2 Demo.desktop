@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Streets of Rogue 2 Demo
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/2670760
+Icon=steam_icon_2670760
+Terminal=false
+Type=Application
+Categories=Game;

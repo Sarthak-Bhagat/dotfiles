@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Uninstall Reus 2
+Exec=env WINEPREFIX="/home/dez/.wine" wine C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start\\ Menu\\\\Programs\\\\Reus\\ 2\\ [GOG.com]\\\\Uninstall\\ Reus\\ 2.lnk
+Type=Application
+StartupNotify=true
+Path=/home/dez/Games/HDD/Reus 2
+Icon=1D03_unins000.0
+StartupWMClass=unins000.exe

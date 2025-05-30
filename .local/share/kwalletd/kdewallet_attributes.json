@@ -1,0 +1,125 @@
+{
+    "$fdo_created": "1738904419",
+    "$fdo_modified": "1748364416",
+    "Chromium Keys/Chromium Safe Storage": {
+        "$fdo_created": "1746988104",
+        "$fdo_modified": "1746988104",
+        "attributes": {
+            "server": "Chromium Keys",
+            "type": "plaintext",
+            "user": "Chromium Safe Storage"
+        }
+    },
+    "Network Management/{6dab2dc7-2424-43ea-bb03-ed8c5439f134};802-11-wireless-security": {
+        "$fdo_created": "1746988104",
+        "$fdo_modified": "1746988104",
+        "attributes": {
+            "server": "Network Management",
+            "type": "map",
+            "user": "{6dab2dc7-2424-43ea-bb03-ed8c5439f134};802-11-wireless-security"
+        }
+    },
+    "Network Management/{8b5941d1-0043-47d5-9be0-f97c1d5ae931};802-11-wireless-security": {
+        "$fdo_created": "1746988104",
+        "$fdo_modified": "1746988104",
+        "attributes": {
+            "server": "Network Management",
+            "type": "map",
+            "user": "{8b5941d1-0043-47d5-9be0-f97c1d5ae931};802-11-wireless-security"
+        }
+    },
+    "Network Management/{8b5941d1-0043-47d5-9be0-f97c1d5ae931};802-11-wireless-security__0_": {
+        "$fdo_created": "1748364416",
+        "$fdo_mime_type": "text/plain",
+        "$fdo_modified": "1748364416",
+        "attributes": {
+            "server": "Network Management",
+            "type": "map",
+            "user": "{8b5941d1-0043-47d5-9be0-f97c1d5ae931};802-11-wireless-security",
+            "xdg:schema": "org.qt.keychain"
+        }
+    },
+    "Network Management/{c5d43ee6-dd8f-4055-8cfc-76761d44f447};802-11-wireless-security": {
+        "$fdo_created": "1746988104",
+        "$fdo_modified": "1746988104",
+        "attributes": {
+            "server": "Network Management",
+            "type": "map",
+            "user": "{c5d43ee6-dd8f-4055-8cfc-76761d44f447};802-11-wireless-security"
+        }
+    },
+    "Network Management/{d47daaae-bc42-40a6-b92a-c17f46955822};802-11-wireless-security": {
+        "$fdo_created": "1746988104",
+        "$fdo_modified": "1746988104",
+        "attributes": {
+            "server": "Network Management",
+            "type": "map",
+            "user": "{d47daaae-bc42-40a6-b92a-c17f46955822};802-11-wireless-security"
+        }
+    },
+    "Secret Service/Chromium Safe Storage": {
+        "$fdo_created": "1743763673",
+        "$fdo_mime_type": "text/plain",
+        "$fdo_modified": "1743763673",
+        "attributes": {
+            "application": "chromium",
+            "xdg:schema": "chrome_libsecret_os_crypt_password_v2"
+        }
+    },
+    "Secret Service/Password for 'proton-sso-account-nftw4ylwovzvq' on 'Proton'": {
+        "$fdo_created": "1748364231",
+        "$fdo_mime_type": "text/plain",
+        "$fdo_modified": "1748364231",
+        "attributes": {
+            "application": "Python keyring library",
+            "service": "Proton",
+            "username": "proton-sso-account-nftw4ylwovzvq"
+        }
+    },
+    "Secret Service/Password for 'proton-sso-accounts' on 'Proton'": {
+        "$fdo_created": "1742555784",
+        "$fdo_mime_type": "text/plain",
+        "$fdo_modified": "1742555784",
+        "attributes": {
+            "application": "Python keyring library",
+            "service": "Proton",
+            "username": "proton-sso-accounts"
+        }
+    },
+    "xdg-desktop-portal/autostart": {
+        "$fdo_created": "1746988104",
+        "$fdo_modified": "1746988104",
+        "attributes": {
+            "server": "xdg-desktop-portal",
+            "type": "binary",
+            "user": "autostart"
+        }
+    },
+    "xdg-desktop-portal/nemo": {
+        "$fdo_created": "1746988104",
+        "$fdo_modified": "1746988104",
+        "attributes": {
+            "server": "xdg-desktop-portal",
+            "type": "binary",
+            "user": "nemo"
+        }
+    },
+    "xdg-desktop-portal/net.local.menu": {
+        "$fdo_created": "1748186501",
+        "$fdo_modified": "1748186501",
+        "attributes": {
+            "server": "xdg-desktop-portal",
+            "type": "binary",
+            "user": "net.local.menu"
+        }
+    },
+    "xdg-desktop-portal/org.chromium.Chromium": {
+        "$fdo_created": "1746988104",
+        "$fdo_modified": "1746988104",
+        "attributes": {
+            "server": "xdg-desktop-portal",
+            "type": "binary",
+            "user": "org.chromium.Chromium"
+        }
+    }
+}

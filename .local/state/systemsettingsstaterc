@@ -1,0 +1,25 @@
+[KFileDialog Settings]
+Recent Files[$e]=file:$HOME/.config/dez_scripts/autostart
+Recent URLs[$e]=file:$HOME/.config/dez_scripts/,file:$HOME/Downloads/,file:$HOME/.config/,file:$HOME/,file:$HOME/.config/autostart/,file:$HOME/Documents/,file:$HOME/Pictures/,file:$HOME/Pictures/wallpapers/,file:$HOME/.config/alacritty/
+
+[MainWindow]
+0x0 screen: Height=1078
+0x0 screen: Width=1918
+1024x768 screen: Height=766
+1024x768 screen: Width=1022
+1280x720 screen: Height=720
+1280x720 screen: Width=1280
+1536x864 screen: Height=677
+1536x864 screen: Width=930
+1920x1080 screen: Height=1080
+1920x1080 screen: Width=1918
+1920x1080 screen: Window-Maximized=true
+2560x1440 screen: Height=1440
+2560x1440 screen: Width=2560
+3840x2160 screen: Height=2160
+3840x2160 screen: Width=3840
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAQ4AAAABAAAAAQAAAAIAAAACPwAAAAA
+
+[Open-with settings]
+CompletionMode=1
+History=ves,better,alber,stea,kde,keep,Qb,zen,neov,qbit,flame,lutr,flames,vesk,ze

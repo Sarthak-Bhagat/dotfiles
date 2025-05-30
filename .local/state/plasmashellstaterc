@@ -1,0 +1,8 @@
+[General]
+SystemInstallDate=2025-02-05
+
+[KickerRunnerManager]
+LaunchCounts=1 krunner_systemsettings_kcm_kwin_scripts,1 exec:///usr/bin/hardinfo2,1 exec:///opt/zen-browser-bin/zen-bin,3 exec:///usr/bin/qbittorrent,1 exec:///usr/bin/archlinux-tweak-tool,1 krunner_systemsettings_kcm_componentchooser,1 krunner_systemsettings_kcm_screenlocker,1 exec:///usr/bin/archlinux-betterlockscreen,1 file:///home/dez/Games/umu/umu-default/drive_c/windows/system32/drivers/etc/services,1 krunner_systemsettings_kcm_webshortcuts,2 exec:///usr/bin/systemsettings,8 krunner_systemsettings_kcm_keys,1 krunner_systemsettings_kcm_proxy,2 exec:///usr/bin/plasma-discover,1 krunner_systemsettings_kcm_gamecontroller,1 krunner_appstream_zenith.desktop,1 exec:///usr/bin/qt6ct,1 krunner_systemsettings_kcm_fonts,1 exec:///usr/bin/rustdesk,1 exec:///usr/bin/keepassxc,1 exec:///usr/bin/steam-runtime,1 krunner_systemsettings_kcm_pulseaudio,3 krunner_systemsettings_kcm_kwin_effects,2 exec:///usr/bin/obsidian,1 krunner_systemsettings_kcm_krdpserver,4 exec:///usr/bin/spectacle,7 krunner_systemsettings_kcm_kscreen
+
+[KickerRunnerManager][History]
+741b6b2e-4271-4f16-82d5-a7a9656996ee=disks,desktop eff,display ma,stea,sett,blur,desktop effe,desktop effects,prox,al,window rule,shortc,short,connec,font,starse,translucency,window rules,obs,autos,be,bett,system m,better,last,rust,displa,steam,defa,autosta,c,fonts,gtk,wallp,meg,vol,rus,settings,disk space,DIsp,nem,autostar,game,remote,info,z,locks,lock,kde c,notif

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/home/dez/.config/dez_scripts/autostart
+Icon=application-x-shellscript
+Name=autostart
+Type=Application
+X-KDE-AutostartScript=true

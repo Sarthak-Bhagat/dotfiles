@@ -1,0 +1,22 @@
+[Global plugin config]
+manageProfile=false
+
+[SSH Config][codeberg.org]
+hostname=codeberg.org
+identifier=codeberg.org
+importedFromSshConfig=true
+port=
+profileName=
+sshkey=/home/dez/.ssh/id_ed_codeburg
+useSshConfig=true
+username=git
+
+[SSH Config][github.com]
+hostname=github.com
+identifier=github.com
+importedFromSshConfig=true
+port=
+profileName=Built-in
+sshkey=/home/dez/.ssh/id_ed_github
+useSshConfig=true
+username=git

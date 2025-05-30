@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Uninstall Craftomation 101 - Programming & Craft
+Exec=env WINEPREFIX="/home/dez/.wine" wine C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start\\ Menu\\\\Programs\\\\Craftomation\\ 101\\ -\\ Programming\\ \\&\\ Craft\\ [GOG.com]\\\\Uninstall\\ Craftomation\\ 101\\ -\\ Programming\\ \\&\\ Craft.lnk
+Type=Application
+StartupNotify=true
+Path=/home/dez/Games/HDD/Craftomation 101 Programming & Craft
+Icon=BF2D_unins000.0
+StartupWMClass=unins000.exe

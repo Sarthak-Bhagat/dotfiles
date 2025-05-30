@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE khotnewstuff3>
+<hotnewstuffregistry>
+ <stuff category="112">
+  <name>Iridescent - Tealish</name>
+  <providerid>api.kde-look.org</providerid>
+  <author>rkstrdee</author>
+  <homepage>https://store.kde.org/p/1639231</homepage>
+  <licence></licence>
+  <version></version>
+  <rating>58</rating>
+  <downloads>77510</downloads>
+  <installedfile>/home/dez/.local/share/color-schemes/IridescentLightly3.colors</installedfile>
+  <id>1639231</id>
+  <releasedate>2021-11-10</releasedate>
+  <summary>&lt;p>Main Color Scheme of Iridescent Global Theme. Plasma Colorful color Scheme with uniform color throughout which syncs with your icons.&lt;/p>
+</summary>
+  <changelog></changelog>
+  <preview>https://images.pling.com/cache/100x100-0/img/00/00/61/50/12/1639231/24a8166d3b82246d6008137c37da29dde62353817467406e3dec0cf7870077df339e.png</preview>
+  <previewBig>https://images.pling.com/cache/770x540-0/img/00/00/61/50/12/1639231/24a8166d3b82246d6008137c37da29dde62353817467406e3dec0cf7870077df339e.png</previewBig>
+  <payload>https://files06.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTYzNjU0NjM1OSwibyI6IjEiLCJzIjoiZTU1MDhiNmMyMjY2ODZmMTlhZWI4OTQ5MTc1NzY5NTJmNjBkYzA1ZjJhM2U5Nzc5YjY3NDQyYTNmNjRmYjY5MTg3NDU3ZWZiZWZjMzkxYWRjOGIyMWRiMzM1ZGY3NzkxMWVlZjUzNzExN2IwY2Y3NTAzY2Q1ZTg2Nzk1MzZlM2EiLCJ0IjoxNzM4NzQxNDQyLCJzdGZwIjpudWxsLCJzdGlwIjoiNDkuMzYuMTAxLjEzOCJ9.y9SS8KyW17xCWLwN_jkcpelJtHucq9Bll0pWPt-dRf4/IridescentLightly3.colors.tar.gz</payload>
+  <tags>unix,plasma,theme,sweet,teal,original-product,kde,iridescent,linux,gplv3,colorscheme</tags>
+  <status>installed</status>
+ </stuff>
+</hotnewstuffregistry>

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=TriOS
+Comment=Mod Manager for Starsector
+Exec=/home/dez/Games/Starsector/TriOS/TriOS
+Icon=/home/dez/Games/Starsector/TriOS/data/flutter_assets/assets/images/telos_faction_crest.png
+Terminal=false
+Type=Application
+Categories=Game;
+Name[en_US]=TriOS
+StartupNotify=true
+Path=

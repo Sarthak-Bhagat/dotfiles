@@ -1,0 +1,19 @@
+[Desktop Entry]
+Categories=Game;
+Comment[en_IN]=A single-player sandbox style space role-playing game with strategic elements
+Comment=A single-player sandbox style space role-playing game with strategic elements
+Path=/home/dez/Games/Starsector
+Exec=bash /home/dez/Games/Starsector/starsector.sh
+GenericName[en_IN]=Starsector
+GenericName=Starsector
+Icon=/home/dez/Games/Starsector/graphics/ui/s_icon64.png
+MimeType=
+Name[en_IN]=Starsector
+Name=Starsector
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=

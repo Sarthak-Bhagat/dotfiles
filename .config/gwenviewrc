@@ -1,0 +1,37 @@
+[General]
+LastUsedVersion=210800
+
+[MainWindow]
+MenuBar=Disabled
+
+[Recent Files]
+File1[$e]=$HOME/Downloads/MG.jpg
+File10[$e]=$HOME/Downloads/Jdown/Screamqueans-0.1.3xtras-pc/Extras/gfil064k.png
+File2[$e]=$HOME/Downloads/MG.webp
+File3[$e]=$HOME/Games/Starsector/mods/[Witch Citadel]-0.9b-Rc2ENG/231620pj8rqm6ubzm78lb6.png
+File4[$e]=$HOME/Pictures/wallpapers/wallhaven-v95mqp.png
+File5[$e]=$HOME/Downloads/Jdown/Screamqueans-0.1.3xtras-pc/Extras/gfil014k.png
+File6[$e]=$HOME/Downloads/Jdown/Screamqueans-0.1.3xtras-pc/Extras/gfil024k.png
+File7[$e]=$HOME/Downloads/Jdown/Screamqueans-0.1.3xtras-pc/Extras/gfil034k.png
+File8[$e]=$HOME/Downloads/Jdown/Screamqueans-0.1.3xtras-pc/Extras/gfil044k.png
+File9[$e]=$HOME/Downloads/Jdown/Screamqueans-0.1.3xtras-pc/Extras/gfil054k.png
+Name1[$e]=MG.jpg
+Name10[$e]=gfil064k.png
+Name2[$e]=MG.webp
+Name3[$e]=231620pj8rqm6ubzm78lb6.png
+Name4[$e]=wallhaven-v95mqp.png
+Name5[$e]=gfil014k.png
+Name6[$e]=gfil024k.png
+Name7[$e]=gfil034k.png
+Name8[$e]=gfil044k.png
+Name9[$e]=gfil054k.png
+
+[SideBar]
+InformationSplitterSizes=320,641
+IsVisible ViewMode=true
+IsVisible ViewMode FullScreen=true
+PreferredMetaInfoKeyList=General.Name,General.LocalPath,General.ImageSize
+SideBarSplitterSizes=252,1667
+
+[ThumbnailView]
+ThumbnailSize=168

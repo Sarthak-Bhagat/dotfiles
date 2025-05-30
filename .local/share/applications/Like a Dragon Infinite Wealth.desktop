@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Like a Dragon: Infinite Wealth
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/2072450
+Icon=steam_icon_2072450
+Terminal=false
+Type=Application
+Categories=Game;
