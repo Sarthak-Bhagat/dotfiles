@@ -1,0 +1,78 @@
+# Starship Prompt using pywal16 with safe contrast
+
+format = """
+[░▒▓](fg:#c5c6c8)\
+[   ](bg:#c5c6c8 fg:#1a1e25)\
+[](bg:#5C7CA4 fg:#c5c6c8)\
+$directory\
+[](fg:#5C7CA4 bg:#566F90)\
+$git_branch\
+$git_status\
+[](fg:#566F90 bg:#6C676E)\
+$python\
+$nodejs\
+$rust\
+$golang\
+$php\
+[](fg:#6C676E bg:#1a1e25)\
+$time\
+[ ](fg:#1a1e25)\
+\n$character
+"""
+
+[directory]
+style = "fg:#c5c6c8 bg:#5C7CA4"  # light fg on medium bg
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Games" = "󱎓 "
+"TV_Shows" = " "
+"Movies" = "󰿏 "
+"Media" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#566F90"
+format = '[[ $symbol $branch ](fg:#c5c6c8 bg:#566F90)]($style)'
+
+[git_status]
+style = "bg:#566F90"
+format = '[[($all_status$ahead_behind )](fg:#c5c6c8 bg:#566F90)]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:#1a1e25"
+format = '[[  $time ](fg:#c5c6c8 bg:#1a1e25)]($style)'
+
+[python]
+symbol = ""
+style = "bg:#6C676E"
+format = '[[ [$symbol](fg:#FFD43B bg:#6C676E)(${ virtualenv }) ($version)](fg:#c5c6c8 bg:#6C676E)]($style)'
+python_binary = ["python3", "python"]
+
+[nodejs]
+symbol = ""
+style = "bg:#6C676E"
+format = '[[ $symbol ($version) ](fg:#c5c6c8 bg:#6C676E)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#6C676E"
+format = '[[ $symbol ($version) ](fg:#c5c6c8 bg:#6C676E)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:#6C676E"
+format = '[[ $symbol ($version) ](fg:#c5c6c8 bg:#6C676E)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#6C676E"
+format = '[[ $symbol ($version) ](fg:#c5c6c8 bg:#6C676E)]($style)'
