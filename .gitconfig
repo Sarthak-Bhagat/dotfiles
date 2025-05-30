@@ -1,0 +1,35 @@
+[include]
+    path = ~/.gitconfig-github
+
+[includeIf "gitdir:/home/dez/Documents/git/codeberg/"]
+    path = ~/.gitconfig-codeberg
+
+[init]
+	defaultBranch = main
+[gpg]
+	format = ssh
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[url "ssh://git@codeberg.org/"]
+	insteadOf = https://codeberg.org/
+[alias]
+	pushall = !git remote | xargs -L1 git push --all
+[safe]
+	directory = /mnt/Secondary/Documents/git/cpp
+	directory = /mnt/Secondary/Downloads/Mikohime_Repo
+	directory = /mnt/Secondary/Documents/git/linkedin_extension_mv3
+	directory = /mnt/Secondary/Documents/git/scaling-eureka
+	directory = /mnt/Secondary/Documents/git/screenshot_compress
+	directory = /mnt/Secondary/Documents/git/github/modernx
+	directory = /mnt/Secondary/Documents/git/codeburg/dotfiles
+	directory = /mnt/Secondary/Documents/git/github/thumbfast
+	directory = /mnt/Secondary/Documents/git/github/mpv-scripts
+	directory = /mnt/Secondary/Documents/git/github/mpv-scripts2
+	directory = /mnt/Secondary/Documents/git/codeburg/screenshot_compress
+	directory = /mnt/Secondary/Documents/git/dotfiles
+	directory = /mnt/Secondary/Documents/git/qbittorrent_dualboot
+	directory = /mnt/Windows/Games/Cassette Beasts/AA/HoneySelect
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
