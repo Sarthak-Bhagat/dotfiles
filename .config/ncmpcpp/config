@@ -1,0 +1,24 @@
+mpd_music_dir = /mnt/Secondary/Documents/Media/Music/
+
+visualizer_data_source = "/tmp/mpd.fifo"
+visualizer_output_name = "my_fifo"
+visualizer_in_stereo = "yes"
+visualizer_type = "spectrum"
+visualizer_look = "+|"
+
+execute_on_song_change = songinfo
+
+ # Playlist
+ playlist_disable_highlight_delay = "0"
+ playlist_display_mode = "columns"
+ playlist_show_remaining_time = "yes"
+
+ browser_display_mode = "columns"
+
+ audio_output = {
+   type "fifo"
+   name "my_fifo"
+   path "/tmp/mpd.fifo"
+   format "44100:16:2"
+ }
+

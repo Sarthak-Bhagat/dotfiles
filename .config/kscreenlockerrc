@@ -1,9 +1,0 @@
-[Daemon]
-Timeout=15
-
-[Greeter][Wallpaper][org.kde.image][General]
-Blur=true
-FillMode=1
-Image=/home/dez/Pictures/wallpapers/wallhaven-g7dwle.jpg
-PreviewImage=/home/dez/Pictures/wallpapers/wallhaven-1px99v.png
-SlidePaths=/usr/share/wallpapers/

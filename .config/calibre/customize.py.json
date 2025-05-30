@@ -1,0 +1,25 @@
+{
+  "disabled_plugins": {
+    "__class__": "set",
+    "__value__": []
+  },
+  "enabled_plugins": {
+    "__class__": "set",
+    "__value__": [
+      "Edelweiss"
+    ]
+  },
+  "filetype_mapping": {},
+  "plugin_customization": {},
+  "plugins": {
+    "Apple Books covers": "/home/dez/.config/calibre/plugins/Apple Books covers.zip",
+    "Barnes & Noble": "/home/dez/.config/calibre/plugins/Barnes & Noble.zip",
+    "EpubMerge": "/home/dez/.config/calibre/plugins/EpubMerge.zip",
+    "Fantastic Fiction": "/home/dez/.config/calibre/plugins/Fantastic Fiction.zip",
+    "Generate Cover": "/home/dez/.config/calibre/plugins/Generate Cover.zip",
+    "Goodreads": "/home/dez/.config/calibre/plugins/Goodreads.zip",
+    "Kindle hi-res covers": "/home/dez/.config/calibre/plugins/Kindle hi-res covers.zip",
+    "Perrypedia": "/home/dez/.config/calibre/plugins/Perrypedia.zip",
+    "Prettify Cover": "/home/dez/.config/calibre/plugins/Prettify Cover.zip"
+  }
+}
