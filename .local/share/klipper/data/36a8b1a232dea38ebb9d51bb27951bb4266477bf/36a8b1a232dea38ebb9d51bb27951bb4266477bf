@@ -1,1 +1,0 @@
-cat /home/dez/Documents/kdebackup | while read line; cz add "$line"; end
