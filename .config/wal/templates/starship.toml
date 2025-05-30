@@ -1,0 +1,78 @@
+# Starship Prompt using pywal16 with safe contrast
+
+format = """
+[░▒▓](fg:{color7})\
+[   ](bg:{color7} fg:{color0})\
+[](bg:{color4} fg:{color7})\
+$directory\
+[](fg:{color4} bg:{color2})\
+$git_branch\
+$git_status\
+[](fg:{color2} bg:{color1})\
+$python\
+$nodejs\
+$rust\
+$golang\
+$php\
+[](fg:{color1} bg:{background})\
+$time\
+[ ](fg:{background})\
+\n$character
+"""
+
+[directory]
+style = "fg:{color15} bg:{color4}"  # light fg on medium bg
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Games" = "󱎓 "
+"TV_Shows" = " "
+"Movies" = "󰿏 "
+"Media" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:{color2}"
+format = '[[ $symbol $branch ](fg:{color15} bg:{color2})]($style)'
+
+[git_status]
+style = "bg:{color2}"
+format = '[[($all_status$ahead_behind )](fg:{color15} bg:{color2})]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:{background}"
+format = '[[  $time ](fg:{color7} bg:{background})]($style)'
+
+[python]
+symbol = ""
+style = "bg:{color1}"
+format = '[[ [$symbol](fg:#FFD43B bg:{color1})(${{ virtualenv }}) ($version)](fg:{color15} bg:{color1})]($style)'
+python_binary = ["python3", "python"]
+
+[nodejs]
+symbol = ""
+style = "bg:{color1}"
+format = '[[ $symbol ($version) ](fg:{color15} bg:{color1})]($style)'
+
+[rust]
+symbol = ""
+style = "bg:{color1}"
+format = '[[ $symbol ($version) ](fg:{color15} bg:{color1})]($style)'
+
+[golang]
+symbol = ""
+style = "bg:{color1}"
+format = '[[ $symbol ($version) ](fg:{color15} bg:{color1})]($style)'
+
+[php]
+symbol = ""
+style = "bg:{color1}"
+format = '[[ $symbol ($version) ](fg:{color15} bg:{color1})]($style)'
