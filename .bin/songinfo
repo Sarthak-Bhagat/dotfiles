@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Get the MPD music directory from ncmpcpp config
+music_dir=$(grep -oP '^mpd_music_dir\s*=\s*\K.+' "$HOME/.config/ncmpcpp/config")
+
+if [[ -z "$music_dir" ]]; then
+    notify-send -u critical -c mpd_error "MPD Notify" "Could not find the music directory in ncmpcpp config."
+    exit 1
+fi
+
+# Get current file path from MPD
+file_path=$(mpc --format "%file%" current)
+if [[ -z "$file_path" ]]; then
+    notify-send -u low -c mpd_paused "MPD Notify" "No song currently playing."
+    exit 0
+fi
+
+# Full path to current song
+full_path="$music_dir/$file_path"
+
+# Get metadata
+title=$(mpc --format "%title%" current)
+artist=$(mpc --format "%artist%" current)
+album=$(mpc --format "%album%" current)
+status=$(mpc status | awk 'NR==2 {print $1}' | tr -d '[]')
+
+# Category selection
+category="mpd_unknown"
+case "$status" in
+    "playing") category="mpd_playing" ;;
+    "paused")  category="mpd_paused" ;;
+esac
+
+# Album art
+thumb="/tmp/mpd_thumb.png"
+rm -f "$thumb"
+ffmpeg -y -i "$full_path" -an -vcodec copy "$thumb" -loglevel quiet 2>/dev/null
+
+# Notification body
+body=""
+[[ -n "$artist" ]] && body+="Artist: $artist\n"
+[[ -n "$album" ]] && body+="Album: $album\n"
+body+="Status: ${status^}"
+
+# Send notification
+if [[ -f "$thumb" ]]; then
+    notify-send -u normal -c "$category" -t 800 -i "$thumb" "$title" "$body"
+else
+    notify-send -u normal -c "$category" -t 800 "$title" "$body"
+fi
