@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo -n ss -K dport = 6112 || sudo -n ss -K sport = 6112
