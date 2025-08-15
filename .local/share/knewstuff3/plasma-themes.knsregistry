@@ -7,12 +7,12 @@
   <author>jomada</author>
   <homepage>https://store.kde.org/p/1330604</homepage>
   <licence></licence>
-  <version>2.4</version>
-  <rating>79</rating>
-  <downloads>4086</downloads>
+  <version>2.5</version>
+  <rating>80</rating>
+  <downloads>2873</downloads>
   <installedfile>/home/dez/.local/share/plasma/desktoptheme/Carl/</installedfile>
   <id>1330604</id>
-  <releasedate>2025-05-06</releasedate>
+  <releasedate>2025-08-11</releasedate>
   <summary>&lt;p>Dark Plasma theme with bluish gradients.&lt;/p>
 
 &lt;p>Image wallpaper of charlie-henson https://www.pling.com/u/charlie-henson/ modified by me.
@@ -29,10 +29,10 @@ The wallpaper is inside the theme folder.&lt;/p>
 &lt;p>Carl Konsole theme: https://www.pling.com/p/1331618/&lt;/p>
 </summary>
   <changelog></changelog>
-  <preview>https://images.pling.com/cache/100x100-0/img/00/00/43/73/13/1330604/carl-plasma.jpg</preview>
-  <previewBig>https://images.pling.com/cache/770x540-0/img/00/00/43/73/13/1330604/carl-plasma.jpg</previewBig>
-  <payload>https://files06.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTc0MDk1MTYzNSwibyI6IjEiLCJzIjoiZDA1NWMzMjkzM2FjNGExNTg5MDA4N2QwMGQxYjIyNDMyZTZkMjA5NThiOTBmNTg3MTA4NjY0MDE3YjM1MGUzMDVmNjkyYjZkZDc5MjU0OWI2ODk2MzM1MDJiNTgxNWU5NTcxYTE3ODE5NWNjNzBmOWI5ZTEwYjQ3NmM2M2QxMDkiLCJ0IjoxNzQ2NTk0OTYwLCJzdGZwIjpudWxsLCJzdGlwIjoiNDkuMzYuMTA0LjIzOSJ9.aX1wiGpE2oSmPR2lyVm3es-SU73em7HfFqL6GXI_8GE/Carl.tar.gz</payload>
-  <tags>plasma##majorversion=5,plasma##majorversion=6,linux,unix,theme,plasma,kde,gplv3</tags>
+  <preview>https://images.pling.com/cache/100x100-4/img/00/00/43/73/13/1330604/carl-plasma.jpg</preview>
+  <previewBig>https://images.pling.com/cache/770x540-4/img/00/00/43/73/13/1330604/carl-plasma.jpg</previewBig>
+  <payload>https://files06.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTc1MjA3MzMzMiwibyI6IjEiLCJzIjoiODc2OTIyMWI2NWU5ZDQwOGJiNjI0OWEyNmVhOTg5OTQ1MDM2NTMwMDczY2I2MjAyNTg2NTI0Njk5YWRjNGExMTg0NThjYmZiMjE4NDcwMGIwZmFkZTA5YTcwZWM4OTJkNmYyMDgxZTNlMDQ5ODYwMzk5YzkzNTFiYjJlYWFmM2UiLCJ0IjoxNzU1MTAzNzY2LCJzdGZwIjpudWxsLCJzdGlwIjoiNDkuMzYuMTAyLjU1In0.iC0k805-eJkLuIF_cfil2_KMZYTRU08Db7OqKfum9wY/Carl.tar.gz</payload>
+  <tags>plasma##majorversion=5,plasma##majorversion=6,plasma,gplv3,kde,linux,theme,unix</tags>
   <status>installed</status>
  </stuff>
 </hotnewstuffregistry>

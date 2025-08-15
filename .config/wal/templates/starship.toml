@@ -14,9 +14,9 @@ $nodejs\
 $rust\
 $golang\
 $php\
-[](fg:{color1} bg:{background})\
+[](fg:{color1} bg:{color8})\
 $time\
-[ ](fg:{background})\
+[ ](fg:{color8})\
 \n$character
 """
 
@@ -48,8 +48,8 @@ format = '[[($all_status$ahead_behind )](fg:{color15} bg:{color2})]($style)'
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:{background}"
-format = '[[  $time ](fg:{color7} bg:{background})]($style)'
+style = "bg:{color8}"
+format = '[[  $time ](fg:{color7} bg:{color8})]($style)'
 
 [python]
 symbol = ""

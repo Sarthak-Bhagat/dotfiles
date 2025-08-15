@@ -165,7 +165,7 @@ elif [ "$DE" == "kde" ]; then
         # Update KDE lock screen background
         kwriteconfig6 --file kscreenlockerrc --group Greeter --group Wallpaper --group org.kde.image --group General --key Image "$WP"
         wal -i $WP
-        ~/.config/starship/generate_starship_from_pywal.sh
+        export $WP
     fi
     if [[ "$dbus_exitcode" -ne 0 && "${KDE_SESSION_VERSION}" -eq '5' ]]; then
         kdialog --title "Variety: cannot change Plasma wallpaper" --passivepopup "Could not change the Plasma 5 wallpaper; \

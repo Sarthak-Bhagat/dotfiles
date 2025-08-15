@@ -1,27 +1,27 @@
 # Starship Prompt using pywal16 with safe contrast
 
 format = """
-[░▒▓](fg:#c5c6c8)\
-[   ](bg:#c5c6c8 fg:#1a1e25)\
-[](bg:#5C7CA4 fg:#c5c6c8)\
+[░▒▓](fg:#c0c0c0)\
+[   ](bg:#c0c0c0 fg:#030303)\
+[](bg:#75817E fg:#c0c0c0)\
 $directory\
-[](fg:#5C7CA4 bg:#566F90)\
+[](fg:#75817E bg:#5B6664)\
 $git_branch\
 $git_status\
-[](fg:#566F90 bg:#6C676E)\
+[](fg:#5B6664 bg:#58615E)\
 $python\
 $nodejs\
 $rust\
 $golang\
 $php\
-[](fg:#6C676E bg:#1a1e25)\
+[](fg:#58615E bg:#645151)\
 $time\
-[ ](fg:#1a1e25)\
+[ ](fg:#645151)\
 \n$character
 """
 
 [directory]
-style = "fg:#c5c6c8 bg:#5C7CA4"  # light fg on medium bg
+style = "fg:#c0c0c0 bg:#75817E"  # light fg on medium bg
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -38,41 +38,41 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:#566F90"
-format = '[[ $symbol $branch ](fg:#c5c6c8 bg:#566F90)]($style)'
+style = "bg:#5B6664"
+format = '[[ $symbol $branch ](fg:#c0c0c0 bg:#5B6664)]($style)'
 
 [git_status]
-style = "bg:#566F90"
-format = '[[($all_status$ahead_behind )](fg:#c5c6c8 bg:#566F90)]($style)'
+style = "bg:#5B6664"
+format = '[[($all_status$ahead_behind )](fg:#c0c0c0 bg:#5B6664)]($style)'
 
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:#1a1e25"
-format = '[[  $time ](fg:#c5c6c8 bg:#1a1e25)]($style)'
+style = "bg:#645151"
+format = '[[  $time ](fg:#c0c0c0 bg:#645151)]($style)'
 
 [python]
 symbol = ""
-style = "bg:#6C676E"
-format = '[[ [$symbol](fg:#FFD43B bg:#6C676E)(${ virtualenv }) ($version)](fg:#c5c6c8 bg:#6C676E)]($style)'
+style = "bg:#58615E"
+format = '[[ [$symbol](fg:#FFD43B bg:#58615E)(${ virtualenv }) ($version)](fg:#c0c0c0 bg:#58615E)]($style)'
 python_binary = ["python3", "python"]
 
 [nodejs]
 symbol = ""
-style = "bg:#6C676E"
-format = '[[ $symbol ($version) ](fg:#c5c6c8 bg:#6C676E)]($style)'
+style = "bg:#58615E"
+format = '[[ $symbol ($version) ](fg:#c0c0c0 bg:#58615E)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#6C676E"
-format = '[[ $symbol ($version) ](fg:#c5c6c8 bg:#6C676E)]($style)'
+style = "bg:#58615E"
+format = '[[ $symbol ($version) ](fg:#c0c0c0 bg:#58615E)]($style)'
 
 [golang]
 symbol = ""
-style = "bg:#6C676E"
-format = '[[ $symbol ($version) ](fg:#c5c6c8 bg:#6C676E)]($style)'
+style = "bg:#58615E"
+format = '[[ $symbol ($version) ](fg:#c0c0c0 bg:#58615E)]($style)'
 
 [php]
 symbol = ""
-style = "bg:#6C676E"
-format = '[[ $symbol ($version) ](fg:#c5c6c8 bg:#6C676E)]($style)'
+style = "bg:#58615E"
+format = '[[ $symbol ($version) ](fg:#c0c0c0 bg:#58615E)]($style)'
