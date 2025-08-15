@@ -24,6 +24,9 @@ enabled=false
 enabled=true
 paths=@Invalid()
 
+[github]
+enabled=false
+
 [mpris]
 enabled=true
 

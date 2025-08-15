@@ -1,6 +1,5 @@
 [Document 0]
-Encoding=ISO-8859-1
-URL=file:///home/dez/.onscripter/gloval.sav
+URL=
 
 [Kate Plugins]
 cmaketoolsplugin=false
@@ -8,6 +7,7 @@ compilerexplorer=false
 eslintplugin=false
 externaltoolsplugin=true
 formatplugin=false
+iconexplorerplugin=false
 katebacktracebrowserplugin=false
 katebuildplugin=false
 katecloseexceptplugin=false
@@ -55,7 +55,7 @@ Kate-MDI-Sidebar-2-Splitter=1875
 Kate-MDI-Sidebar-3-Bar-0-TvList=output,diagnostics,kate_plugin_katesearch,kateprojectinfo,kate_private_plugin_katekonsoleplugin
 Kate-MDI-Sidebar-3-LastSize=200
 Kate-MDI-Sidebar-3-SectSizes=0
-Kate-MDI-Sidebar-3-Splitter=1496
+Kate-MDI-Sidebar-3-Splitter=1576
 Kate-MDI-Sidebar-Style=2
 Kate-MDI-Sidebar-Visible=true
 Kate-MDI-ToolView-diagnostics-Position=3
@@ -100,6 +100,10 @@ Active View=0
 Count=1
 Documents=0
 View 0=0
+
+[MainWindow0-ViewSpace 0 0]
+CursorColumn=9
+CursorLine=2
 
 [Open Documents]
 Count=1

@@ -33,3 +33,7 @@
 	autoSetupRemote = true
 [pull]
 	rebase = true
+[commit]
+	gpgsign = true
+[user]
+	signingkey = /home/dez/.ssh/id_ed_signing.pub

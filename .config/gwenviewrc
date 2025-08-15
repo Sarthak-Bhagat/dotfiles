@@ -5,26 +5,26 @@ LastUsedVersion=210800
 MenuBar=Disabled
 
 [Recent Files]
-File1[$e]=$HOME/Downloads/MG.jpg
-File10[$e]=$HOME/Downloads/Jdown/Screamqueans-0.1.3xtras-pc/Extras/gfil064k.png
-File2[$e]=$HOME/Downloads/MG.webp
-File3[$e]=$HOME/Games/Starsector/mods/[Witch Citadel]-0.9b-Rc2ENG/231620pj8rqm6ubzm78lb6.png
-File4[$e]=$HOME/Pictures/wallpapers/wallhaven-v95mqp.png
-File5[$e]=$HOME/Downloads/Jdown/Screamqueans-0.1.3xtras-pc/Extras/gfil014k.png
-File6[$e]=$HOME/Downloads/Jdown/Screamqueans-0.1.3xtras-pc/Extras/gfil024k.png
-File7[$e]=$HOME/Downloads/Jdown/Screamqueans-0.1.3xtras-pc/Extras/gfil034k.png
-File8[$e]=$HOME/Downloads/Jdown/Screamqueans-0.1.3xtras-pc/Extras/gfil044k.png
-File9[$e]=$HOME/Downloads/Jdown/Screamqueans-0.1.3xtras-pc/Extras/gfil054k.png
-Name1[$e]=MG.jpg
-Name10[$e]=gfil064k.png
-Name2[$e]=MG.webp
-Name3[$e]=231620pj8rqm6ubzm78lb6.png
-Name4[$e]=wallhaven-v95mqp.png
-Name5[$e]=gfil014k.png
-Name6[$e]=gfil024k.png
-Name7[$e]=gfil034k.png
-Name8[$e]=gfil044k.png
-Name9[$e]=gfil054k.png
+File1[$e]=$HOME/Downloads/Jdown/[Ryuugames] RY-v15020/v15020/bg1365_sawako.jpg
+File10[$e]=$HOME/Downloads/FF_Downloads/unnamed.png
+File2[$e]=$HOME/Downloads/Jdown/[Ryuugames] RY-v15020/v15020/bg1365_touko.jpg
+File3[$e]=$HOME/Downloads/Jdown/[Ryuugames] RY-v15020/v15020/bg1920_akira.jpg
+File4[$e]=$HOME/Downloads/Jdown/[Ryuugames] RY-v15020/v15020/bg1920_mia.jpg
+File5[$e]=/mnt/Secondary/Documents/Syncthing/Phone/Documents/Passport_last_page.png
+File6[$e]=/mnt/Secondary/Documents/Syncthing/Phone/Documents/Aadhar.jpg
+File7[$e]=/mnt/Secondary/Downloads/FF_Downloads/WhatsApp Image 2025-08-11 at 13.25.30.jpeg
+File8[$e]=/mnt/Secondary/Documents/Syncthing/Phone/Documents/Passport_first_page.png
+File9[$e]=$HOME/Downloads/FF_Downloads/image.png
+Name1[$e]=bg1365_sawako.jpg
+Name10[$e]=unnamed.png
+Name2[$e]=bg1365_touko.jpg
+Name3[$e]=bg1920_akira.jpg
+Name4[$e]=bg1920_mia.jpg
+Name5[$e]=Passport_last_page.png
+Name6[$e]=Aadhar.jpg
+Name7[$e]=WhatsApp Image 2025-08-11 at 13.25.30.jpeg
+Name8[$e]=Passport_first_page.png
+Name9[$e]=image.png
 
 [SideBar]
 InformationSplitterSizes=320,641

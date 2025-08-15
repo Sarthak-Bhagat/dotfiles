@@ -1,6 +1,6 @@
 [KFileDialog Settings]
-Recent Files[$e]=file:$HOME/.config/dez_scripts/autostart
-Recent URLs[$e]=file:$HOME/.config/dez_scripts/,file:$HOME/Downloads/,file:$HOME/.config/,file:$HOME/,file:$HOME/.config/autostart/,file:$HOME/Documents/,file:$HOME/Pictures/,file:$HOME/Pictures/wallpapers/,file:$HOME/.config/alacritty/
+Recent Files[$e]=file:$HOME/.bin/poe-logout
+Recent URLs[$e]=file:$HOME/.config/dez_scripts/,file:$HOME/Downloads/,file:$HOME/.config/,file:$HOME/,file:$HOME/.config/autostart/,file:$HOME/Documents/,file:$HOME/Pictures/,file:$HOME/Pictures/wallpapers/,file:$HOME/.config/alacritty/,file:$HOME/.bin/
 
 [MainWindow]
 0x0 screen: Height=1078
@@ -22,4 +22,4 @@ State=AAAA/wAAAAD9AAAAAAAAB4AAAAQ4AAAABAAAAAQAAAAIAAAACPwAAAAA
 
 [Open-with settings]
 CompletionMode=1
-History=ves,better,alber,stea,kde,keep,Qb,zen,neov,qbit,flame,lutr,flames,vesk,ze
+History=zen,ves,better,alber,stea,kde,keep,Qb,neov,qbit,flame,lutr,flames,vesk,ze
