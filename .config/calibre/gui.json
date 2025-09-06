@@ -31,7 +31,8 @@
     "Tweak ePub",
     "Generate Cover",
     "Prettify Cover",
-    "EpubMerge"
+    "EpubMerge",
+    "BookFusion Plugin"
   ],
   "action-layout-toolbar-device": [
     "Add Books",
@@ -56,7 +57,8 @@
     "Preferences",
     "Generate Cover",
     "Prettify Cover",
-    "EpubMerge"
+    "EpubMerge",
+    "BookFusion Plugin"
   ],
   "ask_to_manage_device": [
     "77E312982683289AFFF9BFBE6DC3548D"
@@ -132,6 +134,22 @@
       [
         "timestamp",
         false
+      ],
+      [
+        "inlibrary",
+        false
+      ],
+      [
+        "timestamp",
+        false
+      ],
+      [
+        "inlibrary",
+        false
+      ],
+      [
+        "timestamp",
+        false
       ]
     ]
   },
@@ -163,6 +181,22 @@
     "last_modified_injected": true,
     "path_injected": true,
     "sort_history": [
+      [
+        "timestamp",
+        false
+      ],
+      [
+        "inlibrary",
+        false
+      ],
+      [
+        "timestamp",
+        false
+      ],
+      [
+        "inlibrary",
+        false
+      ],
       [
         "timestamp",
         false
@@ -1062,6 +1096,57 @@
       }
     }
   },
+  "geometry-of-plugin config dialog:User interface action:BookFusion Plugin": {
+    "frame_geometry": {
+      "height": 279,
+      "width": 646,
+      "x": 0,
+      "y": 8
+    },
+    "full_screened": false,
+    "geometry": {
+      "height": 279,
+      "width": 646,
+      "x": 0,
+      "y": 8
+    },
+    "maximized": false,
+    "normal_geometry": {
+      "height": 279,
+      "width": 646,
+      "x": 0,
+      "y": 8
+    },
+    "qt": {
+      "__class__": "bytearray",
+      "__value__": "AdnQywADAAAAAAAAAAAACAAAAoUAAAEeAAAAAAAAAAgAAAKFAAABHgAAAAAAAAAAB4AAAAAAAAAACAAAAoUAAAEe"
+    },
+    "screen": {
+      "depth": 32,
+      "device_pixel_ratio": 1.0,
+      "geometry_in_logical_pixels": {
+        "height": 1080,
+        "width": 1920,
+        "x": 0,
+        "y": 0
+      },
+      "index_in_screens_list": 0,
+      "manufacturer": "AU Optronics",
+      "model": "eDP-1-0xD1ED",
+      "name": "eDP-1",
+      "serial": "",
+      "size_in_logical_pixels": {
+        "height": 1080,
+        "width": 1920
+      },
+      "virtual_geometry": {
+        "height": 1080,
+        "width": 1920,
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
   "geometry-of-plugin config dialog:User interface action:Generate Cover": {
     "frame_geometry": {
       "height": 273,
@@ -1325,7 +1410,7 @@
     "__value__": "AAAA/wAAAAAAAAABAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAxAAAAAFAQEBAAAAAAAAAAAAAAAAAGT/////AAAAhAAAAAAAAAAFAAAAZAAAAAEAAAAAAAAA+gAAAAEAAAAAAAAAeQAAAAEAAAAAAAAAZAAAAAEAAAAAAAAA1QAAAAEAAAAAAAAD6AAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=="
   },
   "library_usage_stats": {
-    "/mnt/Secondary/Documents/Calibre": 44
+    "/mnt/Secondary/Documents/Calibre": 50
   },
   "light_palette_name": "",
   "light_palettes": {
@@ -1415,6 +1500,22 @@
       [
         "inlibrary",
         true
+      ],
+      [
+        "timestamp",
+        false
+      ],
+      [
+        "inlibrary",
+        false
+      ],
+      [
+        "timestamp",
+        false
+      ],
+      [
+        "inlibrary",
+        false
       ],
       [
         "timestamp",

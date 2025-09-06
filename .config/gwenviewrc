@@ -5,26 +5,26 @@ LastUsedVersion=210800
 MenuBar=Disabled
 
 [Recent Files]
-File1[$e]=$HOME/Downloads/Jdown/[Ryuugames] RY-v15020/v15020/bg1365_sawako.jpg
-File10[$e]=$HOME/Downloads/FF_Downloads/unnamed.png
-File2[$e]=$HOME/Downloads/Jdown/[Ryuugames] RY-v15020/v15020/bg1365_touko.jpg
-File3[$e]=$HOME/Downloads/Jdown/[Ryuugames] RY-v15020/v15020/bg1920_akira.jpg
-File4[$e]=$HOME/Downloads/Jdown/[Ryuugames] RY-v15020/v15020/bg1920_mia.jpg
-File5[$e]=/mnt/Secondary/Documents/Syncthing/Phone/Documents/Passport_last_page.png
-File6[$e]=/mnt/Secondary/Documents/Syncthing/Phone/Documents/Aadhar.jpg
-File7[$e]=/mnt/Secondary/Downloads/FF_Downloads/WhatsApp Image 2025-08-11 at 13.25.30.jpeg
-File8[$e]=/mnt/Secondary/Documents/Syncthing/Phone/Documents/Passport_first_page.png
-File9[$e]=$HOME/Downloads/FF_Downloads/image.png
-Name1[$e]=bg1365_sawako.jpg
-Name10[$e]=unnamed.png
-Name2[$e]=bg1365_touko.jpg
-Name3[$e]=bg1920_akira.jpg
-Name4[$e]=bg1920_mia.jpg
-Name5[$e]=Passport_last_page.png
-Name6[$e]=Aadhar.jpg
-Name7[$e]=WhatsApp Image 2025-08-11 at 13.25.30.jpeg
-Name8[$e]=Passport_first_page.png
-Name9[$e]=image.png
+File1[$e]=/mnt/Secondary/Documents/Syncthing/Phone/Documents/Passport_last_page.png
+File10[$e]=/mnt/Secondary/Documents/Syncthing/Screenshots/2025-09-03 18_00_07 Like a Dragon: Infinite Wealth.png
+File2[$e]=/mnt/Secondary/Documents/Syncthing/Phone/Documents/Aadhar.jpg
+File3[$e]=/mnt/Secondary/Downloads/FF_Downloads/WhatsApp Image 2025-08-11 at 13.25.30.jpeg
+File4[$e]=$HOME/Downloads/FF_Downloads/image.png
+File5[$e]=$HOME/Downloads/FF_Downloads/unnamed.png
+File6[$e]=/mnt/Windows/Users/Sarthak/Documents/Paradox Interactive/Stellaris/mod/2280945168/thumbnail.png
+File7[$e]=/mnt/Secondary/Documents/Syncthing/Phone/Documents/Passport_first_page.png
+File8[$e]=/mnt/Secondary/Documents/Syncthing/Screenshots/wqr36712jgnd1.png.jpg
+File9[$e]=/mnt/Secondary/Documents/Syncthing/Screenshots/6fznmj9r52af1.webp
+Name1[$e]=Passport_last_page.png
+Name10[$e]=2025-09-03 18_00_07 Like a Dragon: Infinite Wealth.png
+Name2[$e]=Aadhar.jpg
+Name3[$e]=WhatsApp Image 2025-08-11 at 13.25.30.jpeg
+Name4[$e]=image.png
+Name5[$e]=unnamed.png
+Name6[$e]=thumbnail.png
+Name7[$e]=Passport_first_page.png
+Name8[$e]=wqr36712jgnd1.png.jpg
+Name9[$e]=6fznmj9r52af1.webp
 
 [SideBar]
 InformationSplitterSizes=320,641
