@@ -14,6 +14,7 @@
   "plugins": {
     "Apple Books covers": "/home/dez/.config/calibre/plugins/Apple Books covers.zip",
     "Barnes & Noble": "/home/dez/.config/calibre/plugins/Barnes & Noble.zip",
+    "BookFusion Plugin": "/home/dez/.config/calibre/plugins/BookFusion Plugin.zip",
     "EpubMerge": "/home/dez/.config/calibre/plugins/EpubMerge.zip",
     "Fantastic Fiction": "/home/dez/.config/calibre/plugins/Fantastic Fiction.zip",
     "Generate Cover": "/home/dez/.config/calibre/plugins/Generate Cover.zip",

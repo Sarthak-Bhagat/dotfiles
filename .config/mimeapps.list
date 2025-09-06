@@ -80,6 +80,7 @@ application/xml=neovide.desktop;
 x-scheme-handler/discord-1232165629046292551=PokeRogue.desktop;
 application/epub+zip=calibre-ebook-viewer.desktop;
 text/css=neovide.desktop;
+audio/x-mod=userapp-kate-QZ5LB3.desktop;
 
 [Default Applications]
 application/x-extension-htm=zen.desktop
@@ -164,3 +165,4 @@ application/xml=neovide.desktop
 x-scheme-handler/discord-1232165629046292551=PokeRogue.desktop
 application/epub+zip=calibre-ebook-viewer.desktop
 text/css=neovide.desktop
+audio/x-mod=userapp-kate-QZ5LB3.desktop

@@ -2,6 +2,7 @@
 URL=
 
 [Kate Plugins]
+bookmarksplugin=false
 cmaketoolsplugin=false
 compilerexplorer=false
 eslintplugin=false
@@ -102,8 +103,8 @@ Documents=0
 View 0=0
 
 [MainWindow0-ViewSpace 0 0]
-CursorColumn=9
-CursorLine=2
+CursorColumn=35
+CursorLine=1
 
 [Open Documents]
 Count=1
@@ -139,23 +140,23 @@ SizeLimit=128
 UseRegExp=false
 
 [Recent Files]
-File1[$e]=$HOME/.config/Stardrop/Data/Profiles/Dez.json
-File10[$e]=$HOME/.onscripter/gloval.sav
-File2[$e]=$HOME/Games/steam/Stardew Valley/Mods/Ridgeside Village/[CP] Ridgeside Village/Data/Quests/Quests.json
-File3[$e]=$HOME/.local/share/Steam/steamapps/common/Stardew Valley/Mods/Sword & Sorcery/[CP] Sword & Sorcery/Data/Quests & Items/ShieldQuest.json
-File4[$e]=$HOME/.local/share/Steam/steamapps/common/Stardew Valley/Mods/Sword & Sorcery/[CP] Sword & Sorcery/Data/Quests & Items/LegendaryWeapons.json
-File5[$e]=$HOME/.local/share/Steam/steamapps/common/Stardew Valley/Mods/Stardrop Installed Mods/[CP] Fish of Stardew - AztecViper/assets/rings.json
-File6[$e]=$HOME/.local/share/Steam/steamapps/common/Stardew Valley/Mods/SpaceCore/docs/README.md
-File7[$e]=$HOME/Downloads/Jdown/v10889-Monster_Park_2_Final/v10889-Monster Park 2 Final/patch.sh
-File8[$e]=/mnt/Windows/Users/Sarthak/Documents/My Games/Path of Exile 2/poe2_production_Config.ini
-File9[$e]=admin:///home/dez/.zen/profiles.ini
-Name1[$e]=Dez.json
-Name10[$e]=gloval.sav
-Name2[$e]=Quests.json
-Name3[$e]=ShieldQuest.json
-Name4[$e]=LegendaryWeapons.json
-Name5[$e]=rings.json
-Name6[$e]=README.md
-Name7[$e]=patch.sh
-Name8[$e]=poe2_production_Config.ini
-Name9[$e]=profiles.ini
+File1[$e]=$HOME/.local/share/Steam/steamapps/common/Stardew Valley/Mods/SpaceCore/docs/README.md
+File10[$e]=$HOME/Games/umu/umu-default/drive_c/users/dez/Documents/Paradox Interactive/Stellaris/mod/2458024521.mod
+File2[$e]=$HOME/Downloads/Jdown/v10889-Monster_Park_2_Final/v10889-Monster Park 2 Final/patch.sh
+File3[$e]=/mnt/Windows/Users/Sarthak/Documents/My Games/Path of Exile 2/poe2_production_Config.ini
+File4[$e]=admin:///home/dez/.zen/profiles.ini
+File5[$e]=$HOME/.onscripter/gloval.sav
+File6[$e]=$HOME/Games/umu/umu-default/drive_c/users/dez/Documents/Paradox Interactive/Stellaris/mod/(Merged)_4.0_A_Hotfix_Odyssey_[V.0.5].mod
+File7[$e]=$HOME/Games/umu/umu-default/drive_c/users/dez/Documents/Paradox Interactive/Stellaris/mod/2409209888/descriptor.mod
+File8[$e]=$HOME/Games/umu/umu-default/drive_c/users/dez/Documents/Paradox Interactive/Stellaris/mod/2123646681.mod
+File9[$e]=$HOME/Games/umu/umu-default/drive_c/users/dez/Documents/Paradox Interactive/Stellaris/mod/1890399946.mod
+Name1[$e]=README.md
+Name10[$e]=2458024521.mod
+Name2[$e]=patch.sh
+Name3[$e]=poe2_production_Config.ini
+Name4[$e]=profiles.ini
+Name5[$e]=gloval.sav
+Name6[$e]=(Merged)_4.0_A_Hotfix_Odyssey_[V.0.5].mod
+Name7[$e]=descriptor.mod
+Name8[$e]=2123646681.mod
+Name9[$e]=1890399946.mod
