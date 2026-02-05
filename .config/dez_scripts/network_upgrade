@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+# Check if running with root privileges
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run as root"
+    exit 1
+fi
+
+# Parse command-line arguments
+DEBUG=false
+FORCE=false
+while getopts "vf" opt; do
+    case $opt in
+        v) DEBUG=true ;;
+        f) FORCE=true ;;
+        \?) echo "Invalid option: -$OPTARG" >&2; exit 1 ;;
+    esac
+done
+shift $((OPTIND-1))
+
+# Debug function
+dbg() {
+    if [ "$DEBUG" = true ]; then
+        echo "[DEBUG] $1"
+    fi
+}
+
+# Get the list of preferred connections sorted by priority
+get_preferred_connections() {
+    nmcli -g NAME,TYPE,AUTOCONNECT-PRIORITY connection show |
+    while IFS=':' read -r name type priority; do
+        if [[ "$type" == "802-11-wireless" ]]; then
+            echo "${priority:-0}:${name}"
+        fi
+    done | sort -rn | cut -d: -f2-
+}
+
+# Check if a connection is available
+is_connection_available() {
+    nmcli -g SSID device wifi list | grep -Fqx "$1"
+}
+
+# Get current active connection
+CURRENT=$(nmcli -g NAME,TYPE connection show --active | grep '802-11-wireless' | cut -d':' -f1)
+dbg "Current WiFi connection: $CURRENT"
+
+# Get list of preferred connections
+mapfile -t PREFERRED_CONNECTIONS < <(get_preferred_connections)
+dbg "Preferred WiFi connections: ${PREFERRED_CONNECTIONS[*]}"
+
+# Try to connect to the highest priority available network
+for connection in "${PREFERRED_CONNECTIONS[@]}"; do
+    if [ "$connection" != "$CURRENT" ] || [ "$FORCE" = true ]; then
+        if is_connection_available "$connection"; then
+            dbg "Attempting to connect to $connection"
+            if nmcli connection up "$connection"; then
+                echo "Successfully connected to $connection"
+                exit 0
+            else
+                dbg "Failed to connect to $connection"
+            fi
+        else
+            dbg "$connection is not available"
+        fi
+    else
+        dbg "Already connected to the preferred network: $connection"
+        exit 0
+    fi
+done
+
+echo "No preferred networks available"
+exit 1

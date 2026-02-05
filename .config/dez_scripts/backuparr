@@ -1,0 +1,101 @@
+#!/bin/bash
+
+# Default values for configuration
+service="sonarr"
+BRANCH="main"
+COMPRESSION_FORMAT="zip"
+
+# Function to display usage information
+usage() {
+  echo "Usage: $0 [--service sonarr|radarr] [--path PATH] [--format xz|zip]"
+  exit 1
+}
+
+# Parse command-line arguments
+while [[ "$#" -gt 0 ]]; do
+  case $1 in
+    --service)
+      if [[ "$2" == "sonarr" || "$2" == "radarr" ]]; then
+        service="$2"
+        shift
+      else
+        usage
+      fi
+      ;;
+    --format)
+      if [[ "$2" == "xz" || "$2" == "zip" ]]; then
+        COMPRESSION_FORMAT="$2"
+        shift
+      else
+        usage
+      fi
+      ;;
+    *)
+      usage
+      ;;
+  esac
+  shift
+done
+
+FILE1="/var/lib/$service/config.xml"
+FILE2="/var/lib/$service/$service.db"
+GITHUB_REPO="Sarthak-Bhagat/${service}_backup"
+GITHUB_FILE_PATH="$service.$COMPRESSION_FORMAT"
+OUTPUT_ARCHIVE="$service.$COMPRESSION_FORMAT"
+
+# Ensure the necessary arguments are provided
+if [[ -z "$service" || -z "$GITHUB_REPO" || -z "$GITHUB_FILE_PATH" || -z "$BRANCH" || -z "$COMPRESSION_FORMAT" ]]; then
+  usage
+fi
+
+# Ensure both files exist
+if [ ! -f "$FILE1" ]; then
+  echo "File $FILE1 not found!"
+  exit 1
+fi
+
+if [ ! -f "$FILE2" ]; then
+  echo "File $FILE2 not found!"
+  exit 1
+fi
+
+# Create a temporary directory
+TEMP_DIR=$(mktemp -d)
+
+# Copy the files to the temporary directory
+cp "$FILE1" "$TEMP_DIR"
+cp "$FILE2" "$TEMP_DIR"
+
+BASEFILE1=$(basename "$FILE1")
+BASEFILE2=$(basename "$FILE2")
+
+# Navigate to the temporary directory
+cd "$TEMP_DIR" || { echo "Failed to change directory to $TEMP_DIR"; exit 1; }
+
+# Create a archive and compress it based on the selected format
+if [ "$COMPRESSION_FORMAT" == "xz" ]; then
+  tar -cJf "$OUTPUT_ARCHIVE" "$BASEFILE1" "$BASEFILE2"
+elif [ "$COMPRESSION_FORMAT" == "zip" ]; then
+  zip -9 "$OUTPUT_ARCHIVE" "$BASEFILE1" "$BASEFILE2"
+fi
+
+# Clone the repository and checkout the branch
+CLONE_DIR=$(mktemp -d)
+git clone --single-branch --branch "$BRANCH" "git@github.com:$GITHUB_REPO.git" "$CLONE_DIR"
+cd "$CLONE_DIR"
+
+# Replace the old file with the new one from the temp directory
+cp "$TEMP_DIR/$OUTPUT_ARCHIVE" "$GITHUB_FILE_PATH"
+
+# Add and commit the changes
+git add "$GITHUB_FILE_PATH"
+git commit -m "Overwrite $GITHUB_FILE_PATH with updated compressed file containing $FILE1 and $FILE2"
+
+# Push the changes to GitHub
+git push origin "$BRANCH"
+
+# Clean up
+cd -
+rm -rf "$TEMP_DIR" "$CLONE_DIR"
+
+echo "File $GITHUB_FILE_PATH has been overwritten and pushed to the GitHub repository $GITHUB_REPO on branch $BRANCH."
