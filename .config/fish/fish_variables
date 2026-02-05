@@ -1,41 +1,15 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export TRAKT_CLIENT_ID:a490e3bc5eec7bd2d2825ce3b8e940def0e24b5cbef0d38411ceefb07670fa66
+SETUVAR --export TRAKT_CLIENT_SECRET:6e1cb0c1fd4ee22c75881c7cb44c4bbe5d388949bdf53fecffbe486226d29d2c
 SETUVAR ZO_CMD:zo
 SETUVAR Z_CMD:z
 SETUVAR Z_DATA:/home/dez/\x2elocal/share/z/data
 SETUVAR Z_DATA_DIR:/home/dez/\x2elocal/share/z
 SETUVAR Z_EXCLUDE:\x5e/home/dez\x24
-SETUVAR __fish_initialized:3800
+SETUVAR __fish_initialized:4300
 SETUVAR _fisher_jethrokuan_2F_z_files:\x7e/\x2econfig/fish/functions/__z\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_add\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_clean\x2efish\x1e\x7e/\x2econfig/fish/functions/__z_complete\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/z\x2efish
 SETUVAR _fisher_jorgebucaran_2F_autopair_2E_fish_files:\x7e/\x2econfig/fish/functions/_autopair_backspace\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_left\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_right\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_same\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_tab\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/autopair\x2efish
 SETUVAR _fisher_plugins:jethrokuan/z\x1ejorgebucaran/autopair\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
-SETUVAR fish_color_autosuggestion:\x23969896
-SETUVAR fish_color_cancel:\x2dr
-SETUVAR fish_color_command:\x230782DE
-SETUVAR fish_color_comment:\x23f0c674
-SETUVAR fish_color_cwd:\x23008000
-SETUVAR fish_color_cwd_root:red
-SETUVAR fish_color_end:\x23b294bb
-SETUVAR fish_color_error:\x23fb4934
-SETUVAR fish_color_escape:\x23fe8019
-SETUVAR fish_color_history_current:\x2d\x2dbold
-SETUVAR fish_color_host:\x2385AD82
-SETUVAR fish_color_host_remote:yellow
-SETUVAR fish_color_normal:normal
-SETUVAR fish_color_operator:\x23fe8019
-SETUVAR fish_color_param:\x2381a2be
-SETUVAR fish_color_quote:\x23b8bb26
-SETUVAR fish_color_redirection:\x23d3869b
-SETUVAR fish_color_search_match:\x2d\x2dbackground\x3d\x2360AEFF
-SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1ebackground\x3dbrblack
-SETUVAR fish_color_status:red
-SETUVAR fish_color_user:brgreen
-SETUVAR fish_color_valid_path:\x2d\x2dunderline
-SETUVAR fish_key_bindings:fish_default_key_bindings
-SETUVAR fish_pager_color_completion:normal
-SETUVAR fish_pager_color_description:\x23B3A06D\x1eyellow
-SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
-SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_pager_color_selected_background:\x2dr
 SETUVAR fish_user_paths:/home/dez/\x2ebin\x1e/home/dez/\x2elocal/bin\x1e/home/dez/Applications

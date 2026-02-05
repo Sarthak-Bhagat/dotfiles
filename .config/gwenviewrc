@@ -4,27 +4,30 @@ LastUsedVersion=210800
 [MainWindow]
 MenuBar=Disabled
 
+[Print]
+PrintHeight=21.25
+
 [Recent Files]
-File1[$e]=/mnt/Secondary/Documents/Syncthing/Phone/Documents/Passport_last_page.png
-File10[$e]=/mnt/Secondary/Documents/Syncthing/Screenshots/2025-09-03 18_00_07 Like a Dragon: Infinite Wealth.png
-File2[$e]=/mnt/Secondary/Documents/Syncthing/Phone/Documents/Aadhar.jpg
-File3[$e]=/mnt/Secondary/Downloads/FF_Downloads/WhatsApp Image 2025-08-11 at 13.25.30.jpeg
-File4[$e]=$HOME/Downloads/FF_Downloads/image.png
-File5[$e]=$HOME/Downloads/FF_Downloads/unnamed.png
-File6[$e]=/mnt/Windows/Users/Sarthak/Documents/Paradox Interactive/Stellaris/mod/2280945168/thumbnail.png
-File7[$e]=/mnt/Secondary/Documents/Syncthing/Phone/Documents/Passport_first_page.png
-File8[$e]=/mnt/Secondary/Documents/Syncthing/Screenshots/wqr36712jgnd1.png.jpg
-File9[$e]=/mnt/Secondary/Documents/Syncthing/Screenshots/6fznmj9r52af1.webp
-Name1[$e]=Passport_last_page.png
-Name10[$e]=2025-09-03 18_00_07 Like a Dragon: Infinite Wealth.png
-Name2[$e]=Aadhar.jpg
-Name3[$e]=WhatsApp Image 2025-08-11 at 13.25.30.jpeg
-Name4[$e]=image.png
-Name5[$e]=unnamed.png
-Name6[$e]=thumbnail.png
-Name7[$e]=Passport_first_page.png
-Name8[$e]=wqr36712jgnd1.png.jpg
-Name9[$e]=6fznmj9r52af1.webp
+File1[$e]=$HOME/Downloads/FF_Downloads/Copy of HCAIM-BlendedIP-Event-Poster-Example1.pptx.png
+File10[$e]=$HOME/Documents/Syncthing/Screenshots/2023-08-17 00_32_31 Ginny.and.Georgia.S01E08.1080p.WEB.H264-GGWP.mkv-00.49.52.031-#1.webp
+File2[$e]=$HOME/Downloads/FF_Downloads/Copy of HCAIM-BlendedIP-Event-Poster-Example1(1).pptx.png
+File3[$e]=$HOME/Downloads/FF_Downloads/Copy of HCAIM-BlendedIP-Event-Poster-Example1.pptx(1).png
+File4[$e]=$HOME/Downloads/FF_Downloads/poster-piece-2.png
+File5[$e]=$HOME/Downloads/FF_Downloads/poster-piece-3.png
+File6[$e]=$HOME/Downloads/FF_Downloads/poster-piece-4.png
+File7[$e]=$HOME/Downloads/FF_Downloads/poster-piece-5.png
+File8[$e]=$HOME/Downloads/FF_Downloads/poster-piece-6.png
+File9[$e]=$HOME/Downloads/FF_Downloads/poster-piece-1.png
+Name1[$e]=Copy of HCAIM-BlendedIP-Event-Poster-Example1.pptx.png
+Name10[$e]=2023-08-17 00_32_31 Ginny.and.Georgia.S01E08.1080p.WEB.H264-GGWP.mkv-00.49.52.031-#1.webp
+Name2[$e]=Copy of HCAIM-BlendedIP-Event-Poster-Example1(1).pptx.png
+Name3[$e]=Copy of HCAIM-BlendedIP-Event-Poster-Example1.pptx(1).png
+Name4[$e]=poster-piece-2.png
+Name5[$e]=poster-piece-3.png
+Name6[$e]=poster-piece-4.png
+Name7[$e]=poster-piece-5.png
+Name8[$e]=poster-piece-6.png
+Name9[$e]=poster-piece-1.png
 
 [SideBar]
 InformationSplitterSizes=320,641

@@ -286,6 +286,14 @@
    </metadata>
   </info>
  </separator>
+ <separator>
+  <info>
+   <metadata owner="http://www.kde.org">
+    <UDI>/org/kde/solid/udev/sys/devices/pci0000:00/0000:00:08.1/0000:05:00.3/usb1/1-1</UDI>
+    <isSystemItem>true</isSystemItem>
+   </metadata>
+  </info>
+ </separator>
  <bookmark href="kdeconnect://5780ab26_a080_41ef_97d3_12d00c5ecf9c/">
   <title>Dez Phone</title>
   <info>
@@ -293,7 +301,7 @@
     <bookmark:icon name="kdeconnect"/>
    </metadata>
    <metadata owner="http://www.kde.org">
-    <ID>1757102354/4</ID>
+    <ID>1770253568/8</ID>
    </metadata>
   </info>
  </bookmark>

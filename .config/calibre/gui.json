@@ -1253,26 +1253,26 @@
     "frame_geometry": {
       "height": 266,
       "width": 1159,
-      "x": 371,
-      "y": 367
+      "x": 0,
+      "y": 0
     },
     "full_screened": false,
     "geometry": {
       "height": 266,
       "width": 1159,
-      "x": 371,
-      "y": 367
+      "x": 0,
+      "y": 0
     },
     "maximized": false,
     "normal_geometry": {
       "height": 266,
       "width": 1159,
-      "x": 371,
-      "y": 367
+      "x": 0,
+      "y": 0
     },
     "qt": {
       "__class__": "bytearray",
-      "__value__": "AdnQywADAAAAAAFzAAABbwAABfkAAAJ4AAABcwAAAW8AAAX5AAACeAAAAAAAAAAAB4AAAAFzAAABbwAABfkAAAJ4"
+      "__value__": "AdnQywADAAAAAAAAAAAAAAAABIYAAAEJAAAAAAAAAAAAAASGAAABCQAAAAAAAAAAB4AAAAAAAAAAAAAABIYAAAEJ"
     },
     "screen": {
       "depth": 32,
@@ -1410,7 +1410,7 @@
     "__value__": "AAAA/wAAAAAAAAABAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAxAAAAAFAQEBAAAAAAAAAAAAAAAAAGT/////AAAAhAAAAAAAAAAFAAAAZAAAAAEAAAAAAAAA+gAAAAEAAAAAAAAAeQAAAAEAAAAAAAAAZAAAAAEAAAAAAAAA1QAAAAEAAAAAAAAD6AAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=="
   },
   "library_usage_stats": {
-    "/mnt/Secondary/Documents/Calibre": 50
+    "/mnt/Secondary/Documents/Calibre": 56
   },
   "light_palette_name": "",
   "light_palettes": {
@@ -1548,6 +1548,7 @@
     "ondevice": true,
     "pubdate": true,
     "series": true,
+    "tags": true,
     "timestamp": false,
     "title": false
   },
