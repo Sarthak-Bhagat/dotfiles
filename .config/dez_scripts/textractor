@@ -1,0 +1,37 @@
+#!/bin/bash
+# Create a temporary directory
+temp_dir=$(mktemp -d)
+# Generate a unique filename
+filename="screenshot_$(date +%Y%m%d_%H%M%S)"
+# Take the screenshot using grimshot
+if command -v grimshot &> /dev/null; then
+  grimshot save area "$temp_dir/$filename.png"
+elif command -v flameshot &> /dev/null; then
+  flameshot gui -s -p "$temp_dir/$filename.png"
+else
+  exit
+fi
+# Check if the screenshot was successful
+if [ $? -ne 0 ]; then
+    echo "Failed to take screenshot. Exiting."
+    rm -rf "$temp_dir"
+    exit 1
+fi
+# Perform OCR on the screenshot
+tesseract "$temp_dir/$filename.png" "$temp_dir/$filename"
+# Check if OCR was successful
+if [ $? -ne 0 ]; then
+    echo "OCR failed. Exiting."
+    rm -rf "$temp_dir"
+    exit 1
+fi
+# Read the OCR result and clean it
+ocr_text=$(cat "$temp_dir/$filename.txt" | tr -d '\n' | sed 's/[[:space:]]\+/ /g' | sed 's/^ *//g' | sed 's/ *$//g')
+# Copy the cleaned text to clipboard
+echo -n "$ocr_text" | wl-copy
+# Display the cleaned OCR result
+echo "Cleaned OCR Result:"
+echo "$ocr_text"
+# Clean up: remove the temporary directory and its contents
+rm -rf "$temp_dir"
+echo "OCR completed. Cleaned text has been copied to clipboard."

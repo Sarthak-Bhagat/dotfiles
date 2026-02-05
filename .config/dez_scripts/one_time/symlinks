@@ -1,0 +1,38 @@
+#!/bin/bash
+
+create_symlink() {
+    source="$1"
+    dest="$2"
+    
+    # Get the base name of the source
+    base_name=$(basename "$source")
+    
+    # Construct the full destination path
+    full_dest="${dest%/}/$base_name"
+    
+    # Check if the full destination exists
+    if [ -e "$full_dest" ]; then
+        # If it's a symlink, remove it
+        if [ -L "$full_dest" ]; then
+          echo "It's a symlink, deleting."
+            sudo rm "$full_dest"
+        # If it's an empty directory, remove it
+        elif [ -d "$full_dest" ] && [ -z "$(ls -A "$full_dest")" ]; then
+          echo "Empty Folder, deleting"
+            sudo rmdir "$full_dest"
+        else
+            echo "Warning: $full_dest exists and is not a symlink or empty directory. Skipping."
+            return
+        fi
+    fi
+    
+    # Create the symlink
+    sudo ln -s "$source" "$dest"
+    echo "Created symlink: $full_dest -> $source"
+}
+
+# Execute for each of your symlink commands
+create_symlink "/mnt/Windows/Users/Sarthak/AppData/" "$HOME/.wine/drive_c/users/dez/"
+create_symlink "/mnt/Windows/Users/Sarthak/AppData/Local/qBittorrent/" "$HOME/.local/share/"
+create_symlink "/mnt/Secondary/Downloads/" "/home/dez/"
+create_symlink "/mnt/Secondary/Documents/" "/home/dez/"
