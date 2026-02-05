@@ -1,3 +1,11 @@
+[KFileDialog Settings]
+Recent Files[$e]=file:$HOME/Downloads/test.txt
+Recent URLs[$e]=file:$HOME/Downloads/
+
+[KTextEditor::Search]
+Replace History=LANDLADY,ME,HER,ROOMMATE,[Me],[Movie friend],[other friend],[friend's roommate],[friend],[My name],Friend,fk,MEEEE,GRILLLL
+Search History=Margaret,Marga,sarthak,Sarthak,Ritu,Priya,RItu,Dez,Rithu,rithu,sriya,Semonti,sryi,sarth,fuck,Kill
+
 [MainWindow]
 1920x1080 screen: Height=1080
 1920x1080 screen: Width=1920

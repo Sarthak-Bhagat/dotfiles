@@ -1,5 +1,11 @@
 [Applications][org.qbittorrent.qBittorrent]
 Seen=true
 
+[Badges]
+InTaskManager=false
+
+[Jobs]
+InNotifications=false
+
 [Notifications]
 PopupPosition=TopRight

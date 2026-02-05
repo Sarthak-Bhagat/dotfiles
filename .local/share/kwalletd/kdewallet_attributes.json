@@ -1,6 +1,6 @@
 {
     "$fdo_created": "1738904419",
-    "$fdo_modified": "1755773716",
+    "$fdo_modified": "1769886054",
     "Chromium Keys/Chromium Safe Storage": {
         "$fdo_created": "1746988104",
         "$fdo_modified": "1746988104",
@@ -8,6 +8,17 @@
             "server": "Chromium Keys",
             "type": "plaintext",
             "user": "Chromium Safe Storage"
+        }
+    },
+    "Chromium Keys/Chromium Safe Storage__0_": {
+        "$fdo_created": "1761997619",
+        "$fdo_mime_type": "text/plain",
+        "$fdo_modified": "1761997619",
+        "attributes": {
+            "server": "Chromium Keys",
+            "type": "plaintext",
+            "user": "Chromium Safe Storage",
+            "xdg:schema": "org.qt.keychain"
         }
     },
     "Network Management/{6dab2dc7-2424-43ea-bb03-ed8c5439f134};802-11-wireless-security": {
@@ -89,9 +100,9 @@
         }
     },
     "Secret Service/Password for 'proton-sso-account-nftw4ylwovzvq' on 'Proton'": {
-        "$fdo_created": "1748364231",
+        "$fdo_created": "1769886054",
         "$fdo_mime_type": "text/plain",
-        "$fdo_modified": "1748364231",
+        "$fdo_modified": "1769886054",
         "attributes": {
             "application": "Python keyring library",
             "service": "Proton",
@@ -99,9 +110,9 @@
         }
     },
     "Secret Service/Password for 'proton-sso-accounts' on 'Proton'": {
-        "$fdo_created": "1742555784",
+        "$fdo_created": "1769061687",
         "$fdo_mime_type": "text/plain",
-        "$fdo_modified": "1742555784",
+        "$fdo_modified": "1769061687",
         "attributes": {
             "application": "Python keyring library",
             "service": "Proton",

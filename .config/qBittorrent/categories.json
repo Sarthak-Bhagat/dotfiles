@@ -5,9 +5,6 @@
     "radarr": {
         "save_path": ""
     },
-    "readarr": {
-        "save_path": ""
-    },
     "sonarr": {
         "save_path": ""
     }

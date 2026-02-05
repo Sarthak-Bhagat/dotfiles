@@ -81,6 +81,9 @@ x-scheme-handler/discord-1232165629046292551=PokeRogue.desktop;
 application/epub+zip=calibre-ebook-viewer.desktop;
 text/css=neovide.desktop;
 audio/x-mod=userapp-kate-QZ5LB3.desktop;
+application/x-ipynb+json=userapp-code-99NTD3.desktop;
+application/vnd.openxmlformats-officedocument.presentationml.presentation=onlyoffice-desktopeditors.desktop;
+x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop
 
 [Default Applications]
 application/x-extension-htm=zen.desktop
@@ -166,3 +169,6 @@ x-scheme-handler/discord-1232165629046292551=PokeRogue.desktop
 application/epub+zip=calibre-ebook-viewer.desktop
 text/css=neovide.desktop
 audio/x-mod=userapp-kate-QZ5LB3.desktop
+application/x-ipynb+json=userapp-code-99NTD3.desktop
+application/vnd.openxmlformats-officedocument.presentationml.presentation=onlyoffice-desktopeditors.desktop
+x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop

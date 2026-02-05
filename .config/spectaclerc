@@ -1,3 +1,7 @@
+[Annotations]
+annotationToolType=3
+rectangleStrokeColor=255,0,0
+
 [GuiConfig]
 captureMode=5
 
@@ -5,7 +9,7 @@ captureMode=5
 imageCompressionQuality=92
 imageFilenameTemplate=<yyyy>-<MM>-<dd> <HH>_<mm>_<ss> <title>
 imageSaveLocation=file:///home/dez/Documents/Syncthing/Screenshots
-lastImageSaveLocation=file:///home/dez/Documents/Syncthing/Screenshots/2025-09-03 18_00_07 Like a Dragon: Infinite Wealth.png
+lastImageSaveLocation=file:///home/dez/Documents/Syncthing/Screenshots/2025-12-27 04_05_41.png
 translatedScreenshotsFolder=Screenshots
 
 [VideoSave]

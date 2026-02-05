@@ -1,2 +1,5 @@
 [PlasmaBrowserIntegration]
-shownCount=2
+shownCount=3
+
+[systemmessages]
+autoload=false

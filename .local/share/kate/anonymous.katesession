@@ -1,5 +1,5 @@
 [Document 0]
-URL=
+URL=file:///home/dez/Downloads/test.txt
 
 [Kate Plugins]
 bookmarksplugin=false
@@ -18,6 +18,7 @@ katefilebrowserplugin=false
 katefiletreeplugin=true
 kategdbplugin=false
 kategitblameplugin=false
+kategpgplugin=false
 katekonsoleplugin=true
 kateprojectplugin=true
 katereplicodeplugin=false
@@ -56,7 +57,7 @@ Kate-MDI-Sidebar-2-Splitter=1875
 Kate-MDI-Sidebar-3-Bar-0-TvList=output,diagnostics,kate_plugin_katesearch,kateprojectinfo,kate_private_plugin_katekonsoleplugin
 Kate-MDI-Sidebar-3-LastSize=200
 Kate-MDI-Sidebar-3-SectSizes=0
-Kate-MDI-Sidebar-3-Splitter=1576
+Kate-MDI-Sidebar-3-Splitter=1480
 Kate-MDI-Sidebar-Style=2
 Kate-MDI-Sidebar-Visible=true
 Kate-MDI-ToolView-diagnostics-Position=3
@@ -103,8 +104,9 @@ Documents=0
 View 0=0
 
 [MainWindow0-ViewSpace 0 0]
-CursorColumn=35
-CursorLine=1
+CursorColumn=71
+CursorLine=19208
+ScrollLine=19153
 
 [Open Documents]
 Count=1
@@ -140,23 +142,5 @@ SizeLimit=128
 UseRegExp=false
 
 [Recent Files]
-File1[$e]=$HOME/.local/share/Steam/steamapps/common/Stardew Valley/Mods/SpaceCore/docs/README.md
-File10[$e]=$HOME/Games/umu/umu-default/drive_c/users/dez/Documents/Paradox Interactive/Stellaris/mod/2458024521.mod
-File2[$e]=$HOME/Downloads/Jdown/v10889-Monster_Park_2_Final/v10889-Monster Park 2 Final/patch.sh
-File3[$e]=/mnt/Windows/Users/Sarthak/Documents/My Games/Path of Exile 2/poe2_production_Config.ini
-File4[$e]=admin:///home/dez/.zen/profiles.ini
-File5[$e]=$HOME/.onscripter/gloval.sav
-File6[$e]=$HOME/Games/umu/umu-default/drive_c/users/dez/Documents/Paradox Interactive/Stellaris/mod/(Merged)_4.0_A_Hotfix_Odyssey_[V.0.5].mod
-File7[$e]=$HOME/Games/umu/umu-default/drive_c/users/dez/Documents/Paradox Interactive/Stellaris/mod/2409209888/descriptor.mod
-File8[$e]=$HOME/Games/umu/umu-default/drive_c/users/dez/Documents/Paradox Interactive/Stellaris/mod/2123646681.mod
-File9[$e]=$HOME/Games/umu/umu-default/drive_c/users/dez/Documents/Paradox Interactive/Stellaris/mod/1890399946.mod
-Name1[$e]=README.md
-Name10[$e]=2458024521.mod
-Name2[$e]=patch.sh
-Name3[$e]=poe2_production_Config.ini
-Name4[$e]=profiles.ini
-Name5[$e]=gloval.sav
-Name6[$e]=(Merged)_4.0_A_Hotfix_Odyssey_[V.0.5].mod
-Name7[$e]=descriptor.mod
-Name8[$e]=2123646681.mod
-Name9[$e]=1890399946.mod
+File1[$e]=$HOME/Downloads/test.txt
+Name1[$e]=test.txt

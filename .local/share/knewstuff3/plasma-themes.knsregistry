@@ -9,30 +9,16 @@
   <licence></licence>
   <version>2.5</version>
   <rating>80</rating>
-  <downloads>2873</downloads>
+  <downloads>11425</downloads>
   <installedfile>/home/dez/.local/share/plasma/desktoptheme/Carl/</installedfile>
   <id>1330604</id>
-  <releasedate>2025-08-11</releasedate>
-  <summary>&lt;p>Dark Plasma theme with bluish gradients.&lt;/p>
-
-&lt;p>Image wallpaper of charlie-henson https://www.pling.com/u/charlie-henson/ modified by me.
-The wallpaper is inside the theme folder.&lt;/p>
-
-&lt;p>Carl Look-and-Feel: https://www.pling.com/p/1338881/&lt;/p>
-
-&lt;p>Carl Kvantum theme: https://www.pling.com/p/1331615/&lt;/p>
-
-&lt;p>Carl color schemes: https://www.pling.com/p/1331616/&lt;/p>
-
-&lt;p>Carl Aurorae theme: https://www.pling.com/p/1331617/&lt;/p>
-
-&lt;p>Carl Konsole theme: https://www.pling.com/p/1331618/&lt;/p>
-</summary>
+  <releasedate>2025-12-13</releasedate>
+  <summary>&lt;p>Dark Plasma theme with bluish gradients.&lt;br />&lt;br /> Image wallpaper of charlie-henson &lt;a href="https://www.pling.com/u/charlie-henson/">https://www.pling.com/u/charlie-henson/&lt;/a> modified by me.&lt;br />The wallpaper is inside the theme folder.&lt;br />&lt;br />Carl Look-and-Feel: &lt;a href="https://www.pling.com/p/1338881/">https://www.pling.com/p/1338881/&lt;/a>&lt;br />&lt;br />Carl Kvantum theme: &lt;a href="https://www.pling.com/p/1331615/">https://www.pling.com/p/1331615/&lt;/a>&lt;br />&lt;br />Carl color schemes: &lt;a href="https://www.pling.com/p/1331616/">https://www.pling.com/p/1331616/&lt;/a>&lt;br />&lt;br />Carl Aurorae theme: &lt;a href="https://www.pling.com/p/1331617/">https://www.pling.com/p/1331617/&lt;/a>&lt;br />&lt;br />Carl Konsole theme: &lt;a href="https://www.pling.com/p/1331618/">https://www.pling.com/p/1331618/&lt;/a>&lt;/p></summary>
   <changelog></changelog>
-  <preview>https://images.pling.com/cache/100x100-4/img/00/00/43/73/13/1330604/carl-plasma.jpg</preview>
+  <preview>https://images.pling.com/cache/770x540-4/img/00/00/43/73/13/1330604/carl-plasma.jpg</preview>
   <previewBig>https://images.pling.com/cache/770x540-4/img/00/00/43/73/13/1330604/carl-plasma.jpg</previewBig>
-  <payload>https://files06.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTc1MjA3MzMzMiwibyI6IjEiLCJzIjoiODc2OTIyMWI2NWU5ZDQwOGJiNjI0OWEyNmVhOTg5OTQ1MDM2NTMwMDczY2I2MjAyNTg2NTI0Njk5YWRjNGExMTg0NThjYmZiMjE4NDcwMGIwZmFkZTA5YTcwZWM4OTJkNmYyMDgxZTNlMDQ5ODYwMzk5YzkzNTFiYjJlYWFmM2UiLCJ0IjoxNzU1MTAzNzY2LCJzdGZwIjpudWxsLCJzdGlwIjoiNDkuMzYuMTAyLjU1In0.iC0k805-eJkLuIF_cfil2_KMZYTRU08Db7OqKfum9wY/Carl.tar.gz</payload>
-  <tags>plasma##majorversion=5,plasma##majorversion=6,plasma,gplv3,kde,linux,theme,unix</tags>
+  <payload>https://files06.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTc1MjA3MzMzMiwibyI6IjEiLCJzIjoiNjI0NTA5MWZiYzAzOGZiNzI4ODMzZmU3YjAwZmNhOWRmZTNjMjY1MjZhZWE5ODkxZDJlMTMzMDdiNDQ4ZTQyMTdmM2E3OGY2NTBjZWIwYjhhZmQ5MGIwNjBhNTZkNDE5MDEzMTdjZjVhNWM4OTQ2NTYzYjgyNTZlNGUwYjc2ZDMiLCJ0IjoxNzY1NjM3NTgzLCJzdGZwIjpudWxsLCJzdGlwIjoiNDYuMjkuMjUuMzIifQ.zVOR-ddiXOnK2-sG_CLJUZk2m6LIUxMfdc1NR_NwR8w/Carl.tar.gz</payload>
+  <tags>plasma##majorversion=5,plasma##majorversion=6,kde,linux,theme,unix,plasma,gplv3</tags>
   <status>installed</status>
  </stuff>
 </hotnewstuffregistry>

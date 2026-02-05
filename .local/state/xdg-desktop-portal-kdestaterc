@@ -1,3 +1,7 @@
+[FileDialogSize]
+1920x1080 screen: Height=540
+1920x1080 screen: Width=960
+
 [KFileDialog Settings]
-Recent Files[$e]=file:///mnt/Windows/Games/Stellaris/dowser.exe
-Recent URLs[$e]=file:$HOME/Documents/git/pytestbot/,file:$HOME/Downloads/FF_Downloads/,file:$HOME/Documents/git/,file:$HOME/Documents/Useful Shit/,file:///mnt/Secondary/Games/ROMs/Switch/13 Sentinels/,file:$HOME/Games/HDD/ROMs/Switch/13 Sentinels/,file:$HOME/Downloads/,file:$HOME/Games/HDD/ROMs/Switch/DLC/,file:$HOME/Documents/,file:$HOME/Downloads/FF_Downloads/win-x64/,file:///mnt/Windows/Games/Stellaris/
+Recent Files[$e]=file:$HOME/Downloads/FF_Downloads/svg-9-pages.pdf
+Recent URLs[$e]=file:///mnt/Secondary/Documents/git/T471/T471 DATA/Lab 9/,file:///mnt/Secondary/Documents/git/TU471_DATA/notebooks/,file:$HOME/,file:///mnt/Secondary/Documents/git/AIML_T471/notebooks/,file:$HOME/Documents/,file:$HOME/Documents/Useful Shit/Steam_Legit_DLC_Unlocker/,file:$HOME/.local/share/Steam/steamapps/common/Monster Hunter World/MHW/,file:$HOME/.local/share/Steam/steamapps/common/Monster Hunter World/ICE-Manager/,file:///mnt/Secondary/Documents/git/pyladies/cat-go-blank/,file:$HOME/Downloads/FF_Downloads/
