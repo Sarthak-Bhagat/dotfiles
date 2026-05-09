@@ -1,0 +1,6 @@
+{
+    "version": "2.2.0",
+    "autoload": {
+        "Microsoft X-Box 360 pad": "Screenshot"
+    }
+}
