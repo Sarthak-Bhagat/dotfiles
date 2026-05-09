@@ -43,9 +43,6 @@ translucencyEnabled=true
 [Script-center-new-windows]
 applications=mako
 
-[Tiling]
-padding=4
-
 [Tiling][06f67c8d-4c4f-5f57-bc07-57b608903218]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
@@ -64,7 +61,11 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 [Tiling][60b65e13-7b93-4cbf-9578-77b873d2c29a][]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Tiling][60b65e13-7b93-4cbf-9578-77b873d2c29a][c8b30e53-a3d8-43b7-ba9a-4ae78c545011]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][60b65e13-7b93-4cbf-9578-77b873d2c29a][d8a14aa2-a8ca-4257-8504-0b12c4cd1ce0]
+padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][88f921a9-1bc3-510c-a699-062a6c372211]

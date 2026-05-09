@@ -4,8 +4,17 @@
             {
                 "allowDdcCi": true,
                 "allowSdrSoftwareBrightness": false,
+                "autoBrightnessCurve": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
                 "autoRotation": "InTabletMode",
-                "brightness": 0.3,
+                "automaticBrightness": false,
+                "brightness": 0,
                 "colorPowerTradeoff": "PreferAccuracy",
                 "colorProfileSource": "EDID",
                 "connectorName": "eDP-1",
@@ -26,6 +35,7 @@
                 "scale": 1,
                 "sdrBrightness": 200,
                 "sdrGamutWideness": 0,
+                "sharpness": 0,
                 "transform": "Normal",
                 "uuid": "d8a14aa2-a8ca-4257-8504-0b12c4cd1ce0",
                 "vrrPolicy": "Automatic",
@@ -57,12 +67,15 @@
                 "wideColorGamut": false
             },
             {
+                "allowDdcCi": true,
                 "allowSdrSoftwareBrightness": true,
                 "autoRotation": "InTabletMode",
                 "brightness": 1,
                 "colorPowerTradeoff": "PreferEfficiency",
                 "colorProfileSource": "sRGB",
-                "connectorName": "Virtual-virtual-xdp-kde-vesktop",
+                "connectorName": "Virtual-1896x1185@2",
+                "detectedDdcCi": false,
+                "edrPolicy": "always",
                 "highDynamicRange": false,
                 "iccProfilePath": "",
                 "mode": {
@@ -76,6 +89,7 @@
                 "sdrBrightness": 200,
                 "sdrGamutWideness": 0,
                 "transform": "Normal",
+                "uuid": "c8b30e53-a3d8-43b7-ba9a-4ae78c545011",
                 "vrrPolicy": "Automatic",
                 "wideColorGamut": false
             }
@@ -94,7 +108,7 @@
                             "x": 0,
                             "y": 0
                         },
-                        "priority": 0,
+                        "priority": 1,
                         "replicationSource": ""
                     }
                 ]
@@ -109,7 +123,7 @@
                             "x": 0,
                             "y": 0
                         },
-                        "priority": 0,
+                        "priority": 1,
                         "replicationSource": ""
                     }
                 ]
@@ -185,6 +199,31 @@
                             "y": 0
                         },
                         "priority": 1,
+                        "replicationSource": ""
+                    }
+                ]
+            },
+            {
+                "lidClosed": true,
+                "outputs": [
+                    {
+                        "enabled": false,
+                        "outputIndex": 0,
+                        "position": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "priority": -1,
+                        "replicationSource": ""
+                    },
+                    {
+                        "enabled": true,
+                        "outputIndex": 2,
+                        "position": {
+                            "x": 1920,
+                            "y": 0
+                        },
+                        "priority": 0,
                         "replicationSource": ""
                     }
                 ]

@@ -1,0 +1,15 @@
+[
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 316,
+                "origin_hash": "bd947e359c04f76008fa811dcacb68b9"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "Shift_R+Print",
+        "name": "Screenshot",
+        "mapping_type": "key_macro"
+    }
+]
