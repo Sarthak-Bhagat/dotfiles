@@ -1,11 +1,17 @@
 # Machine-specific configuration.
 #
-# Copy to 90-local.fish and add anything that should not be in the repo:
-# API tokens, host-specific paths, work-only settings. The 90 prefix means it
-# is sourced after everything else, so it can override any earlier module.
-#
-# Add to .gitignore:
+# Copy to 90-local.fish. The 90 prefix means it is sourced after everything
+# else, so it can override any earlier module. Keep it out of git if it holds
+# anything private:
 #     .config/fish/conf.d/90-local.fish
 
+# ---------------------------------------------------------------- done
+# Notify when a long command finishes and the terminal is not focused.
+set -U done_min_cmd_duration 10000
+set -U done_notification_urgency_level low
+set -U done_notify_sound 1
+# Do not notify for things that are long by nature and already in front of you.
+set -U done_exclude 'git (?!push|pull)|vim|nvim|man|less|ssh|mosh|mpv|btop|watch'
+
+# ---------------------------------------------------------------- secrets
 # set -gx SOME_API_TOKEN "..."
-# fish_add_path -g /opt/something/bin

@@ -19,7 +19,7 @@ else
     alias ll   "ls -alFh --color=auto"
 end
 
-alias l.   "ls -A | grep -E '^\.'"
+alias l.   "eza -a --icons --group-directories-first --list-dirs .*"
 
 # Tree depth shortcuts. The old config guarded these with `test tree`, which
 # tests whether the *string* "tree" is non-empty — always true. `type -q` is
@@ -35,15 +35,15 @@ else if type -q tree
 end
 
 # ---------------------------------------------------------------- colour & format
-alias grep  "grep --color=auto"
-alias egrep "grep -E --color=auto"
-alias fgrep "grep -F --color=auto"
+# grep, egrep and fgrep are aliased to ripgrep in 34-aliases-modern.fish.
 alias ip    "ip -color"
-alias df    "df -h"
+# df is aliased to duf in 34-aliases-modern.fish; this is the plain one.
+alias dfh   "command df -h"
 alias free  "free -mh"
 alias wget  "wget -c"
-alias rg    "rg --sort path"
 
+# bat already detects when stdout is not a terminal and drops to plain output,
+# so piping behaves like cat without any extra flags.
 if type -q bat
     alias cat "bat --paging=never"
 end
@@ -62,7 +62,7 @@ alias ssn    "sudo shutdown now"
 alias sr     "systemctl reboot"
 alias userlist "cut -d: -f1 /etc/passwd | sort"
 alias sysfailed "systemctl list-units --failed"
-alias audio  "pactl info | grep 'Server Name'"
-alias microcode "grep . /sys/devices/system/cpu/vulnerabilities/*"
-alias cpu    "cpuid -i | grep uarch | head -n 1"
+alias audio  "pactl info | command grep 'Server Name'"
+alias microcode "command grep . /sys/devices/system/cpu/vulnerabilities/*"
+alias cpu    "cpuid -i | command grep uarch | head -n 1"
 alias kernels "ls /usr/lib/modules"
