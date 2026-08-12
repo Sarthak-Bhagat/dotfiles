@@ -50,3 +50,4 @@
 .azure/
 .docker/
 .lmstudio/
+.config/fish/fish_variables
