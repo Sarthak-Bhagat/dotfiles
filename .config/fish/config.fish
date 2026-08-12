@@ -54,7 +54,7 @@ set -U fish_user_paths $HOME/.bin $HOME/.local/bin $HOME/Applications $fish_user
 
 # sets tools
 set -x EDITOR nvim
-set -x VISUAL neovide
+set -x VISUAL nvim
 #set -x TERM alacritty
 # Sets the terminal type for proper colors
 set TERM "xterm-256color"
@@ -182,10 +182,6 @@ end
 
 function less
     command less -R $argv
-end
-
-function cd
-    builtin cd $argv; and ls
 end
 
 ### ALIASES ###

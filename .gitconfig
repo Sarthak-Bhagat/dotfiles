@@ -1,19 +1,72 @@
-[include]
-    path = ~/.gitconfig-github
-
-[includeIf "gitdir:/home/dez/Documents/git/codeberg/"]
-    path = ~/.gitconfig-codeberg
-
 [init]
 	defaultBranch = main
+
+[core]
+	excludesfile = ~/.gitignore
+
+[column]
+	ui = auto
+
+[branch]
+	sort = -committerdate
+
+[tag]
+	sort = version:refname
+
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+
+[merge]
+	conflictstyle = zdiff3
+
+[push]
+	autoSetupRemote = true
+	followTags = true
+
+[pull]
+	rebase = true
+
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+
+[rerere]
+	enabled = true
+	autoupdate = true
+
+[help]
+	autocorrect = prompt
+
+[commit]
+	gpgsign = true
+	verbose = true
+
 [gpg]
 	format = ssh
+
+[user]
+	signingkey = /home/dez/.ssh/id_ed_signing.pub
+	email = sarth.bhagat@gmail.com
+	name = Sarthak Bhaagt
+
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
+
 [url "ssh://git@codeberg.org/"]
 	insteadOf = https://codeberg.org/
+
 [alias]
 	pushall = !git remote | xargs -L1 git push --all
+
 [safe]
 	directory = /mnt/Secondary/Documents/git/cpp
 	directory = /mnt/Secondary/Downloads/Mikohime_Repo
@@ -29,11 +82,15 @@
 	directory = /mnt/Secondary/Documents/git/dotfiles
 	directory = /mnt/Secondary/Documents/git/qbittorrent_dualboot
 	directory = /mnt/Windows/Games/Cassette Beasts/AA/HoneySelect
-[push]
-	autoSetupRemote = true
-[pull]
-	rebase = true
-[commit]
-	gpgsign = true
-[user]
-	signingkey = /home/dez/.ssh/id_ed_signing.pub
+	directory = /mnt/DezLegion2021/Documents/git/compress_to_webp
+
+
+[includeIf "hasconfig:remote.*.url:ssh://git@codeberg.org/**"]
+	path = ~/.gitconfig-codeberg
+[includeIf "hasconfig:remote.*.url:https://codeberg.org/**"]
+	path = ~/.gitconfig-codeberg
+
+[includeIf "hasconfig:remote.*.url:ssh://git@github.com/**"]
+	path = ~/.gitconfig-github
+[includeIf "hasconfig:remote.*.url:https://github.com/**"]
+	path = ~/.gitconfig-github

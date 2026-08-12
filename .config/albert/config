@@ -3,62 +3,44 @@ hotkey=Meta+D
 showTray=true
 telemetry=false
 
+[application]
+enabled=true
+
 [applications]
 enabled=true
-terminal=kitty
+
+[caffeine]
+enabled=true
 
 [calculator_qalculate]
-angle_unit=2
 enabled=true
-parsing_mode=0
 
 [clipboard]
+enabled=true
+
+[commandline]
 enabled=false
 
 [datetime]
 enabled=true
-
-[docs]
-enabled=false
 
 [files]
 enabled=true
 paths=@Invalid()
 
 [github]
+enabled=true
+
+[mediaremote]
+enabled=true
+
+[obsidian]
 enabled=false
-
-[mpris]
-enabled=true
-
-[path]
-enabled=true
 
 [python]
 enabled=true
 
-[python.arch_wiki]
-enabled=true
-
 [python.aur]
-enabled=true
-
-[python.bitwarden]
-enabled=false
-
-[python.duckduckgo]
-enabled=false
-
-[python.syncthing]
-enabled=false
-
-[system]
-enabled=true
-
-[timer]
-enabled=true
-
-[urlhandler]
 enabled=true
 
 [websearch]
@@ -70,10 +52,9 @@ action_item_selection_border_radius=11
 action_item_selection_border_width=0
 alwaysOnTop=true
 clearOnHide=false
-clientShadow=true
-darkTheme=Default System Palette
+debug=false
 disable_input_method=true
-displayScrollbar=true
+displayScrollbar=false
 followCursor=true
 hideOnFocusLoss=true
 historySearch=true
@@ -81,7 +62,6 @@ input_border_radius=11
 input_font_size=19
 input_padding=5
 itemCount=5
-quitOnClose=false
 result_item_horizontal_spacing=6
 result_item_icon_size=39
 result_item_padding=6
@@ -91,7 +71,6 @@ result_item_subtext_font_size=9
 result_item_text_font_size=14
 result_item_vertical_spacing=2
 showCentered=true
-systemShadow=true
 window_border_radius=18
 window_border_width=1
 window_padding=7

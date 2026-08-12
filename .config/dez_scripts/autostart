@@ -23,6 +23,7 @@ launch() {
 # launch keepassxc
 launch kdeconnect-indicator
 launch protonvpn-app
+launch syncthing
 # launch nm-applet --indicator
 # launch steam-runtime -silent
 # launch albert

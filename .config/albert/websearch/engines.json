@@ -2,7 +2,7 @@
     {
         "fallback": false,
         "iconPath": ":amazon",
-        "id": "a13432b0",
+        "id": "64b797e4",
         "name": "Amazon",
         "trigger": "ama",
         "url": "http://www.amazon.com/s/?field-keywords=%s"
@@ -10,7 +10,7 @@
     {
         "fallback": false,
         "iconPath": ":gpt",
-        "id": "5c027c04",
+        "id": "f38569ad",
         "name": "Chat GPT",
         "trigger": "gpt",
         "url": "https://chat.openai.com/?q=%s"
@@ -18,7 +18,7 @@
     {
         "fallback": true,
         "iconPath": ":duckduckgo",
-        "id": "7e2a6303",
+        "id": "c66e2746",
         "name": "DuckDuckGo",
         "trigger": "dd",
         "url": "https://duckduckgo.com/?q=%s"
@@ -26,7 +26,7 @@
     {
         "fallback": false,
         "iconPath": ":ebay",
-        "id": "4b9d720d",
+        "id": "f4969ca3",
         "name": "Ebay",
         "trigger": "eb",
         "url": "http://www.ebay.com/sch/i.html?_nkw=%s"
@@ -34,7 +34,7 @@
     {
         "fallback": false,
         "iconPath": ":github",
-        "id": "33a435c2",
+        "id": "27e1205e",
         "name": "GitHub",
         "trigger": "gh",
         "url": "https://github.com/search?utf8=✓&q=%s"
@@ -42,7 +42,7 @@
     {
         "fallback": false,
         "iconPath": ":google",
-        "id": "53039085",
+        "id": "f275494e",
         "name": "Google",
         "trigger": "gg",
         "url": "https://www.google.com/search?q=%s"
@@ -50,7 +50,7 @@
     {
         "fallback": false,
         "iconPath": ":maps",
-        "id": "39afd486",
+        "id": "89b9169b",
         "name": "Google Maps",
         "trigger": "maps",
         "url": "https://www.google.com/maps/search/%s/"
@@ -58,7 +58,7 @@
     {
         "fallback": false,
         "iconPath": ":scholar",
-        "id": "5f6770db",
+        "id": "fb387e7a",
         "name": "Google Scholar",
         "trigger": "scholar",
         "url": "https://scholar.google.com/scholar?q=%s"
@@ -66,7 +66,7 @@
     {
         "fallback": false,
         "iconPath": ":google_translate",
-        "id": "b36d4ed8",
+        "id": "3bf2db4a",
         "name": "Google Translate",
         "trigger": "gt",
         "url": "https://translate.google.com/?text=%s"
@@ -74,7 +74,7 @@
     {
         "fallback": false,
         "iconPath": ":wolfram",
-        "id": "a9477510",
+        "id": "f6513f20",
         "name": "Wolfram Alpha",
         "trigger": "wa",
         "url": "https://www.wolframalpha.com/input/?i=%s"
@@ -82,7 +82,7 @@
     {
         "fallback": true,
         "iconPath": ":youtube",
-        "id": "b1364681",
+        "id": "7304e3c9",
         "name": "YouTube",
         "trigger": "yt",
         "url": "https://www.youtube.com/results?search_query=%s"

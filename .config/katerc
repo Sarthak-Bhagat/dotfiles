@@ -8,6 +8,17 @@ Show Status Bar=true
 Show Tab Bar=true
 Show Url Nav Bar=true
 
+[KTextEditor Renderer]
+Animate Bracket Matching=false
+Auto Color Theme Selection=true
+Color Theme=Breeze Dark
+Line Height Multiplier=1
+Show Indentation Lines=false
+Show Whole Bracket Expression=false
+Text Font=FiraCode Nerd Font Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1,,0,0
+Text Font Features=
+Word Wrap Marker=false
+
 [KTextEditor View]
 Allow Mark Menu=true
 Auto Brackets=true
@@ -20,6 +31,7 @@ Bracket Match Preview=false
 Chars To Enclose Selection=<>(){}[]'"
 Cycle Through Bookmarks=true
 Default Mark Type=1
+Disable bracket match highlight if inactive=false
 Disable current line highlight if inactive=false
 Dynamic Word Wrap=true
 Dynamic Word Wrap Align Indent=80
@@ -49,12 +61,12 @@ Scroll Bar Mini Map Width=60
 Scroll Bar MiniMap=true
 Scroll Bar Preview=true
 Scroll Past End=false
-Search/Replace Flags=1036
-Shoe Line Ending Type in Statusbar=false
+Search/Replace Flags=260
 Show Documentation With Completion=true
 Show File Encoding=true
 Show Folding Icons On Hover Only=true
 Show Line Count=false
+Show Line Ending Type in Statusbar=false
 Show Scrollbars=0
 Show Statusbar Dictionary=true
 Show Statusbar Highlighting Mode=true
@@ -73,11 +85,11 @@ Word Completion Minimal Word Length=3
 Word Completion Remove Tail=true
 
 [MainWindow]
-1920x1080 screen: Height=1080
-1920x1080 screen: Width=1920
+1896x1185 screen: Height=1185
+1896x1185 screen: Width=1896
 
 [filetree]
-editShade=81,54,101
+editShade=1,82,99
 listMode=false
 middleClickToClose=false
 shadingEnabled=true
@@ -85,4 +97,4 @@ showCloseButton=false
 showFullPathOnRoots=false
 showToolbar=true
 sortRole=0
-viewShade=52,79,110
+viewShade=53,78,110

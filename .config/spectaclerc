@@ -1,15 +1,15 @@
 [Annotations]
-annotationToolType=3
-rectangleStrokeColor=255,0,0
+annotationToolType=4
 
-[GuiConfig]
-captureMode=5
+[General]
+autoSaveImage=true
+clipboardGroup=PostScreenshotCopyImage
+useReleaseToCapture=true
 
 [ImageSave]
-imageCompressionQuality=92
 imageFilenameTemplate=<yyyy>-<MM>-<dd> <HH>_<mm>_<ss> <title>
 imageSaveLocation=file:///home/dez/Documents/Syncthing/Screenshots
-lastImageSaveLocation=file:///home/dez/Documents/Syncthing/Screenshots/2025-12-27 04_05_41.png
+lastImageSaveLocation=file:///tmp/tmp.iHvj9GYhIj.png
 translatedScreenshotsFolder=Screenshots
 
 [VideoSave]

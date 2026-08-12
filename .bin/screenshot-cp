@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+img=$(mktemp --suffix=.png)
+trap 'rm -f "$img"' EXIT
+spectacle -rbno "$img"
+[[ -s "$img" ]] || exit 0
+wl-copy < "$img"

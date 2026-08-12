@@ -1,4 +1,6 @@
+# /home/dez/.config/starship.toml
 # Starship Prompt using pywal16 with safe contrast
+
 
 format = """
 [░▒▓](fg:{color7})\

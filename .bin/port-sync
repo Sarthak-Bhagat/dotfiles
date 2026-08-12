@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# qBittorrent WebUI credentials
+QB_HOST="http://localhost:12345"
+QB_USER="DezXerneas"
+QB_PASS="***REMOVED***"
+
+GATEWAY="10.2.0.1"
+
+# Get port from ProtonVPN via natpmpc
+PORT=$(natpmpc -a 1 0 tcp 60 -g "$GATEWAY" 2>/dev/null \
+  | grep "Mapped public port" \
+  | awk '{print $4}')
+
+if [[ -z "$PORT" ]]; then
+  echo "Failed to get port from ProtonVPN"
+  exit 1
+fi
+
+echo "Got port: $PORT"
+echo "$PORT" > /tmp/protonvpn_port
+
+# Login to qBittorrent WebUI
+QB_COOKIE=$(curl -s -c - \
+  --data "username=$QB_USER&password=$QB_PASS" \
+  "$QB_HOST/api/v2/auth/login" | grep SID | awk '{print $NF}')
+
+# Set the port
+curl -s -b "SID=$QB_COOKIE" \
+  --data "json={\"listen_port\":$PORT,\"random_port\":false}" \
+  "$QB_HOST/api/v2/app/setPreferences"
+
+echo "qBittorrent port updated to $PORT"

@@ -1,0 +1,205 @@
+#!/usr/bin/env python3
+
+import json
+import time
+from pathlib import Path
+
+import requests
+
+# =========================================================
+# CONFIG
+# =========================================================
+
+CLIENT_ID = "REDACTED_TRAKT_ID"
+CLIENT_SECRET = "REDACTED_TRAKT_SECRET"
+
+API = "https://api.trakt.tv"
+
+HEADERS = {
+    "Content-Type": "application/json",
+    "trakt-api-version": "2",
+    "trakt-api-key": CLIENT_ID,
+    "User-Agent": "trakt-export-script/1.0",
+}
+
+# =========================================================
+# STEP 1: REQUEST DEVICE CODE
+# =========================================================
+
+print("Requesting device code...")
+
+r = requests.post(
+    f"{API}/oauth/device/code",
+    headers=HEADERS,
+    json={"client_id": CLIENT_ID},
+    timeout=30,
+)
+
+print("HTTP", r.status_code)
+
+if not r.ok:
+    print(r.text)
+    raise SystemExit(1)
+
+try:
+    data = r.json()
+except Exception:
+    print("Non-JSON response:")
+    print(r.text)
+    raise SystemExit(1)
+
+device_code = data["device_code"]
+user_code = data["user_code"]
+verify_url = data["verification_url"]
+interval = data["interval"]
+
+print("\n========================================")
+print("Open this URL in browser:\n")
+print(f"  {verify_url}\n")
+print("Enter this code:\n")
+print(f"  {user_code}")
+print("========================================\n")
+
+# =========================================================
+# STEP 2: WAIT FOR AUTHORIZATION
+# =========================================================
+
+print("Waiting for authorization...")
+
+access_token = None
+
+while True:
+    time.sleep(interval)
+
+    r = requests.post(
+        f"{API}/oauth/device/token",
+        headers=HEADERS,
+        json={
+            "code": device_code,
+            "client_id": CLIENT_ID,
+            "client_secret": CLIENT_SECRET,
+        },
+        timeout=30,
+    )
+
+    print("\nHTTP", r.status_code)
+
+    if not r.text.strip():
+        print("Empty response from server")
+        continue
+
+    try:
+        data = r.json()
+    except Exception:
+        print("Non-JSON response:")
+        print(r.text[:1000])
+        continue
+
+    print(json.dumps(data, indent=2))
+
+    error = data.get("error")
+
+    if error == "authorization_pending":
+        print("Still waiting...")
+        continue
+
+    if error == "slow_down":
+        print("Rate limited. Sleeping longer...")
+        interval += 5
+        continue
+
+    if error == "expired_token":
+        raise SystemExit("Device code expired. Run script again.")
+
+    if error == "invalid_client":
+        raise SystemExit("Bad CLIENT_ID or CLIENT_SECRET")
+
+    if "access_token" in data:
+        access_token = data["access_token"]
+        print("\nAuthorization successful.")
+        break
+
+    print("\nUnexpected response:")
+    print(json.dumps(data, indent=2))
+    raise SystemExit(1)
+
+# =========================================================
+# STEP 3: DOWNLOAD WATCH HISTORY
+# =========================================================
+
+history_dir = Path("trakt_history")
+history_dir.mkdir(exist_ok=True)
+
+auth_headers = {
+    **HEADERS,
+    "Authorization": f"Bearer {access_token}",
+}
+
+page = 1
+limit = 100
+all_items = []
+
+print("\nDownloading watch history...\n")
+
+while True:
+    print(f"Fetching page {page}")
+
+    r = requests.get(
+        f"{API}/sync/history",
+        headers=auth_headers,
+        params={
+            "page": page,
+            "limit": limit,
+        },
+        timeout=60,
+    )
+
+    print("HTTP", r.status_code)
+
+    if not r.ok:
+        print(r.text)
+        raise SystemExit(1)
+
+    try:
+        items = r.json()
+    except Exception:
+        print("Non-JSON response:")
+        print(r.text[:1000])
+        raise SystemExit(1)
+
+    if not items:
+        print("No more items.")
+        break
+
+    page_file = history_dir / f"page_{page}.json"
+
+    with open(page_file, "w") as f:
+        json.dump(items, f, indent=2)
+
+    all_items.extend(items)
+
+    total_pages = int(r.headers.get("X-Pagination-Page-Count", "1"))
+
+    print(f"Got {len(items)} items")
+    print(f"Total pages: {total_pages}")
+
+    if page >= total_pages:
+        break
+
+    page += 1
+
+# =========================================================
+# STEP 4: SAVE COMBINED FILE
+# =========================================================
+
+output_file = "trakt_watch_history_full.json"
+
+with open(output_file, "w") as f:
+    json.dump(all_items, f, indent=2)
+
+print("\n========================================")
+print("DONE")
+print("========================================")
+print(f"\nTotal history entries: {len(all_items)}")
+print(f"Combined file: {output_file}")
+print(f"Per-page files: {history_dir}/")

@@ -9,8 +9,8 @@ sort=-time
 
 # BINDING OPTIONS
 on-button-left=dismiss
-on-button-middle=none
-on-button-right=dismiss-all
+on-button-middle=exec makoctl menu -n "$id" fuzzel --dmenu
+on-button-right=invoke-default-action
 on-touch=dismiss
 #on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
 

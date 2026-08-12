@@ -1,96 +1,45 @@
-[Compositing]
-AllowTearing=false
-MaxFPS=144
-
 [Desktops]
-Id_1=60b65e13-7b93-4cbf-9578-77b873d2c29a
-Name_1=Desktop 2
+Id_1=a9a8bb90-9767-4e08-afd0-73e672579238
 Number=1
 Rows=1
 
-[Effect-blur]
-NoiseStrength=14
-
-[Effect-blurplus]
-BlurMatching=false
-BlurNonMatching=true
-BlurStrength=1
-NoiseStrength=2
-RoundCornersOfMaximizedWindows=true
-WindowClasses=dadadvbd
-
 [Effect-colorblindnesscorrection]
-Mode=2
+Mode=1
+
+[Effect-hidecursor]
+InactivityDuration=1
 
 [Effect-overview]
 BorderActivate=9
 
-[Effect-translucency]
-ComboboxPopups=91
-
 [NightColor]
-Active=true
-NightTemperature=4100
+NightTemperature=3200
 
 [Plugins]
-blurEnabled=true
+blurEnabled=false
 center-new-windowsEnabled=true
-contrastEnabled=true
+diminactiveEnabled=true
 hidecursorEnabled=true
+mouseclickEnabled=true
 shakecursorEnabled=false
+sheetEnabled=true
 translucencyEnabled=true
+wobblywindowsEnabled=true
 
 [Script-center-new-windows]
 applications=mako
 
-[Tiling][06f67c8d-4c4f-5f57-bc07-57b608903218]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+[TabBox]
+LayoutName=thumbnail_grid
 
-[Tiling][1c62387a-8016-59dd-908e-885a7bc40fda]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
-[Tiling][1d1ad232-e977-4764-837e-e4db783b766e][d8a14aa2-a8ca-4257-8504-0b12c4cd1ce0]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
-[Tiling][5afa2e3a-d2f6-45bd-8299-a8852bb6b36a][]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
-[Tiling][5afa2e3a-d2f6-45bd-8299-a8852bb6b36a][d8a14aa2-a8ca-4257-8504-0b12c4cd1ce0]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
-[Tiling][60b65e13-7b93-4cbf-9578-77b873d2c29a][]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
-[Tiling][60b65e13-7b93-4cbf-9578-77b873d2c29a][c8b30e53-a3d8-43b7-ba9a-4ae78c545011]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
-[Tiling][60b65e13-7b93-4cbf-9578-77b873d2c29a][d8a14aa2-a8ca-4257-8504-0b12c4cd1ce0]
+[Tiling][8ef5e9cc-e644-4997-8d74-c6e87bc2f09f][951d1a6b-9840-4c3c-9dc7-7b173e3a3326]
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
-[Tiling][88f921a9-1bc3-510c-a699-062a6c372211]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
-[Tiling][995fb957-b5c9-46df-a180-ab98eb2b22f4][d8a14aa2-a8ca-4257-8504-0b12c4cd1ce0]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
-[Tiling][a67356ea-f432-417a-9e5e-0bef2c54ddde][]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
-[Tiling][a67356ea-f432-417a-9e5e-0bef2c54ddde][d8a14aa2-a8ca-4257-8504-0b12c4cd1ce0]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
-[Tiling][af860c52-7a29-5937-8116-433ad3f3e4f8]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
-[Tiling][d3ecb129-bb56-4e16-88f2-788d1f14aa28][d8a14aa2-a8ca-4257-8504-0b12c4cd1ce0]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
-[Tiling][d6370edd-59b1-4ce5-98f8-d2d01f5a7609][d8a14aa2-a8ca-4257-8504-0b12c4cd1ce0]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
-[Tiling][e1481059-4830-5a76-b283-2eadb72c7e11]
+[Tiling][a9a8bb90-9767-4e08-afd0-73e672579238][951d1a6b-9840-4c3c-9dc7-7b173e3a3326]
+padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Xwayland]
-Scale=1
+Scale=1.35
+XwaylandEisNoPromptApps=xclicker

@@ -1,6 +1,7 @@
 [General]
+TerminalApplication=kitty
 Version=202
-ViewPropsTimestamp=2025,2,5,12,11,57.704
+ViewPropsTimestamp=2026,2,5,12,52,12.604
 
 [KFileDialog Settings]
 Places Icons Auto-resize=false

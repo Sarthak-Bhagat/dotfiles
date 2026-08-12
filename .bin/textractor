@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+img=$(mktemp --suffix=.png)
+trap 'rm -f "$img"' EXIT
+
+if command -v spectacle &>/dev/null; then
+  spectacle -rbno "$img"
+elif command -v grimshot &>/dev/null; then
+  grimshot save area "$img"
+elif command -v flameshot &>/dev/null; then
+  flameshot gui -s -p "$img"
+else
+  notify-send -t 3000 "OCR" "No screenshot tool found"
+  exit 1
+fi
+
+[[ -s "$img" ]] || exit 0
+
+text=$(ocrs "$img")
+
+if [[ -z "${text// }" ]]; then
+  notify-send -t 3000 -i "$img" "OCR" "No text found"
+  exit 0
+fi
+
+printf '%s' "$text" | wl-copy
+notify-send -t 3000 -i "$img" "OCR" "$(printf '%s' "$text" | head -c 120)"

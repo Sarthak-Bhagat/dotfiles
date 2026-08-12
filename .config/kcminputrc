@@ -1,11 +1,19 @@
 [Keyboard]
-NumLock=1
+RepeatDelay=400
+RepeatRate=50
 
-[Libinput][6127][24766][GamingMouseI Gaming Mouse]
-PointerAcceleration=0.200
+[Libinput][1165][49557][ITE Tech. Inc. ITE Device(8258) Keyboard]
+NaturalScroll=false
+ScrollFactor=4
+
+[Libinput][1739][52990][SYNA2BA6:00 06CB:CEFE Mouse]
+PointerAcceleration=0.600
+ScrollFactor=12
+
+[Libinput][1739][52990][SYNA2BA6:00 06CB:CEFE Touchpad]
+NaturalScroll=false
 ScrollFactor=1.5
-ScrollMethod=4
+TapDragLock=true
 
 [Mouse]
-X11LibInputXAccelProfileFlat=true
-cursorTheme=Sweet-cursors
+cursorTheme=breeze_cursors
