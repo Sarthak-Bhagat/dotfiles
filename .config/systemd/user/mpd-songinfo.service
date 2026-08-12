@@ -1,0 +1,20 @@
+[Unit]
+Description=MPD Song Info Notifier
+After=mpd.service
+Requires=mpd.service
+
+[Service]
+ExecStart=/usr/bin/bash /home/dez/.config/dez_scripts/mpd_watcher.sh
+Restart=on-failure
+RestartSec=5
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+StandardOutput=journal
+StandardError=journal
+ProtectSystem=read-only
+Nice=10
+CPUSchedulingPolicy=idle
+IOSchedulingClass=idle
+
+[Install]
+WantedBy=default.target

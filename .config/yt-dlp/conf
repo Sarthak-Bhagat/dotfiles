@@ -1,0 +1,44 @@
+# Extract audio, prefer Opus if available
+-x
+--audio-format opus
+--audio-quality 0   # best quality
+
+--cookies-from-browser firefox
+
+# Format selection: prefer Opus, fallback to any audio
+--format "bestaudio[ext=opus]/bestaudio/best"
+
+# Ignore errors and avoid overwriting existing files
+--ignore-errors
+--no-overwrites
+
+# Metadata, chapters, and thumbnails
+--embed-thumbnail
+--embed-chapters
+--add-metadata
+
+--parse-metadata "%(title)s:%(meta_title)s"
+--parse-metadata "%(uploader)s:%(meta_artist)s"
+--parse-metadata "%(album)s:%(meta_album)s"
+--parse-metadata "%(release_date)s:%(meta_date)s"
+--parse-metadata "%(track_number)s:%(meta_track)s"
+
+# Speed up downloads
+--concurrent-fragments 8
+
+# Sleep settings to avoid throttling
+--sleep-requests 1
+--sleep-interval 2
+--max-sleep-interval 15
+
+# Filters
+--match-filter "!is_live"
+--sponsorblock-remove "all"
+
+# Output
+--output "/home/dez/Documents/Media/Music/%(title)s.%(ext)s"
+--download-archive "/home/dez/.config/yt-dlp/archive.log"
+
+# Playlist options
+--yes-playlist
+--lazy-playlist

@@ -37,3 +37,16 @@
 
 # Syncthing conflict artefacts
 **/*.sync-conflict-*
+.config/fish/conf.d/90-local.fish
+.config/ludusavi/manifest.yaml
+.config/ludusavi/cache.yaml
+.anydesk/
+.azure/
+.docker/
+.lmstudio/
+.config/ludusavi/manifest.yaml
+.config/ludusavi/cache.yaml
+.anydesk/
+.azure/
+.docker/
+.lmstudio/

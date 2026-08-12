@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if ! pgrep -x "albert" > /dev/null; then
-    albert &
-fi
-
-albert show
-
