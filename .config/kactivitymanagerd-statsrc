@@ -1,5 +1,5 @@
-[Favorites-org.kde.plasma.kickoff.favorites.instance-3-741b6b2e-4271-4f16-82d5-a7a9656996ee]
-ordering=applications:systemsettings.desktop,applications:org.kde.discover.desktop
+[Favorites-org.kde.plasma.kickoff.favorites.instance-24-a47f3a56-04cd-41ea-b4e4-294ab4bc7eea]
+ordering=applications:albert.desktop,applications:org.prismlauncher.PrismLauncher.desktop,applications:systemsettings.desktop,applications:zen.desktop,applications:awakened-poe-trade.desktop,applications:scalpel-poe.desktop
 
-[Favorites-org.kde.plasma.kickoff.favorites.instance-3-global]
-ordering=applications:systemsettings.desktop,applications:org.kde.discover.desktop
+[Favorites-org.kde.plasma.kickoff.favorites.instance-24-global]
+ordering=applications:albert.desktop,applications:org.prismlauncher.PrismLauncher.desktop,applications:systemsettings.desktop,applications:zen.desktop,applications:awakened-poe-trade.desktop,applications:scalpel-poe.desktop

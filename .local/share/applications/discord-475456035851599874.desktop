@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Game 475456035851599874
-Exec=sh -c /usr/bin/retroarch
+Exec=sh -c retroarch
 Type=Application
 NoDisplay=true
 Categories=Discord;Games;

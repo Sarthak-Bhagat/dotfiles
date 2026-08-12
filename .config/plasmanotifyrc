@@ -1,11 +1,2 @@
-[Applications][org.qbittorrent.qBittorrent]
+[Applications][vesktop]
 Seen=true
-
-[Badges]
-InTaskManager=false
-
-[Jobs]
-InNotifications=false
-
-[Notifications]
-PopupPosition=TopRight

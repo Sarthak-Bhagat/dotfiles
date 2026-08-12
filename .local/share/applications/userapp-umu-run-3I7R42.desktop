@@ -1,8 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Version=1.0
-Type=Application
-NoDisplay=true
-Exec=umu-run %f
-Name=umu-run
-Comment=Custom definition for umu-run

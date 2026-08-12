@@ -1,6 +1,6 @@
 [Desktop Entry]
-Exec=/home/dez/.config/dez_scripts/volume --inc
-Name=Volume Up
+Exec=/home/dez/.config/dez_scripts/volume --toggle
+Name=Toggle Mute
 NoDisplay=true
 StartupNotify=false
 Type=Application

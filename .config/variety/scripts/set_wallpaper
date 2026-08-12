@@ -180,6 +180,12 @@ elif [ "$DE" == "kde" ]; then
             Due to Plasma limitations, external programs cannot automatically change the wallpaper when the widgets are locked.\n \
             See https://git.io/vprpM for more information." --icon variety 10
     fi
+    if [[ "$dbus_exitcode" -eq 0 && "${KDE_SESSION_VERSION}" -eq '6' ]]; then
+        # Generate color scheme from wallpaper using hellwal
+        hellwal -i "$WP" --dark --dark-offset 0.3 --neon-mode --check-contrast
+        # Export wallpaper path as a universal Fish environment variable
+        fish -c "set -Ux WALLPAPER '$WP'"
+    fi
     exit "$dbus_exitcode"
 
 elif [ "$DE" == "gnome" ] || [ "$DE" == "unity" ] || [ "$DE" == "budgie" ]; then

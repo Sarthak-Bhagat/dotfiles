@@ -6,7 +6,7 @@ hostname=codeberg.org
 identifier=codeberg.org
 importedFromSshConfig=true
 port=
-profileName=
+profileName=Built-in
 sshkey=/home/dez/.ssh/id_ed_codeburg
 useSshConfig=true
 username=git
@@ -20,3 +20,13 @@ profileName=Built-in
 sshkey=/home/dez/.ssh/id_ed_github
 useSshConfig=true
 username=git
+
+[SSH Config][tud]
+hostname=http://10.10.2.101:8000
+identifier=tud
+importedFromSshConfig=true
+port=
+profileName=
+sshkey=~/.ssh/tud_key.a00046429
+useSshConfig=true
+username=a00046429
