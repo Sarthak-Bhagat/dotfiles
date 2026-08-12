@@ -23,9 +23,9 @@ alias upall  "paru -Syu --noconfirm"
 alias paruskip "paru -S --mflags --skipinteg"
 
 # ---------------------------------------------------------------- listing packages
-alias list    "pacman -Qqe"     # explicitly installed
-alias listt   "pacman -Qqet"    # explicit, no dependencies
-alias listaur "pacman -Qqem"    # foreign / AUR
+alias list    "pacman -Qqe"
+alias listt   "pacman -Qqet"
+alias listaur "pacman -Qqem"
 alias big     "expac -H M '%m\t%n' | sort -h | nl"
 
 # ---------------------------------------------------------------- maintenance

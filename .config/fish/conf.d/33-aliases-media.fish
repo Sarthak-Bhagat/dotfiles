@@ -7,7 +7,7 @@ alias yta-aac  'yt-dlp --extract-audio --audio-format aac'
 alias yta-best 'yt-dlp --extract-audio --audio-format best'
 alias yta-flac 'yt-dlp --extract-audio --audio-format flac'
 alias yta-mp3  'yt-dlp --extract-audio --audio-format mp3'
-alias ytv-best 'yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4'
+alias ytv-best "yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4"
 
 # ---------------------------------------------------------------- git
 alias grh        'git reset --hard'
@@ -23,7 +23,7 @@ alias dc     'docker compose'
 alias dcup   'docker compose up -d'
 alias dcdown 'docker compose down'
 alias dclog  'docker compose logs -f'
-alias dps    'docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}''
+alias dps    "docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'"
 
 # ---------------------------------------------------------------- wayland capture
 alias wsimplescreen 'wf-recorder -a'

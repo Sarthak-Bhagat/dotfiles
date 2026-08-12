@@ -6,18 +6,18 @@
 status is-interactive; or exit 0
 
 # system
-alias npacman     "sudo $EDITOR /etc/pacman.conf'
-alias ngrub       "sudo $EDITOR /etc/default/grub'
-alias nmakepkg    "sudo $EDITOR /etc/makepkg.conf'
-alias nmkinitcpio "sudo $EDITOR /etc/mkinitcpio.conf'
-alias nmirrorlist "sudo $EDITOR /etc/pacman.d/mirrorlist'
-alias nfstab      "sudo $EDITOR /etc/fstab'
-alias nhosts      "sudo $EDITOR /etc/hosts'
-alias nhostname   "sudo $EDITOR /etc/hostname'
-alias nresolv     "sudo $EDITOR /etc/resolv.conf'
-alias nenvironment "sudo $EDITOR /etc/environment'
-alias nsddm       "sudo $EDITOR /etc/sddm.conf'
-alias nsddmk      "sudo $EDITOR /etc/sddm.conf.d/kde_settings.conf'
+alias npacman     'sudo $EDITOR /etc/pacman.conf'
+alias ngrub       'sudo $EDITOR /etc/default/grub'
+alias nmakepkg    'sudo $EDITOR /etc/makepkg.conf'
+alias nmkinitcpio 'sudo $EDITOR /etc/mkinitcpio.conf'
+alias nmirrorlist 'sudo $EDITOR /etc/pacman.d/mirrorlist'
+alias nfstab      'sudo $EDITOR /etc/fstab'
+alias nhosts      'sudo $EDITOR /etc/hosts'
+alias nhostname   'sudo $EDITOR /etc/hostname'
+alias nresolv     'sudo $EDITOR /etc/resolv.conf'
+alias nenvironment 'sudo $EDITOR /etc/environment'
+alias nsddm       'sudo $EDITOR /etc/sddm.conf'
+alias nsddmk      'sudo $EDITOR /etc/sddm.conf.d/kde_settings.conf'
 
 # user
 alias nf         '$EDITOR ~/.config/fish/config.fish'
