@@ -1,3 +1,3 @@
-function ma --wraps='sudo mount -a' --description 'alias ma sudo mount -a'
+function ma --description "Mount everything in fstab"
     sudo mount -a $argv
 end

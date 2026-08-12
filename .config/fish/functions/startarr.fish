@@ -1,3 +1,4 @@
-function startarr --wraps='sudo systemctl start sonarr radarr bazarr jackett spoofdpi.service' --wraps='sudo systemctl restart sonarr radarr bazarr jackett spoofdpi.service' --wraps='sudo systemctl restart sonarr radarr bazarr jackett spoofdpi.service; qbittorrent &' --description 'alias startarr sudo systemctl restart sonarr radarr bazarr jackett spoofdpi.service; qbittorrent &'
-    sudo systemctl restart sonarr radarr bazarr jackett spoofdpi.service; qbittorrent &
+function startarr --description "Start the *arr stack and qbittorrent"
+    sudo systemctl restart sonarr radarr bazarr jackett spoofdpi.service
+    and qbittorrent &
 end

@@ -1,4 +1,3 @@
-function fp --wraps='fish --private' --description 'alias fp fish --private'
-  fish --private $argv
-        
+function fp --description "Private fish session, no history"
+    fish --private $argv
 end

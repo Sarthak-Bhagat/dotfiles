@@ -1,4 +1,3 @@
-function setjp --wraps='set -x LANG ja_JP.UTF-8' --description 'alias setjp set -x LANG ja_JP.UTF-8'
-  set -x LANG ja_JP.UTF-8 $argv
-        
+function setjp --description "Switch this shell to Japanese locale"
+    set -gx LANG ja_JP.UTF-8
 end

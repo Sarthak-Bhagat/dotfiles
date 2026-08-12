@@ -1,4 +1,3 @@
-function pwvucontrol --wraps=com.saivert.pwvucontrol --description 'alias pwvucontrol com.saivert.pwvucontrol'
-  com.saivert.pwvucontrol $argv
-        
+function pwvucontrol --description "PipeWire volume control (flatpak)"
+    com.saivert.pwvucontrol $argv
 end

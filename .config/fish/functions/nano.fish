@@ -1,4 +1,3 @@
-function nano --wraps=nvim --description 'alias nano nvim'
-  nvim $argv
-        
+function nano --wraps=nvim --description "nvim, for the muscle memory"
+    nvim $argv
 end

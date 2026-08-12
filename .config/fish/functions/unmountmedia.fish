@@ -1,3 +1,3 @@
-function unmountmedia --wraps='sudo umount /mnt/DezLegion2021 -l' --description 'alias unmountmedia sudo umount /mnt/DezLegion2021 -l'
-    sudo umount /mnt/DezLegion2021 -l $argv
+function unmountmedia --description "Lazily unmount the media server sshfs"
+    sudo umount -l /mnt/DezLegion2021
 end

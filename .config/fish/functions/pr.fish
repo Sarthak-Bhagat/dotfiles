@@ -1,4 +1,3 @@
-function pr --wraps=prime-run --description 'alias pr prime-run'
-  prime-run $argv
-        
+function pr --wraps=prime-run --description "Run on the discrete GPU"
+    prime-run $argv
 end
