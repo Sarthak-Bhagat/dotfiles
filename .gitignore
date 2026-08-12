@@ -1,0 +1,39 @@
+# Logs and backups that appear inside tracked directories
+**/*.log
+**/*.bak
+**/*.bk
+**/*.old
+**/*.orig
+**/*~
+
+# Runtime state, locks, pids, sockets
+**/lockfile
+**/*.lock
+**/*.pid
+**/*.socket
+
+# Caches inside tracked directories
+**/cache/
+**/Cache/
+**/.cache/
+**/thumbnails/
+
+# Never track \u2014 secrets and credentials
+.ssh/*
+!.ssh/config
+.local/share/kwalletd/
+.gnupg/
+**/*.pem
+**/*.key
+**/id_*
+!**/id_*.pub
+
+# Volatile app state
+.local/state/
+.config/mpd/database
+.config/mpd/pid
+.config/mpd/sticker.sql
+.config/fish/fish_variables*
+
+# Syncthing conflict artefacts
+**/*.sync-conflict-*
