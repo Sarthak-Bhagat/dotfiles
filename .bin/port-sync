@@ -1,11 +1,28 @@
 #!/bin/bash
+# Ask ProtonVPN's gateway for a forwarded port via NAT-PMP and push it into
+# qBittorrent's WebUI. Run on a timer -- ProtonVPN's mappings are short-lived.
+set -uo pipefail
 
-# qBittorrent WebUI credentials
-QB_HOST="http://localhost:12345"
-QB_USER="DezXerneas"
-QB_PASS="***REMOVED***"
+# Credentials are NOT stored here. This file is tracked in a public repo; an
+# earlier version had the WebUI password in plaintext and it had to be purged
+# from history. Put QB_USER / QB_PASS in the env file below, which is
+# gitignored and listed in ~/.config/yadm/encrypt.
+ENV_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/dez_scripts/port-sync.env"
+if [[ -r "$ENV_FILE" ]]; then
+  # shellcheck source=/dev/null
+  . "$ENV_FILE"
+else
+  echo "port-sync: missing $ENV_FILE (see port-sync.env.example)" >&2
+  exit 1
+fi
 
-GATEWAY="10.2.0.1"
+QB_HOST="${QB_HOST:-http://localhost:12345}"
+GATEWAY="${GATEWAY:-10.2.0.1}"
+
+if [[ -z "${QB_USER:-}" || -z "${QB_PASS:-}" ]]; then
+  echo "port-sync: QB_USER and QB_PASS must be set in $ENV_FILE" >&2
+  exit 1
+fi
 
 # Get port from ProtonVPN via natpmpc
 PORT=$(natpmpc -a 1 0 tcp 60 -g "$GATEWAY" 2>/dev/null \
@@ -13,21 +30,32 @@ PORT=$(natpmpc -a 1 0 tcp 60 -g "$GATEWAY" 2>/dev/null \
   | awk '{print $4}')
 
 if [[ -z "$PORT" ]]; then
-  echo "Failed to get port from ProtonVPN"
+  echo "port-sync: failed to get a port from ProtonVPN at $GATEWAY" >&2
   exit 1
 fi
 
 echo "Got port: $PORT"
 echo "$PORT" > /tmp/protonvpn_port
 
-# Login to qBittorrent WebUI
+# Login to qBittorrent WebUI. --data-urlencode so a password containing &, =
+# or + is not mangled.
 QB_COOKIE=$(curl -s -c - \
-  --data "username=$QB_USER&password=$QB_PASS" \
-  "$QB_HOST/api/v2/auth/login" | grep SID | awk '{print $NF}')
+  --data-urlencode "username=$QB_USER" \
+  --data-urlencode "password=$QB_PASS" \
+  "$QB_HOST/api/v2/auth/login" | awk '/SID/ {print $NF}')
 
-# Set the port
-curl -s -b "SID=$QB_COOKIE" \
+# The old version never checked this, so a rotated password meant the port
+# silently stopped being updated.
+if [[ -z "$QB_COOKIE" ]]; then
+  echo "port-sync: qBittorrent login failed at $QB_HOST (bad credentials?)" >&2
+  exit 1
+fi
+
+if ! curl -sf -b "SID=$QB_COOKIE" \
   --data "json={\"listen_port\":$PORT,\"random_port\":false}" \
-  "$QB_HOST/api/v2/app/setPreferences"
+  "$QB_HOST/api/v2/app/setPreferences" >/dev/null; then
+  echo "port-sync: setPreferences failed" >&2
+  exit 1
+fi
 
 echo "qBittorrent port updated to $PORT"
