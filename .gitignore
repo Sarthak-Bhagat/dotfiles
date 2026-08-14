@@ -63,6 +63,13 @@
 .config/gtk-4.0/window_decorations.css
 .config/gtk-3.0/assets/
 
+# KDE state and stamps, not settings. gwenviewrc is a recent-files list plus
+# per-monitor splitter/thumbnail geometry (and it had 10 recent file paths
+# committed to a public repo). kconf_updaterc records which KDE config-migration
+# scripts have run, with ctime/mtime stamps, so it churns on every KDE upgrade.
+.config/gwenviewrc
+.config/kconf_updaterc
+
 # Machine-specific: monitor topology and brightness, Dolphin places
 .config/kwinoutputconfig.json
 .local/share/user-places.xbel

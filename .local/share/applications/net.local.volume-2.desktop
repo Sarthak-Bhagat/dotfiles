@@ -1,6 +1,6 @@
 [Desktop Entry]
-Exec=/home/dez/.bin/volume --dec
-Name=Volume Down
+Exec=/home/dez/.bin/volume --inc
+Name=Volume UP
 NoDisplay=true
 StartupNotify=false
 Type=Application

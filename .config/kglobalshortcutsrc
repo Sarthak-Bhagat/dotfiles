@@ -308,10 +308,10 @@ _launch=Meta+Shift+T
 _launch=Alt+N
 
 [services][net.local.volume-2.desktop]
-_launch=Volume Down
+_launch=Volume Up
 
 [services][net.local.volume-4.desktop]
-_launch=Volume Up
+_launch=Volume Down
 
 [services][net.local.volume.desktop]
 _launch=Volume Mute
