@@ -56,6 +56,8 @@ x-scheme-handler/discord-1232165629046292551=PokeRogue.desktop;
 x-scheme-handler/ror2mm=gale-handler.desktop;
 x-scheme-handler/gale=gale-handler.desktop;
 x-scheme-handler/terminal=kitty.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
+text/csv=onlyoffice-desktopeditors.desktop;
 
 [Default Applications]
 application/json=nvim.desktop;
@@ -116,3 +118,5 @@ x-scheme-handler/discord-1232165629046292551=PokeRogue.desktop
 x-scheme-handler/ror2mm=gale-handler.desktop
 x-scheme-handler/gale=gale-handler.desktop
 x-scheme-handler/terminal=kitty.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
+text/csv=onlyoffice-desktopeditors.desktop

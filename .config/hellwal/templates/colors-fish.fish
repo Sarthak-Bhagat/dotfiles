@@ -1,4 +1,4 @@
-set -g fish_color_normal %%foreground%%
+set -g fish_color_normal %%color12%%
 set -g fish_color_param %%color15%%
 set -g fish_color_option %%color7%%
 set -g fish_color_quote %%color7%%

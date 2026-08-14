@@ -324,7 +324,9 @@ _launch=none
 
 [services][org.kde.spectacle.desktop]
 ActiveWindowScreenShot=Shift+Print\tMeta+Print
+CurrentMonitorScreenShot=none
 FullScreenScreenShot=none
+OpenWithoutScreenshot=none
 _launch=none
 
 [services][org.kde.touchpadshortcuts.desktop]
@@ -338,6 +340,9 @@ Library=Meta+F5
 
 [services][vesktop.desktop]
 _launch=Meta+F3
+
+[services][vicinae.desktop]
+toggle=Meta+D
 
 [services][zen.desktop]
 _launch=Meta+F1
