@@ -70,9 +70,8 @@
 # upstream syntax definitions
 .config/micro/
 
-# ncmpcpp is used (mpd client, backup for rmpc) — config is tracked, but the
-# downloaded HTML cheat sheet is not
-.config/ncmpcpp/CheatSheet/
+# ncmpcpp is used (mpd client, backup for rmpc). Its CheatSheet/ is tracked on
+# purpose — the keybind config is cryptic and the doc should travel with it.
 
 # ~/.local/share/applications: ignore everything, then allowlist the hand-made
 # launchers and the four overrides that differ from their /usr/share copies.
