@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Game 475456035851599874
-Exec=sh -c retroarch
-Type=Application
-NoDisplay=true
-Categories=Discord;Games;
-MimeType=x-scheme-handler/discord-475456035851599874;

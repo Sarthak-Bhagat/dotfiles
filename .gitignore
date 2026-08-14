@@ -18,7 +18,7 @@
 **/.cache/
 **/thumbnails/
 
-# Never track \u2014 secrets and credentials
+# Never track — secrets and credentials
 .ssh/*
 !.ssh/config
 .local/share/kwalletd/
@@ -28,27 +28,62 @@
 **/id_*
 !**/id_*.pub
 
+# yadm-encrypted files. yadm also lists these in repo.git/info/exclude, but that
+# file is local-only and does not survive a clone, so pin them here as well.
+.config/fish/conf.d/90-local.fish
+.config/variety/variety.conf
+
 # Volatile app state
 .local/state/
 .config/mpd/database
 .config/mpd/pid
 .config/mpd/sticker.sql
 .config/fish/fish_variables*
+.config/ludusavi/manifest.yaml
+.config/ludusavi/cache.yaml
+.anydesk/
+.azure/
+.docker/
+.lmstudio/
+
+# Variety runtime state and its wallpaper cache
+.config/variety/Downloaded/
+.config/variety/.firstrun
+.config/variety/.last_change_time
+.config/variety/.version
+
+# kde-gtk-config output, rewritten from the Plasma colour scheme on every theme
+# change and every login. Templates are tracked; generated colours are not.
+.config/gtkrc
+.config/gtkrc-2.0
+.config/gtk-3.0/colors.css
+.config/gtk-4.0/colors.css
+.config/gtk-3.0/window_decorations.css
+.config/gtk-4.0/window_decorations.css
+.config/gtk-3.0/assets/
+
+# Machine-specific: monitor topology and brightness, Dolphin places
+.config/kwinoutputconfig.json
+.local/share/user-places.xbel
+
+# micro is unused (EDITOR is nvim) and its tracked files were 146 vendored
+# upstream syntax definitions
+.config/micro/
+
+# ncmpcpp is used (mpd client, backup for rmpc) — config is tracked, but the
+# downloaded HTML cheat sheet is not
+.config/ncmpcpp/CheatSheet/
+
+# ~/.local/share/applications: ignore everything, then allowlist the hand-made
+# launchers and the four overrides that differ from their /usr/share copies.
+# Keeps out mimeinfo.cache, userapp-*, wine-*, and Steam/launcher shortcuts.
+.local/share/applications/*
+!.local/share/applications/net.local.*.desktop
+!.local/share/applications/variety.desktop
+!.local/share/applications/nemo.desktop
+!.local/share/applications/com.libretro.RetroArch.desktop
+!.local/share/applications/awakened-poe-trade.desktop
+!.local/share/applications/scalpel-poe.desktop
 
 # Syncthing conflict artefacts
 **/*.sync-conflict-*
-.config/fish/conf.d/90-local.fish
-.config/ludusavi/manifest.yaml
-.config/ludusavi/cache.yaml
-.anydesk/
-.azure/
-.docker/
-.lmstudio/
-.config/ludusavi/manifest.yaml
-.config/ludusavi/cache.yaml
-.anydesk/
-.azure/
-.docker/
-.lmstudio/
-.config/fish/fish_variables
-.config/fish/fish_variables
