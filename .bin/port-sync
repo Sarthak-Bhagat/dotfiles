@@ -18,7 +18,40 @@ fi
 
 QB_HOST="${QB_HOST:-http://localhost:12345}"
 GATEWAY="${GATEWAY:-10.2.0.1}"
+# Interface name prefixes that count as a VPN tunnel.
+VPN_IFACES="${VPN_IFACES:-proton pvpn tun wg nordlynx}"
 
+# ---------------------------------------------------------------- preconditions
+# Both sides have to be up or there is nothing to do. Checked before the
+# credential test so a disconnected VPN exits quietly rather than complaining
+# about configuration. Exits 0 throughout: this runs on a 6-minute timer, and a
+# closed VPN is a normal state, not a failure worth a red unit in systemctl.
+
+# ProtonVPN. Deliberately NOT a process check -- protonvpn-app and
+# proton.vpn.daemon run continuously whether or not a tunnel exists. What
+# matters is that the NAT-PMP gateway is reachable *through* a tunnel; if the
+# route leaves via wlan0/enp*, there is no VPN and natpmpc would talk to the
+# LAN router.
+route_dev=$(ip route get "$GATEWAY" 2>/dev/null |
+  awk '{for (i = 1; i <= NF; i++) if ($i == "dev") {print $(i + 1); exit}}')
+tunnelled=""
+for prefix in $VPN_IFACES; do
+  case "$route_dev" in "$prefix"*) tunnelled=1; break ;; esac
+done
+if [[ -z "$tunnelled" ]]; then
+  echo "port-sync: ProtonVPN not connected (route to $GATEWAY leaves via ${route_dev:-no route}); nothing to do"
+  exit 0
+fi
+
+# qBittorrent. Check the WebUI socket rather than the process: a running
+# qbittorrent with the WebUI disabled cannot be configured either way.
+qb_port=${QB_HOST##*:}; qb_port=${qb_port%%/*}
+if ! ss -ltn 2>/dev/null | awk -v p=":$qb_port\$" '$4 ~ p {found = 1} END {exit !found}'; then
+  echo "port-sync: qBittorrent WebUI is not listening on port $qb_port; nothing to do"
+  exit 0
+fi
+
+# ------------------------------------------------------------------------ work
 if [[ -z "${QB_USER:-}" || -z "${QB_PASS:-}" ]]; then
   echo "port-sync: QB_USER and QB_PASS must be set in $ENV_FILE" >&2
   exit 1
