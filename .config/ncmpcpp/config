@@ -6,7 +6,10 @@ visualizer_in_stereo = "yes"
 visualizer_type = "spectrum"
 visualizer_look = "+|"
 
-execute_on_song_change = songinfo
+# execute_on_song_change is deliberately unset. mpd-songinfo.service watches mpd
+# directly (mpc idle player -> ~/.bin/songinfo), so notifications work with any
+# client, including rmpc. Setting it here fired songinfo a second time whenever
+# ncmpcpp was open.
 
  # Playlist
  playlist_disable_highlight_delay = "0"

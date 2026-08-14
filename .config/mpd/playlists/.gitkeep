@@ -1,0 +1,3 @@
+# Keeps the directory in the repo. mpd throws "Failed to access
+# ~/.config/mpd/playlists" at startup and cannot save playlists without it.
+# mpd only reads *.m3u here, so this file is invisible to it.
