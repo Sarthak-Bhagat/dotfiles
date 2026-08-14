@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=/home/dez/.config/dez_scripts/volume --dec
+Exec=/home/dez/.bin/volume --dec
 Name=Volume Down
 NoDisplay=true
 StartupNotify=false

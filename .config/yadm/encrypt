@@ -1,3 +1,3 @@
 .config/variety/variety.conf
 .config/fish/conf.d/90-local.fish
-.config/dez_scripts/port-sync.env
+.bin/port-sync.env

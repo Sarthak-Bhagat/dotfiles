@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=/home/dez/.config/dez_scripts/brightness --dec
+Exec=/home/dez/.bin/brightness --dec
 Name=Brightness Down
 NoDisplay=true
 StartupNotify=false

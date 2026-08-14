@@ -4,7 +4,7 @@ After=mpd.service
 Requires=mpd.service
 
 [Service]
-ExecStart=/usr/bin/bash /home/dez/.config/dez_scripts/mpd_watcher.sh
+ExecStart=/usr/bin/bash /home/dez/.bin/mpd_watcher.sh
 Restart=on-failure
 RestartSec=5
 Environment=DISPLAY=:0

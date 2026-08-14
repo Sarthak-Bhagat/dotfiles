@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=/home/dez/.config/dez_scripts/volume --toggle
+Exec=/home/dez/.bin/volume --toggle
 Name=Toggle Mute
 NoDisplay=true
 StartupNotify=false

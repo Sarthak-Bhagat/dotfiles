@@ -32,7 +32,7 @@
 # file is local-only and does not survive a clone, so pin them here as well.
 .config/fish/conf.d/90-local.fish
 .config/variety/variety.conf
-.config/dez_scripts/port-sync.env
+.bin/port-sync.env
 
 # Volatile app state
 .local/state/

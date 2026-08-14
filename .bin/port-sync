@@ -7,7 +7,7 @@ set -uo pipefail
 # earlier version had the WebUI password in plaintext and it had to be purged
 # from history. Put QB_USER / QB_PASS in the env file below, which is
 # gitignored and listed in ~/.config/yadm/encrypt.
-ENV_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/dez_scripts/port-sync.env"
+ENV_FILE="$(dirname "$(readlink -f "$0")")/port-sync.env"
 if [[ -r "$ENV_FILE" ]]; then
   # shellcheck source=/dev/null
   . "$ENV_FILE"
