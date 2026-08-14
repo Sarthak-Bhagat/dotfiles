@@ -1,6 +1,6 @@
 [Desktop Entry]
-Exec=/home/dez/.bin/textractor
-Name=textractor
+Exec=qdbus com.poe.overlay /com/poe/overlay com.poe.overlay.Toggle.Quit
+Name=POE Overlay Kill
 NoDisplay=true
 StartupNotify=false
 Type=Application

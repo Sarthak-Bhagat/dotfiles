@@ -1,6 +1,6 @@
 [Desktop Entry]
-Exec=/home/dez/.config/dez_scripts/menu
-Name=Albert
+Exec=qdbus com.poe.overlay /com/poe/overlay com.poe.overlay.Toggle.ToggleVisibility
+Name=POE Overlay Hide
 NoDisplay=true
 StartupNotify=false
 Type=Application

@@ -286,13 +286,13 @@ _launch=Ctrl+Alt+Return
 [services][net.local.pkill.desktop]
 _launch=Alt+/
 
-[services][net.local.qdbus-2.desktop]
+[services][net.local.poe-overlay-hide.desktop]
 _launch=F8
 
-[services][net.local.qdbus-3.desktop]
+[services][net.local.poe-overlay-kill.desktop]
 _launch=F10
 
-[services][net.local.qdbus.desktop]
+[services][net.local.poe-overlay-toggle.desktop]
 _launch=F9
 
 [services][net.local.screenshot-cp.desktop]
@@ -301,7 +301,7 @@ _launch=Meta+Shift+S
 [services][net.local.sudo.desktop]
 _launch=F3
 
-[services][net.local.textractor-2.desktop]
+[services][net.local.textractor.desktop]
 _launch=Meta+Shift+T
 
 [services][net.local.variety.desktop]

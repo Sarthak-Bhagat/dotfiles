@@ -1,0 +1,17 @@
+[Desktop Entry]
+Categories=Utility;
+Comment=
+Exec=env ELECTRON_OZONE_PLATFORM_HINT=x11 /usr/lib/electron40/electron /usr/lib/awakened-poe-trade/app.asar --ozone-platform=x11
+Icon=awakened-poe-trade
+Name=Awakened PoE Trade
+NoDisplay=false
+Path=
+PrefersNonDefaultGPU=false
+StartupNotify=true
+StartupWMClass=Awakened PoE Trade
+Terminal=false
+TerminalOptions=
+Type=Application
+X-AppImage-Version=3.28.103
+X-KDE-SubstituteUID=false
+X-KDE-Username=

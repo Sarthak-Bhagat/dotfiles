@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Variety
+GenericName=Wallpaper Changer
+Comment=Changes the wallpaper on a regular interval
+Exec=variety
+Icon=variety
+Terminal=false
+Categories=Utility;DesktopSettings;Settings;
+Keywords=wallpaper;background;desktop;
+StartupNotify=false

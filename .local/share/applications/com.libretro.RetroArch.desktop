@@ -1,0 +1,24 @@
+[Desktop Entry]
+Categories=Game;Emulator;
+Comment=Unified frontend for many game console emulators, frameworks and media players
+DBusActivatable=false
+Exec=prime-run retroarch %F
+GenericName=Game emulator frontend
+Hidden=false
+Icon=com.libretro.RetroArch
+Keywords=retro;gaming;emulator;console;
+MimeType=application/vnd.efi.img;application/vnd.nintendo.snes.rom;application/x-amiga-disk-format;application/x-atari-2600-rom;application/x-atari-7800-rom;application/x-atari-lynx-rom;application/x-ccd;application/x-cso;application/x-dosexec;application/x-dreamcast-rom;application/x-gameboy-color-rom;application/x-gameboy-rom;application/x-gamecube-rom;application/x-gamegear-rom;application/x-gba-rom;application/x-genesis-32x-rom;application/x-genesis-rom;application/x-hex;application/x-isz;application/x-mame-chd;application/x-msx-rom;application/x-n64-rom;application/x-neo-geo-pocket-color-rom;application/x-nes-rom;application/x-nintendo-3ds-rom;application/x-nintendo-ds-rom;application/x-nrg;application/x-pc-engine-rom;application/x-saturn-rom;application/x-sega-cd-rom;application/x-sega-pico-rom;application/x-sg1000-rom;application/x-sms-rom;application/x-virtual-boy-rom;application/x-wii-rom;application/x-wonderswan-color-rom;application/x-wonderswan-rom;
+Name=RetroArch
+NoDisplay=false
+Path=
+PrefersNonDefaultGPU=true
+SingleMainWindow=true
+StartupNotify=true
+StartupWMClass=retroarch
+Terminal=false
+TerminalOptions=
+TryExec=retroarch
+Type=Application
+Version=1.5
+X-KDE-SubstituteUID=false
+X-KDE-Username=

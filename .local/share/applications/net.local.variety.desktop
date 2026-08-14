@@ -1,6 +1,6 @@
 [Desktop Entry]
-Exec=/home/dez/.bin/textractor
-Name=textractor
+Exec=variety -n
+Name=Next Wallpaper
 NoDisplay=true
 StartupNotify=false
 Type=Application

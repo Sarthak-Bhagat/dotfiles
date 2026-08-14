@@ -1,0 +1,16 @@
+[Desktop Entry]
+Categories=Game;
+Comment=Path of Exile's First Fourth-Party Tool
+Exec=env XDG_SESSION_TYPE=x11 scalpel-poe --ozone-platform=x11 --no-sandbox
+Icon=scalpel-poe
+Name=Scalpel
+NoDisplay=false
+Path=
+PrefersNonDefaultGPU=false
+StartupNotify=true
+StartupWMClass=scalpel
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=

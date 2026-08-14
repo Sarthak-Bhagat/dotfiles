@@ -1,6 +1,6 @@
 [Desktop Entry]
-Exec=/home/dez/.bin/textractor
-Name=textractor
+Exec=/home/dez/.bin/poe-logout
+Name=poe-logout
 NoDisplay=true
 StartupNotify=false
 Type=Application
