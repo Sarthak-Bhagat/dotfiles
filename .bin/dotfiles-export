@@ -29,6 +29,8 @@ EXCLUDE=(
   '.config/jellyfin-mpv-shim/*'          # server address + access token
   '.bin/port-sync*'                      # qBittorrent WebUI credentials
   '.config/yadm/encrypt'                 # names which files hold secrets
+  '.local/share/yadm/*'                  # the ENCRYPTED SECRETS BLOB -- publishing it
+                                         # hands out an offline brute-force target
   # private infrastructure (ZeroTier hosts, the media server, work tunnels)
   '.config/fish/functions/dez*.fish'
   '.bin/backuparr' '.bin/dss_connect.sh'
@@ -47,6 +49,27 @@ EXCLUDE=(
   '.bin/dotfiles-export'                 # this script: names the very things it strips
   # bootstrap installs Sarthak's package set and clones his nvim repo
   '.config/yadm/bootstrap'
+  # media-server workflow: the *arr stack and personal mounts
+  '.config/fish/functions/sonarrfixperms.fish'
+  '.config/fish/functions/startarr.fish'
+  '.config/fish/functions/stoparr.fish'
+  '.config/fish/functions/unmountmedia.fish'
+  # app inventory and handlers for .desktop files this export drops
+  '.config/mimeapps.list'
+  # tuned to this machine's disks, including a drive named after the laptop
+  '.config/fastfetch/*'
+  '.config/baloofilerc'
+  # where he lives, and which apps he pins
+  '.config/plasma-localerc' '.config/ktimezonedrc'
+  '.config/kactivitymanagerd-statsrc'
+  # editor session state, and a gitleaks fingerprint from his own history
+  '.config/katerc' '.gitleaksignore'
+  # compiled binaries: unreviewable, and mpv-mpris ships as a distro package
+  '.config/mpv/discord' '.config/mpv/mpris.so'
+  # proprietary typeface -- not ours to redistribute
+  '.config/mpv/fonts/Netflix*'
+  # empty file
+  '.config/kxkbrc'
 )
 
 say "Collecting"
@@ -64,8 +87,26 @@ info "${#FILES[@]} tracked -> ${#keep[@]} exported (${#EXCLUDE[@]} exclusion pat
 
 for f in "${keep[@]}"; do
   mkdir -p "$STAGE/$(dirname "$f")"
-  cp -a "$HOME/$f" "$STAGE/$f" 2>/dev/null
+  if [[ -L "$HOME/$f" ]]; then
+    # systemd enablement links are absolute (/home/dez/...), which both leaks the
+    # path and breaks on another machine. Re-point them relatively.
+    tgt=$(readlink "$HOME/$f")
+    if [[ "$tgt" == "$HOME/"* ]]; then
+      ln -sfn "$(realpath -m --relative-to="$(dirname "$HOME/$f")" "$tgt")" "$STAGE/$f"
+    else
+      cp -a "$HOME/$f" "$STAGE/$f" 2>/dev/null
+    fi
+  else
+    cp -a "$HOME/$f" "$STAGE/$f" 2>/dev/null
+  fi
 done
+
+# Drop enablement links whose unit was excluded, so nothing dangles.
+while IFS= read -r -d '' l; do
+  t=$(readlink "$l")
+  [[ "$t" == /dev/null || "$t" == /usr/* ]] && continue
+  [[ -e "$(dirname "$l")/$t" ]] || { rm -f "$l"; info "dropped dangling link: ${l#$STAGE/}"; }
+done < <(find "$STAGE" -type l -print0)
 
 # ── scrub what remains ──────────────────────────────────────────────────────
 say "Scrubbing"
@@ -74,6 +115,14 @@ while IFS= read -r -d '' f; do
   grep -Iq . "$f" 2>/dev/null || continue
   sed -i \
     -e "s|/home/dez|\$HOME|g" \
+    -e "s|/mnt/Secondary/Documents/Media/Music/\?|\$HOME/Music|g" \
+    -e "s|/mnt/DezLegion[0-9]*|/mnt/DATA|g" \
+    -e "s|/mnt/Secondary|/mnt/DATA|g" \
+    -e "s|/mnt/Windows|/mnt/WINDOWS|g" \
+    -e "s|/mnt/Ext\b|/mnt/EXT|g" \
+    -e "s|^placeDisplayName=.*|placeDisplayName=Your City|" \
+    -e "s|^placeInfo=.*|placeInfo=Your City|" \
+    -e "s|Netflix Sans[A-Za-z ]*|Noto Sans|g" \
     -e "s|\bdez-media\b|MEDIA_HOST|g" \
     -e "s|10\.147\.18\.[0-9]\{1,3\}|10.0.0.0|g" \
     -e "s|Sarthak Bhagat|Your Name|g" \
@@ -129,6 +178,8 @@ PATTERNS=(
   '/home/dez' '10\.147\.18\.' 'dez-media'
   'Sarthak' 'Bhagat' 'DezXerneas'
   'sarth\.bhagat' 'AccessToken' 'QB_PASS'
+  'DezLegion' '/mnt/Secondary' 'sonarr|radarr' 'discord-[0-9]{6,}'
+  'Dublin' 'en_IE'
 )
 fail=0
 for p in "${PATTERNS[@]}"; do
@@ -138,6 +189,13 @@ for p in "${PATTERNS[@]}"; do
     fail=1
   fi
 done
+elf=$(find "$STAGE" -type f -exec file -b {} + 2>/dev/null | grep -c '^ELF' || true)
+if ((elf)); then
+  printf '    \033[31mFAIL\033[0m  %s compiled binaries in the tree (unreviewable by anyone cloning)\n' "$elf"
+  find "$STAGE" -type f -exec sh -c 'file -b "$1" | grep -q "^ELF" && echo "          ${1#'"$STAGE"'/}"' _ {} \;
+  fail=1
+fi
+
 if ((fail)); then
   printf '\n\033[31mExport aborted -- the tree above still contains personal data.\033[0m\n'
   printf 'Add an exclusion or a substitution to ~/.bin/dotfiles-export and re-run.\n\n'
