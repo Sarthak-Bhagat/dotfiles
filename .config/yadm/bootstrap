@@ -1,0 +1,219 @@
+#!/usr/bin/env bash
+#
+# yadm bootstrap -- brings a fresh machine from "cloned dotfiles" to "working
+# desktop". Run automatically after `yadm clone` (it offers), or by hand:
+#
+#     yadm bootstrap
+#
+# Safe to re-run: every step checks before it acts. Nothing here is destructive,
+# and any step can fail without taking the rest of the run down with it.
+#
+# Assumes an Arch-based system (CachyOS) with KDE Plasma. Package names were
+# verified against this machine's installed set.
+
+set -uo pipefail
+
+say()  { printf '\n\033[1m==> %s\033[0m\n' "$*"; }
+info() { printf '    %s\n' "$*"; }
+warn() { printf '    \033[33m!  %s\033[0m\n' "$*"; }
+have() { command -v "$1" >/dev/null 2>&1; }
+ask()  { read -rp "    $1 [y/N] " _r; [[ "${_r,,}" == y* ]]; }
+
+if ! have pacman; then
+  warn "Not an Arch-based system -- skipping every package step."
+  warn "The config itself is already in place from the clone."
+fi
+
+# ── packages ────────────────────────────────────────────────────────────────
+REPO_PKGS=(
+  # shell and terminal
+  fish kitty
+  # core CLI the fish config expects (aliases are type -q guarded, but these
+  # are the ones actually in use)
+  eza bat fd ripgrep duf zoxide fzf direnv jq curl
+  # dotfile management and secrets
+  yadm git gitleaks keepassxc syncthing
+  # music stack: mpd + the clients, mpris bridge for the panel
+  mpd mpc rmpc ncmpcpp mpd-mpris
+  # media
+  mpv jellyfin-mpv-shim yt-dlp
+  # desktop
+  mako variety kate xsettingsd wl-clipboard spectacle kdeconnect
+  # system info / monitoring
+  btop fastfetch
+  # scripts in ~/.bin
+  libnatpmp qbittorrent
+  # poe-overlay (Documents/git/poe-overlay) runtime
+  python-gobject webkitgtk-6.0 gtk4 gtk4-layer-shell
+  # vpn
+  proton-vpn-gtk-app
+  # python tooling for the pipx install below
+  python-pipx
+)
+AUR_PKGS=(vicinae hellwal input-remapper ocrs ludusavi)
+
+if have pacman; then
+  say "Repo packages"
+  missing=()
+  for p in "${REPO_PKGS[@]}"; do
+    pacman -Qq "$p" >/dev/null 2>&1 || missing+=("$p")
+  done
+  if ((${#missing[@]})); then
+    info "installing: ${missing[*]}"
+    sudo pacman -S --needed --noconfirm "${missing[@]}" || warn "pacman failed; continuing"
+  else
+    info "all present"
+  fi
+
+  say "AUR packages"
+  if ! have paru; then
+    warn "paru is not installed. Install it first, then re-run this script:"
+    info "  sudo pacman -S --needed base-devel git"
+    info "  git clone https://aur.archlinux.org/paru.git /tmp/paru && (cd /tmp/paru && makepkg -si)"
+  else
+    missing=()
+    for p in "${AUR_PKGS[@]}"; do
+      pacman -Qq "$p" >/dev/null 2>&1 || missing+=("$p")
+    done
+    if ((${#missing[@]})); then
+      info "installing: ${missing[*]}"
+      paru -S --needed --noconfirm "${missing[@]}" || warn "paru failed; continuing"
+    else
+      info "all present"
+    fi
+  fi
+fi
+
+# ── secrets ─────────────────────────────────────────────────────────────────
+say "Encrypted files"
+if [[ -f "$HOME/.local/share/yadm/archive" ]]; then
+  if [[ -f "$HOME/.config/fish/conf.d/90-local.fish" ]]; then
+    info "already decrypted"
+  else
+    info "passphrase is in KeePass under \"yadm dotfiles\""
+    yadm decrypt || warn "decrypt failed -- run 'yadm decrypt' by hand"
+  fi
+else
+  warn "no archive found; nothing to decrypt"
+fi
+
+say "yadm alternates"
+yadm alt >/dev/null 2>&1 && info "symlinks resolved for $(hostname)" || warn "yadm alt failed"
+
+# ── fish ────────────────────────────────────────────────────────────────────
+say "Fish plugins (fisher)"
+if have fish; then
+  if fish -c 'functions -q fisher' 2>/dev/null; then
+    info "fisher present; syncing fish_plugins"
+    fish -c 'fisher update' || warn "fisher update failed"
+  else
+    info "installing fisher, then every plugin in fish_plugins"
+    fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher && fisher update' \
+      || warn "fisher install failed"
+  fi
+  if [[ "$SHELL" != *fish ]]; then
+    info "default shell is $SHELL; to switch: chsh -s $(command -v fish)"
+  fi
+else
+  warn "fish not installed; skipping"
+fi
+
+# ── directories the configs assume exist ────────────────────────────────────
+say "Runtime directories"
+# mpd throws at startup and cannot save playlists without these. playlists/
+# ships with a .gitkeep, so usually only the state dir is missing.
+mkdir -p "$HOME/.config/mpd/playlists" "$HOME/.local/state/mpd" "$HOME/.cache/hellwal"
+info "mpd playlists + state, hellwal cache"
+
+# ── systemd user units ──────────────────────────────────────────────────────
+say "systemd user units"
+# The enablement symlinks under default.target.wants/ and
+# graphical-session.target.wants/ are tracked, so the clone restores them --
+# they just need the daemon to notice, and the units they point at to exist.
+systemctl --user daemon-reload 2>/dev/null || true
+broken=0
+for l in "$HOME"/.config/systemd/user/*.target.wants/*; do
+  [[ -e "$l" ]] || { warn "dangling unit link: ${l##*/} (its package is missing)"; broken=$((broken+1)); }
+done
+((broken == 0)) && info "all enablement links resolve"
+info "enabled: $(systemctl --user list-unit-files --state=enabled 2>/dev/null | grep -cE '\.(service|timer)') units"
+
+# ── the gitleaks pre-commit hook ────────────────────────────────────────────
+say "gitleaks pre-commit hook"
+# NOT tracked by yadm: it lives in the repo's .git directory, outside $HOME's
+# tracked tree, so a fresh clone silently loses secret scanning.
+HOOK="$(yadm rev-parse --git-dir 2>/dev/null)/hooks/pre-commit"
+if [[ -n "${HOOK:-}" && "$HOOK" != "/hooks/pre-commit" ]]; then
+  if [[ -x "$HOOK" ]]; then
+    info "already installed"
+  else
+    mkdir -p "$(dirname "$HOOK")"
+    cat > "$HOOK" <<'HOOKEOF'
+#!/usr/bin/env bash
+if command -v gitleaks >/dev/null 2>&1; then
+    gitleaks protect --staged --redact --verbose
+    if [ $? -ne 0 ]; then
+        echo
+        echo "gitleaks blocked this commit. Remove the secret, or bypass with --no-verify if it is a false positive."
+        exit 1
+    fi
+fi
+HOOKEOF
+    chmod +x "$HOOK"
+    info "installed at $HOOK"
+  fi
+  have gitleaks || warn "gitleaks is not installed -- the hook will no-op until it is"
+else
+  warn "could not locate the yadm git dir; install the hook by hand"
+fi
+
+# ── trakt-scrobbler ─────────────────────────────────────────────────────────
+say "trakt-scrobbler"
+if [[ -x "$HOME/.local/bin/trakts" ]]; then
+  info "already installed"
+elif have pipx; then
+  info "installing via pipx (the tracked systemd unit runs ~/.local/bin/trakts)"
+  pipx install trakt-scrobbler || warn "pipx install failed"
+  info "needs auth: trakts auth"
+else
+  warn "pipx missing; install python-pipx then: pipx install trakt-scrobbler"
+fi
+
+# ── neovim config (its own repo) ────────────────────────────────────────────
+say "Neovim config"
+if [[ -d "$HOME/.config/nvim/.git" ]]; then
+  info "already cloned"
+else
+  info "nvim is tracked separately, not by yadm"
+  if ask "clone Sarthak-Bhagat/nvim into ~/.config/nvim?"; then
+    git clone ssh://git@github.com/Sarthak-Bhagat/nvim "$HOME/.config/nvim" || warn "clone failed"
+  fi
+fi
+
+# ── root-owned bits that live outside \$HOME ────────────────────────────────
+say "Out-of-tree helpers (need sudo)"
+# poe-logout calls this through a NOPASSWD sudoers rule. Neither the script nor
+# the rule is inside $HOME, so neither survives a clone.
+if [[ -x /usr/local/bin/poe-kill-port ]]; then
+  info "poe-kill-port present"
+elif ask "install /usr/local/bin/poe-kill-port and its sudoers rule?"; then
+  sudo install -Dm755 /dev/stdin /usr/local/bin/poe-kill-port <<'PKP'
+#!/bin/bash
+ss -K dport = 6112 || ss -K sport = 6112
+PKP
+  echo "dez ALL=(ALL) NOPASSWD: /usr/local/bin/poe-kill-port" | sudo install -Dm440 /dev/stdin /etc/sudoers.d/poe-kill-port
+  sudo visudo -c >/dev/null && info "installed" || warn "sudoers validation failed -- check /etc/sudoers.d/poe-kill-port"
+fi
+
+# ── what still needs a human ────────────────────────────────────────────────
+say "Left for you"
+cat <<'REMAINING'
+    tide configure                 prompt style is not stored in the repo
+    chsh -s $(which fish)          if fish is not already the login shell
+    trakts auth                    authorise the scrobbler
+    ~/.bin/port-sync.env           fill in the qBittorrent WebUI credentials
+                                   (decrypted from the yadm archive if present)
+    Plasma settings                panels and shortcuts restore from the tracked
+                                   rc files, but log out and back in first
+REMAINING
+echo
