@@ -1,0 +1,162 @@
+#!/usr/bin/env bash
+#
+# Build a shareable copy of the dotfiles with every personal thing removed.
+#
+#     dotfiles-export [target-dir]        default: ~/Documents/git/dotfiles-public
+#
+# One-way: the yadm repo stays the source of truth, this produces a scrubbed
+# tree you can push somewhere public. Re-run after changes; it rebuilds from
+# scratch so a file you stop tracking disappears here too.
+#
+# The export refuses to finish if the leak check at the end finds anything, so
+# a new personal path or IP added upstream fails loudly rather than shipping.
+
+set -uo pipefail
+TARGET="${1:-$HOME/Documents/git/dotfiles-public}"
+STAGE="$(mktemp -d)"
+trap 'rm -rf "$STAGE"' EXIT
+
+say() { printf '\n\033[1m==> %s\033[0m\n' "$*"; }
+info() { printf '    %s\n' "$*"; }
+
+# ── what never leaves this machine ──────────────────────────────────────────
+# Anything matching these is dropped before it is even copied, so the export
+# never opens it. Order: identity, private infrastructure, machine-specific
+# hardware, and things that are useless without the rest of Sarthak's setup.
+EXCLUDE=(
+  # identity and credentials
+  '.gitconfig' '.gitconfig-*' '.ssh/*' '.config/konsolesshconfig'
+  '.config/jellyfin-mpv-shim/*'          # server address + access token
+  '.bin/port-sync*'                      # qBittorrent WebUI credentials
+  '.config/yadm/encrypt'                 # names which files hold secrets
+  # private infrastructure (ZeroTier hosts, the media server, work tunnels)
+  '.config/fish/functions/dez*.fish'
+  '.bin/backuparr' '.bin/dss_connect.sh'
+  '.config/systemd/user/trakt-scrobbler.service'
+  '.config/systemd/user/proton-port-sync.*'
+  '.config/systemd/user/*/trakt-scrobbler.service'
+  '.config/systemd/user/*/proton-port-sync.*'
+  # personal launchers, game-specific tooling, a 4.9M binary
+  '.local/share/applications/*'
+  '.bin/exile-log-api' '.bin/poe-logout' '.bin/run_proton.sh'
+  # hardware- and account-specific
+  '.config/input-remapper-2/*' '.config/ludusavi/*'
+  '.config/gtk-3.0/bookmarks' '.config/user-dirs.*'
+  '.config/kwinoutputconfig.json'
+  '.bin/one_time/*'                      # dual-boot mount paths, wine prefix symlinks
+  '.bin/dotfiles-export'                 # this script: names the very things it strips
+  # bootstrap installs Sarthak's package set and clones his nvim repo
+  '.config/yadm/bootstrap'
+)
+
+say "Collecting"
+mapfile -t FILES < <(yadm ls-files)
+keep=()
+for f in "${FILES[@]}"; do
+  drop=""
+  for pat in "${EXCLUDE[@]}"; do
+    # shellcheck disable=SC2053
+    [[ "$f" == $pat ]] && { drop=1; break; }
+  done
+  [[ -z "$drop" ]] && keep+=("$f")
+done
+info "${#FILES[@]} tracked -> ${#keep[@]} exported (${#EXCLUDE[@]} exclusion patterns)"
+
+for f in "${keep[@]}"; do
+  mkdir -p "$STAGE/$(dirname "$f")"
+  cp -a "$HOME/$f" "$STAGE/$f" 2>/dev/null
+done
+
+# ── scrub what remains ──────────────────────────────────────────────────────
+say "Scrubbing"
+# Text files only; skip anything binary so images and the like pass through.
+while IFS= read -r -d '' f; do
+  grep -Iq . "$f" 2>/dev/null || continue
+  sed -i \
+    -e "s|/home/dez|\$HOME|g" \
+    -e "s|\bdez-media\b|MEDIA_HOST|g" \
+    -e "s|10\.147\.18\.[0-9]\{1,3\}|10.0.0.0|g" \
+    -e "s|Sarthak Bhagat|Your Name|g" \
+    -e "s|Sarthak-Bhagat|YOUR-GITHUB-USER|g" \
+    -e "s|sarth\.bhagat@gmail\.com|you@example.com|g" \
+    -e "s|DezXerneas|YOUR-USER|g" \
+    "$f"
+done < <(find "$STAGE" -type f -print0)
+info "rewrote home paths, hostnames, ZeroTier addresses, name/email"
+
+say "Writing README"
+cat > "$STAGE/README.md" <<'README'
+# dotfiles (shareable copy)
+
+CachyOS + KDE Plasma 6 config: fish, kitty, mpv, mpd, mako, hellwal theming, and
+a pile of Plasma rc files. Generated from a private yadm repo by
+`dotfiles-export`, with personal material stripped.
+
+## What was removed
+
+Nothing here contains credentials, private hosts, or identity. Specifically
+excluded: git identity, SSH config, the media-server helpers and their ZeroTier
+addresses, Jellyfin and qBittorrent credentials, personal `.desktop` launchers,
+and hardware-specific config (input-remapper, monitor layout).
+
+Paths were rewritten to `$HOME`, so nothing points at another user's home.
+
+## Using it
+
+This is *not* a yadm repo — clone it somewhere and copy what you want:
+
+```bash
+git clone <this-repo> dotfiles && cd dotfiles
+cp -r .config/fish ~/.config/          # for example
+```
+
+Take pieces, not the whole tree. The Plasma rc files in particular encode one
+person's panel layout and shortcuts.
+
+## Worth reading first
+
+- `.config/fish/conf.d/` — numbered, one concern per file
+- `.config/hellwal/templates/` — palette templates; the generated colour files
+  are deliberately not tracked
+- `.config/variety/scripts/` — KDE wallpaper setter, reduced from upstream's
+  fifteen desktop branches to the one that runs, with an upstream exit-code bug
+  fixed
+README
+
+# ── leak check ──────────────────────────────────────────────────────────────
+say "Leak check"
+PATTERNS=(
+  '/home/dez' '10\.147\.18\.' 'dez-media'
+  'Sarthak' 'Bhagat' 'DezXerneas'
+  'sarth\.bhagat' 'AccessToken' 'QB_PASS'
+)
+fail=0
+for p in "${PATTERNS[@]}"; do
+  hits=$(grep -rIlE "$p" "$STAGE" 2>/dev/null | sed "s|$STAGE/||" | tr '\n' ' ')
+  if [[ -n "$hits" ]]; then
+    printf '    \033[31mFAIL\033[0m  %-16s %s\n' "$p" "$hits"
+    fail=1
+  fi
+done
+if ((fail)); then
+  printf '\n\033[31mExport aborted -- the tree above still contains personal data.\033[0m\n'
+  printf 'Add an exclusion or a substitution to ~/.bin/dotfiles-export and re-run.\n\n'
+  exit 1
+fi
+info "clean on ${#PATTERNS[@]} patterns"
+
+# ── publish to the target dir ───────────────────────────────────────────────
+say "Writing $TARGET"
+mkdir -p "$TARGET"
+# Preserve .git so re-running keeps the history of the public repo.
+find "$TARGET" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+cp -a "$STAGE"/. "$TARGET"/
+info "$(find "$TARGET" -type f -not -path '*/.git/*' | wc -l) files"
+
+if [[ ! -d "$TARGET/.git" ]]; then
+  info "not a git repo yet. To publish:"
+  info "  cd $TARGET && git init -b main && git add -A && git commit -m 'Initial import'"
+else
+  info "existing repo: review with 'git -C $TARGET status' then commit"
+fi
+echo
