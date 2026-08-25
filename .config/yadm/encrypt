@@ -1,4 +1,3 @@
 .config/variety/variety.conf
 .config/fish/conf.d/90-local.fish
 .bin/port-sync.env
-.config/jellyfin-mpv-shim/cred.json

@@ -33,7 +33,6 @@
 .config/fish/conf.d/90-local.fish
 .config/variety/variety.conf
 .bin/port-sync.env
-.config/jellyfin-mpv-shim/cred.json
 
 # Volatile app state
 .local/state/
