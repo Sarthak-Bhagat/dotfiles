@@ -53,6 +53,27 @@ REPO_PKGS=(
 AUR_PKGS=(vicinae hellwal input-remapper ocrs ludusavi)
 
 if have pacman; then
+  say "CachyOS: mirrors, then a full system update"
+  # Ranking mirrors first makes the installs below faster, and updating before
+  # installing avoids a partial upgrade -- the classic way to break an Arch box.
+  if have cachyos-rate-mirrors; then
+    info "ranking mirrors (needs root: the script refuses to run as a user)"
+    sudo cachyos-rate-mirrors || warn "rate-mirrors failed; continuing with existing mirrorlist"
+  else
+    info "cachyos-rate-mirrors absent -- not a CachyOS system, skipping"
+  fi
+  if have cachy-update; then
+    # cachy-update is a symlink to arch-update: interactive, run as the user,
+    # escalates on its own. Do NOT sudo it.
+    info "cachy-update (interactive -- it will ask before applying)"
+    cachy-update || warn "cachy-update failed; continuing"
+  else
+    info "cachy-update absent; falling back to pacman"
+    sudo pacman -Syu --noconfirm || warn "system update failed; continuing"
+  fi
+fi
+
+if have pacman; then
   say "Repo packages"
   missing=()
   for p in "${REPO_PKGS[@]}"; do

@@ -56,16 +56,20 @@ EXCLUDE=(
   '.config/fish/functions/unmountmedia.fish'
   # app inventory and handlers for .desktop files this export drops
   '.config/mimeapps.list'
-  # tuned to this machine's disks, including a drive named after the laptop
-  '.config/fastfetch/*'
+  # kept: fastfetch. Its disk paths are rewritten to /mnt/DATA below, and the
+  # leak check fails the export if any survive.
   '.config/baloofilerc'
   # where he lives, and which apps he pins
   '.config/plasma-localerc' '.config/ktimezonedrc'
   '.config/kactivitymanagerd-statsrc'
   # editor session state, and a gitleaks fingerprint from his own history
   '.config/katerc' '.gitleaksignore'
+  # yadm's ignore rules: rules for tracking $HOME, and they name the secret files
+  '.gitignore'
   # compiled binaries: unreviewable, and mpv-mpris ships as a distro package
   '.config/mpv/discord' '.config/mpv/mpris.so'
+  # the discord script and its options point at that omitted binary
+  '.config/mpv/scripts/discord.lua' '.config/mpv/script-opts/discord.conf'
   # proprietary typeface -- not ours to redistribute
   '.config/mpv/fonts/Netflix*'
   # empty file
@@ -116,7 +120,7 @@ while IFS= read -r -d '' f; do
   sed -i \
     -e "s|/home/dez|\$HOME|g" \
     -e "s|/mnt/Secondary/Documents/Media/Music/\?|\$HOME/Music|g" \
-    -e "s|/mnt/DezLegion[0-9]*|/mnt/DATA|g" \
+    -e "s|DezLegion[0-9]*|DATA|g" \
     -e "s|/mnt/Secondary|/mnt/DATA|g" \
     -e "s|/mnt/Windows|/mnt/WINDOWS|g" \
     -e "s|/mnt/Ext\b|/mnt/EXT|g" \
@@ -131,57 +135,172 @@ while IFS= read -r -d '' f; do
     -e "s|DezXerneas|YOUR-USER|g" \
     "$f"
 done < <(find "$STAGE" -type f -print0)
+# $HOME is only expanded by shells. systemd wants %h, and the config formats
+# below expand ~ but not $HOME -- a blanket substitution silently breaks them.
+sed -i 's|\$HOME|%h|g' "$STAGE"/.config/systemd/user/*.service 2>/dev/null
+sed -i 's|\$HOME|~|g' \
+  "$STAGE"/.config/autostart/*.desktop \
+  "$STAGE"/.config/mpd/mpd.conf \
+  "$STAGE"/.config/ncmpcpp/config \
+  "$STAGE"/.config/mpv/mpv.conf \
+  "$STAGE"/.config/yt-dlp/conf 2>/dev/null
 info "rewrote home paths, hostnames, ZeroTier addresses, name/email"
+info "systemd units use %h; mpd/mpv/ncmpcpp/yt-dlp/desktop files use ~"
+
+say "Writing bootstrap"
+# A public counterpart to the private repo's bootstrap: same idea, none of the
+# personal parts (no decrypt, no nvim clone, no sudoers rule).
+mkdir -p "$STAGE/.config/yadm"
+cat > "$STAGE/.config/yadm/bootstrap" <<'BOOT'
+#!/usr/bin/env bash
+# Run by `yadm bootstrap`, or offered automatically after `yadm clone`.
+# Idempotent: every step checks before acting.
+set -uo pipefail
+say() { printf '\n\033[1m==> %s\033[0m\n' "$*"; }
+info() { printf '    %s\n' "$*"; }
+have() { command -v "$1" >/dev/null 2>&1; }
+
+REPO=(fish kitty eza bat fd ripgrep duf zoxide fzf direnv jq curl
+      mpd mpc rmpc ncmpcpp mpd-mpris mpv yt-dlp
+      mako variety kate xsettingsd wl-clipboard spectacle
+      btop fastfetch)
+AUR=(hellwal vicinae)
+
+if have pacman; then
+  say "CachyOS: mirrors, then a full system update"
+  # Rank mirrors first so the installs below are fast, and update before
+  # installing -- installing onto a stale system is a partial upgrade, which is
+  # the usual way to break an Arch box.
+  if have cachyos-rate-mirrors; then
+    info "ranking mirrors (needs root -- the script refuses to run as a user)"
+    sudo cachyos-rate-mirrors || info "rate-mirrors failed; keeping the existing mirrorlist"
+  else
+    info "cachyos-rate-mirrors absent -- not a CachyOS system, skipping"
+  fi
+  if have cachy-update; then
+    # A symlink to arch-update: interactive, runs as the user, escalates itself.
+    # Do not sudo it.
+    info "cachy-update (interactive -- it asks before applying)"
+    cachy-update || info "cachy-update failed; continuing"
+  else
+    info "cachy-update absent; using pacman instead"
+    sudo pacman -Syu --noconfirm || info "system update failed; continuing"
+  fi
+
+  say "Packages"
+  miss=(); for p in "${REPO[@]}"; do pacman -Qq "$p" >/dev/null 2>&1 || miss+=("$p"); done
+  ((${#miss[@]})) && { info "installing: ${miss[*]}"; sudo pacman -S --needed "${miss[@]}"; } || info "all present"
+  if have paru; then
+    miss=(); for p in "${AUR[@]}"; do pacman -Qq "$p" >/dev/null 2>&1 || miss+=("$p"); done
+    ((${#miss[@]})) && paru -S --needed "${miss[@]}" || info "AUR packages present"
+  else
+    info "paru not installed; hellwal and vicinae are AUR packages"
+  fi
+else
+  info "not an Arch system -- install the equivalents yourself"
+fi
+
+say "Fish plugins"
+if have fish; then
+  fish -c 'functions -q fisher' 2>/dev/null \
+    && fish -c 'fisher update' \
+    || fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher && fisher update'
+  [[ "$SHELL" == *fish ]] || info "to use it as your login shell: chsh -s $(command -v fish)"
+fi
+
+say "Directories mpd needs"
+mkdir -p ~/.config/mpd/playlists ~/.local/state/mpd ~/.cache/hellwal
+info "done"
+
+say "systemd user units"
+systemctl --user daemon-reload 2>/dev/null || true
+info "enable what you want: systemctl --user enable --now mpd mako"
+
+say "Before this feels right"
+cat <<'NEXT'
+    tide configure                     the fish prompt is not stored here
+    ~/.config/mpd/mpd.conf             music_directory points at ~/Music
+    ~/.config/variety/                 add your own wallpaper sources
+    KDE rc files                       panel layout and shortcuts are one
+                                       person's; review before logging out/in
+NEXT
+BOOT
+chmod +x "$STAGE/.config/yadm/bootstrap"
+info "generic bootstrap written"
 
 say "Writing README"
 cat > "$STAGE/README.md" <<'README'
-# dotfiles (shareable copy)
+# dotfiles
 
-CachyOS + KDE Plasma 6 config: fish, kitty, mpv, mpd, mako, hellwal theming, and
-a pile of Plasma rc files. Generated from a private yadm repo by
-`dotfiles-export`, with personal material stripped.
+CachyOS + KDE Plasma 6. fish, kitty, mpv, mpd, mako, and hellwal-driven theming
+that repaints the terminal and shell palette from the current wallpaper.
 
-## What was removed
+Managed with [yadm](https://yadm.io), so the repo is a `$HOME` overlay: paths in
+it are exactly where the files belong.
 
-Nothing here contains credentials, private hosts, or identity. Specifically
-excluded: git identity, SSH config, the media-server helpers and their ZeroTier
-addresses, Jellyfin and qBittorrent credentials, personal `.desktop` launchers,
-and hardware-specific config (input-remapper, monitor layout).
-
-Paths were rewritten to `$HOME`, so nothing points at another user's home.
-
-## Using it
-
-This is *not* a yadm repo — clone it somewhere and copy what you want:
+## Install
 
 ```bash
-git clone <this-repo> dotfiles && cd dotfiles
-cp -r .config/fish ~/.config/          # for example
+yadm clone https://github.com/Sarthak-Bhagat/dotfiles-public.git
+yadm bootstrap        # offered automatically after the clone
 ```
 
-Take pieces, not the whole tree. The Plasma rc files in particular encode one
-person's panel layout and shortcuts.
+`yadm clone` refuses to overwrite existing files, so it is safe to try — it will
+stash conflicts and tell you. `bootstrap` installs the packages, sets up fisher
+plugins, creates the directories mpd needs, and reloads systemd.
 
-## Worth reading first
+Prefer to take pieces? Clone it anywhere and copy what you want:
 
-- `.config/fish/conf.d/` — numbered, one concern per file
-- `.config/hellwal/templates/` — palette templates; the generated colour files
-  are deliberately not tracked
-- `.config/variety/scripts/` — KDE wallpaper setter, reduced from upstream's
-  fifteen desktop branches to the one that runs, with an upstream exit-code bug
-  fixed
+```bash
+git clone https://github.com/Sarthak-Bhagat/dotfiles-public.git
+cp -r dotfiles-public/.config/fish ~/.config/
+```
+
+## Worth stealing
+
+| Path | Why |
+|---|---|
+| `.config/fish/conf.d/` | numbered modules, one concern per file, loaded in order — much easier to reason about than one long `config.fish` |
+| `.config/hellwal/templates/` | palette templates. The generated colour files are deliberately not tracked, so nothing fights the generator |
+| `.config/variety/scripts/set_wallpaper` | upstream ships fifteen desktop branches; this is the KDE one, and it fixes an upstream bug where `$?` was read after a pipe, so the script exited 1 on every successful wallpaper change |
+| `.bin/textractor` | select a region, OCR it, put the text on the clipboard |
+| `.bin/songinfo` + `mpd_watcher.sh` | mpd notifications with album art, driven by `mpc idle` so they work with any client |
+| `.config/mpv/` | modernx UI, thumbfast, sponsorblock, playlistmanager |
+
+## What is not here
+
+Generated from a private repo, with anything personal removed: git identity,
+SSH config, credentials, private hosts, hardware-specific config, and personal
+launchers. Paths were rewritten to `~` or `%h`.
+
+Some things therefore need filling in — mpd points at `~/Music`, variety has no
+wallpaper sources configured, and the KDE rc files encode one person's panel
+layout, shortcuts and monitor arrangement. **Read those before you log out and
+back in**, or you will inherit a stranger's desktop.
+
+`.config/mpv/scripts/` omits the Discord rich-presence script, which needs a
+compiled binary not shipped here.
 README
 
 # ── leak check ──────────────────────────────────────────────────────────────
 say "Leak check"
 PATTERNS=(
   '/home/dez' '10\.147\.18\.' 'dez-media'
-  'Sarthak' 'Bhagat' 'DezXerneas'
   'sarth\.bhagat' 'AccessToken' 'QB_PASS'
   'DezLegion' '/mnt/Secondary' 'sonarr|radarr' 'discord-[0-9]{6,}'
   'Dublin' 'en_IE'
 )
+# The account name is public -- it is in the repo URL -- so the generated README
+# is allowed to say it. Nothing else is.
+NAME_PATTERNS=('Sarthak' 'Bhagat' 'DezXerneas')
 fail=0
+for p in "${NAME_PATTERNS[@]}"; do
+  hits=$(grep -rIlE "$p" "$STAGE" --exclude=README.md 2>/dev/null | sed "s|$STAGE/||" | tr '\n' ' ')
+  if [[ -n "$hits" ]]; then
+    printf '    \033[31mFAIL\033[0m  %-16s %s\n' "$p" "$hits"
+    fail=1
+  fi
+done
 for p in "${PATTERNS[@]}"; do
   hits=$(grep -rIlE "$p" "$STAGE" 2>/dev/null | sed "s|$STAGE/||" | tr '\n' ' ')
   if [[ -n "$hits" ]]; then
