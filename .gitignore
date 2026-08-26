@@ -92,5 +92,33 @@
 !.local/share/applications/awakened-poe-trade.desktop
 !.local/share/applications/scalpel-poe.desktop
 
+# KDE files that are runtime state or a single stale line, not settings
+.config/kded5rc
+.config/kded6rc
+.config/kwalletrc
+.config/plasmarc
+.config/plasmanotifyrc
+.config/powermanagementprofilesrc
+.config/konsolerc
+.config/klipperrc
+.config/kwinrulesrc
+.config/ksmserverrc
+.config/kactivitymanagerdrc
+.config/kactivitymanagerd-statsrc
+.config/katerc
+.config/kxkbrc
+
+# Media-server workflow: tied to dez-media, not worth carrying to a new machine
+.config/fish/functions/sonarrfixperms.fish
+.config/fish/functions/startarr.fish
+.config/fish/functions/stoparr.fish
+.bin/backuparr
+
+# A gitleaks fingerprint from this repo's own history
+.gitleaksignore
+
+# mpv-mpris ships as a distro package and auto-loads from /etc/mpv/scripts
+.config/mpv/mpris.so
+
 # Syncthing conflict artefacts
 **/*.sync-conflict-*
