@@ -88,8 +88,8 @@
     },
     {
       "type": "command",
-      "key": "DezLegion",
-      "text": "m=/mnt/DezLegion2021; [ -d \"$m\" ] || exit 0; matches=$(awk -v m=\"$m\" '$2==m{print $3}' /proc/mounts); if [ -z \"$matches\" ]; then echo 'Not mounted'; elif echo \"$matches\" | grep -qv '^autofs$'; then echo 'Connected'; else echo 'Idle (not triggered)'; fi"
+      "key": "ZeroTier",
+      "text": "zt=$(ip -o -4 addr show 2>/dev/null | awk '$2 ~ /^zt/ {split($4,a,\"/\"); print a[1]}' | paste -sd, -); if [ -n \"$zt\" ]; then echo \"$zt\"; elif ip -o link show 2>/dev/null | grep -q \" zt\"; then echo \"up, no address\"; else echo \"not running\"; fi"
     },
     {
       "type": "localip",
