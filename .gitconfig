@@ -56,7 +56,7 @@
 [user]
 	signingkey = /home/dez/.ssh/id_ed_signing.pub
 	email = sarth.bhagat@gmail.com
-	name = Sarthak Bhaagt
+	name = Sarthak Bhagat
 
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/

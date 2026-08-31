@@ -45,7 +45,8 @@ alias wget  "wget -c"
 # bat already detects when stdout is not a terminal and drops to plain output,
 # so piping behaves like cat without any extra flags.
 if type -q bat
-    alias cat "bat --paging=never"
+    # alias cat "bat --paging=never"
+    alias cat "bat"
 end
 
 # ---------------------------------------------------------------- typos I actually make

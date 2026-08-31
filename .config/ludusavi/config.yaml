@@ -24,6 +24,8 @@ roots:
     path: /home/dez/.local/share/.wine
   - store: heroic
     path: /home/dez/.config/heroic
+  - store: steam
+    path: /mnt/Secondary/SteamLibrary
 redirects: []
 backup:
   path: /home/dez/Documents/Syncthing/save_games
