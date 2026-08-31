@@ -46,7 +46,7 @@ Expose=Ctrl+F9,Ctrl+F9\tMeta+F9,Toggle Present Windows (Current desktop)
 ExposeAll=Launch (C)\tCtrl+F10,Launch (C)\tCtrl+F10\tMeta+F10,Toggle Present Windows (All desktops)
 ExposeClass=Ctrl+F7,Ctrl+F7\tMeta+F7,Toggle Present Windows (Window class)
 ExposeClassCurrentDesktop=none,none,Toggle Present Windows (Window class on current desktop)
-Grid View=Meta+G,Meta+G,Toggle Grid View
+Grid View=none,Meta+G,Toggle Grid View
 Increase Opacity=none,none,Increase Opacity of Active Window by 5%
 Kill Window=Meta+Ctrl+Esc,Meta+Ctrl+Esc,Kill Window
 Move Tablet to Next LogicalOutput=none,none,Move the tablet to the next output
@@ -274,6 +274,9 @@ toggle do not disturb=none,none,Toggle do not disturb
 [services][kitty.desktop]
 _launch=Meta+T
 
+[services][mediactl.desktop]
+_launch=Meta+G
+
 [services][nemo.desktop]
 _launch=Meta+E
 
@@ -336,7 +339,7 @@ ToggleTouchpad=Touchpad Toggle\tMeta+Ctrl+Zenkaku Hankaku
 _launch=Ctrl+Alt+Q
 
 [services][steam.desktop]
-Library=Meta+F5
+Library=none
 
 [services][vesktop.desktop]
 _launch=Meta+F3
