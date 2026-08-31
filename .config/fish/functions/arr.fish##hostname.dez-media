@@ -1,0 +1,212 @@
+function arr
+    set -l DC docker compose -f $ARR_COMPOSE
+    set -l ALL_SERVICES (__arr_services)
+
+    # no args → status overview
+    if test (count $argv) -eq 0
+        lazydocker
+        return
+    end
+
+    switch $argv[1]
+
+        # ── Lifecycle ─────────────────────────────────────────────
+        case up start
+            $DC up -d $argv[2..]
+
+        case down
+            if test (count $argv) -gt 1
+                $DC stop $argv[2..]
+            else
+                $DC down
+            end
+
+        case stop
+            $DC stop $argv[2..]
+
+        case restart
+            $DC restart $argv[2..]
+
+        case recreate
+            $DC pull $argv[2..]
+            and $DC up -d --force-recreate $argv[2..]
+
+        # ── Updates ───────────────────────────────────────────────
+        case update
+            docker run --rm \
+                -v /var/run/docker.sock:/var/run/docker.sock \
+                nickfedor/watchtower \
+                --run-once \
+                --cleanup \
+                $argv[2..]
+
+        case pull
+            $DC pull $argv[2..]
+
+        # ── Observability ─────────────────────────────────────────
+        case logs log
+            $DC logs -f --tail=100 $argv[2..]
+
+        case stats
+            if test (count $argv) -gt 1
+                docker stats $argv[2..]
+            else
+                docker stats $ALL_SERVICES
+            end
+
+        case ps status
+            $DC ps -a
+
+        case health
+            echo ""
+            for s in $ALL_SERVICES
+                set state (docker inspect --format '{{.State.Status}}' $s 2>/dev/null)
+                set health (docker inspect --format '{{if .State.Health}}{{.State.Health.Status}}{{else}}n/a{{end}}' $s 2>/dev/null)
+                if test -z "$state"
+                    printf "  %-20s \e[90mnot found\e[0m\n" $s
+                else if test "$state" = running
+                    printf "  %-20s \e[32m%-10s\e[0m %s\n" $s $state $health
+                else
+                    printf "  %-20s \e[31m%-10s\e[0m %s\n" $s $state $health
+                end
+            end
+            echo ""
+
+        case top
+            docker top $argv[2]
+
+        case inspect
+            docker inspect $argv[2..] | less
+
+        case ip ips
+            echo ""
+            for s in $ALL_SERVICES
+                set ip (docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $s 2>/dev/null)
+                if test -n "$ip"
+                    printf "  %-20s %s\n" $s $ip
+                end
+            end
+            echo ""
+
+        case ports
+            echo ""
+            for s in $ALL_SERVICES
+                set raw (docker inspect -f '{{range $p, $conf := .NetworkSettings.Ports}}{{$p}} {{end}}' $s 2>/dev/null)
+                if test -n "$raw"
+                    printf "  %-20s %s\n" $s $raw
+                end
+            end
+            echo ""
+
+        # ── Shell access ──────────────────────────────────────────
+        case exec shell sh
+            set svc $argv[2]
+            set cmd $argv[3..]
+            if test (count $cmd) -eq 0
+                set cmd sh
+            end
+            $DC exec $svc $cmd
+
+        # ── Browser shortcuts ─────────────────────────────────────
+        case open browse
+            set -l site $argv[2]
+            switch $site
+                case qbit; set site qbittorrent
+                case dash; set site dashdot
+                case logs; set site dozzle
+                case uptime uptime-kuma; set site kuma
+            end
+            if test -z "$site"
+                echo "Usage: arr open <site>"
+                echo "Sites:" (__arr_sites)
+            else if contains -- $site (__arr_sites)
+                xdg-open "https://$site.dez"
+            else
+                echo "Unknown site: $argv[2] (try: arr open <TAB>)"
+                return 1
+            end
+        # ── Recyclarr ─────────────────────────────────────────────
+        case sync
+            if not docker ps --format '{{.Names}}' | string match -q recyclarr
+                echo "arr: recyclarr is not running." >&2
+                echo "     It is commented out in the compose file — uncomment the service" >&2
+                echo "     and run 'arr up recyclarr' before syncing." >&2
+                return 1
+            end
+            if test (count $argv) -gt 1 -a "$argv[2]" = apply
+                docker exec recyclarr recyclarr sync
+            else
+                docker exec recyclarr recyclarr sync --dry-run
+            end
+
+        # ── Cleanup ───────────────────────────────────────────────
+        case prune clean
+            echo "→ Removing stopped containers, unused images, dangling volumes..."
+            docker system prune -f
+            docker volume prune -f
+            echo "Done."
+
+        # ── Config ────────────────────────────────────────────────
+        case edit config
+            set -q EDITOR; or set EDITOR vim
+            $EDITOR /docker/compose/docker-compose.yml
+
+        case validate check
+            $DC config
+
+        # ── TUI ───────────────────────────────────────────────────
+        case tui ui
+            lazydocker
+
+        # ── Misc ──────────────────────────────────────────────────
+        case ls list
+            for s in $ALL_SERVICES
+                echo $s
+            end
+
+        case help
+            echo ""
+            echo "  arr [command] [service ...]"
+            echo ""
+            echo "  ── Lifecycle ──────────────────────────────"
+            echo "  up/start    [svc]   Start (all or specific)"
+            echo "  down        [svc]   Remove all / stop specific"
+            echo "  stop        [svc]   Stop without removing"
+            echo "  restart     [svc]   Restart"
+            echo "  recreate    [svc]   Pull + force recreate"
+            echo ""
+            echo "  ── Updates ────────────────────────────────"
+            echo "  pull        [svc]   Pull latest images"
+            echo "  update      [svc]   Trigger watchtower now"
+            echo ""
+            echo "  ── Observability ──────────────────────────"
+            echo "  (no args)           Status overview"
+            echo "  ps/status           Container state"
+            echo "  health              Status + health check"
+            echo "  logs/log    [svc]   Follow logs (all or one)"
+            echo "  stats       [svc]   Live CPU/mem usage"
+            echo "  top         svc     Processes inside container"
+            echo "  inspect     svc     Full docker inspect"
+            echo "  ip/ips              Container IPs"
+            echo "  ports               Exposed ports"
+            echo ""
+            echo "  ── Access ─────────────────────────────────"
+            echo "  exec/sh     svc     Shell into container"
+            echo "  open/browse svc     Open in browser"
+            echo ""
+            echo "  ── Recyclarr ──────────────────────────────"
+            echo "  sync                Dry-run Recyclarr sync"
+            echo "  sync apply          Live Recyclarr sync"
+            echo ""
+            echo "  ── Other ──────────────────────────────────"
+            echo "  prune/clean         Remove unused images/volumes"
+            echo "  edit/config         Edit compose file"
+            echo "  validate/check      Validate compose config"
+            echo "  ls/list             List all services"
+            echo "  tui/ui              Open lazydocker"
+            echo ""
+
+        case '*'
+            echo "Unknown command: $argv[1]. Try: arr help"
+    end
+end

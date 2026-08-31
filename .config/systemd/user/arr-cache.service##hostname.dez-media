@@ -1,0 +1,6 @@
+[Unit]
+Description=Rebuild arr service-name cache
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/arr-cache-gen

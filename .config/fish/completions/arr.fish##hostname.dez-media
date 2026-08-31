@@ -1,0 +1,7 @@
+set -l cmds up start down stop restart recreate pull update logs log stats ps status health top inspect ip ips ports exec shell sh open browse sync prune clean edit config validate check tui ui ls list help
+
+complete -c arr -f
+complete -c arr -n "not __fish_seen_subcommand_from $cmds" -a "$cmds"
+complete -c arr -n "__fish_seen_subcommand_from up start stop down restart recreate pull update logs log stats exec shell sh top inspect" -a "(__arr_services)"
+complete -c arr -n "__fish_seen_subcommand_from open browse" -a "(__arr_sites)"
+complete -c arr -n "__fish_seen_subcommand_from sync" -a "apply"

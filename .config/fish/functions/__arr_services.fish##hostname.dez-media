@@ -1,0 +1,5 @@
+function __arr_services --description 'Service names from compose (systemd-cached)'
+    set -l cache ~/.cache/arr_services
+    test -f $cache; or ~/.local/bin/arr-cache-gen
+    cat $cache 2>/dev/null
+end

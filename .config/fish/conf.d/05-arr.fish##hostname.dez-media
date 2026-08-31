@@ -1,0 +1,7 @@
+# Path to the arr stack's compose file, consumed by the `arr` function.
+#
+# This lives here rather than as a universal variable because fish_variables is
+# gitignored: as a uvar it was the one value guaranteed not to survive a rebuild,
+# which would leave `arr` running `docker compose -f` with an empty path. It is a
+# path, not a secret, so nothing argues for keeping it out of the repo.
+set -gx ARR_COMPOSE /docker/compose/docker-compose.yml

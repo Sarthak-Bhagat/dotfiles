@@ -1,0 +1,6 @@
+#!/bin/sh
+mkdir -p "$HOME/.cache"
+out="$HOME/.cache/arr_services"
+tmp="$(mktemp)"
+docker compose -f /docker/compose/docker-compose.yml config --services 2>/dev/null | sort > "$tmp"
+[ -s "$tmp" ] && mv "$tmp" "$out" || rm -f "$tmp"

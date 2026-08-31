@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch arr compose dir for changes
+
+[Path]
+PathChanged=/docker/compose/
+Unit=arr-cache.service
+
+[Install]
+WantedBy=default.target

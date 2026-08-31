@@ -1,0 +1,4 @@
+function __arr_sites --description 'Reverse-proxied hostnames from the Caddyfile'
+    set -q ARR_CADDYFILE; or set -l ARR_CADDYFILE /docker/appdata/caddy/Caddyfile
+    grep -oE '^[a-z0-9-]+\.dez' "$ARR_CADDYFILE" | string replace -r '\.dez$' ''
+end
