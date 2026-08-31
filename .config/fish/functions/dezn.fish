@@ -1,3 +1,3 @@
-function dezn --description "Mosh to this laptop from elsewhere"
-    mosh --ssh="ssh -i $HOME/.ssh/phone" dez@10.147.18.49 $argv
+function dezn --description "Mosh to the 2026 laptop (used from the phone)"
+    mosh dez-phone $argv
 end
