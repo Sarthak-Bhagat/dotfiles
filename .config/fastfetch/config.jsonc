@@ -11,7 +11,10 @@
       "title": "magenta"
     },
     "percent": {
-      "type": ["bar", "num"]
+      "type": [
+        "bar",
+        "num"
+      ]
     },
     "size": {
       "ndigits": 0
@@ -26,7 +29,9 @@
       "top": 1,
       "right": 2
     },
-    "color": { "1": "cyan" }
+    "color": {
+      "1": "cyan"
+    }
   },
   "modules": [
     {
@@ -43,9 +48,8 @@
     "packages",
     "shell",
     {
-      "type": "command",
-      "key": "Display",
-      "text": "echo '2560x1600 @ 1.34x in 15\", 165 Hz [Built-in, HDR]'"
+      "type": "display",
+      "key": "Display"
     },
     "de",
     {
@@ -59,14 +63,8 @@
     "terminal",
     "cpu",
     {
-      "type": "command",
-      "key": "",
-      "text": "echo 'GeForce RTX 5070 Max-Q / Mobile'"
-    },
-    {
-      "type": "command",
-      "key": "",
-      "text": "echo 'Raptor Lake-S UHD Graphics'"
+      "type": "gpu",
+      "key": "GPU"
     },
     "swap",
     "memory",
@@ -91,7 +89,7 @@
     {
       "type": "command",
       "key": "DezLegion",
-      "text": "m=/mnt/DezLegion2021; matches=$(awk -v m=\"$m\" '$2==m{print $3}' /proc/mounts); if [ -z \"$matches\" ]; then echo 'Not mounted'; elif echo \"$matches\" | grep -qv '^autofs$'; then echo 'Connected'; else echo 'Idle (not triggered)'; fi"
+      "text": "m=/mnt/DezLegion2021; [ -d \"$m\" ] || exit 0; matches=$(awk -v m=\"$m\" '$2==m{print $3}' /proc/mounts); if [ -z \"$matches\" ]; then echo 'Not mounted'; elif echo \"$matches\" | grep -qv '^autofs$'; then echo 'Connected'; else echo 'Idle (not triggered)'; fi"
     },
     {
       "type": "localip",

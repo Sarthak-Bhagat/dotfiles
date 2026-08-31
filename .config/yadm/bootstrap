@@ -146,46 +146,6 @@ say "Runtime directories"
 mkdir -p "$HOME/.config/mpd/playlists" "$HOME/.local/state/mpd" "$HOME/.cache/hellwal"
 info "mpd playlists + state, hellwal cache"
 
-# ── fastfetch: verify the hardcoded hardware strings ────────────────────────
-#
-# config.jsonc deliberately hardcodes GPU and display as `command`+echo modules
-# instead of using fastfetch's native gpu/display modules, because probing them
-# is what made fastfetch take ~80ms instead of ~6ms. The cost is that the values
-# are static: change the GPU or the monitor and fastfetch reports the old one
-# forever, confidently and silently.
-#
-# This checks rather than rewrites. config.jsonc is tracked by yadm, so a
-# bootstrap that edited it would leave every fresh machine permanently dirty.
-say "fastfetch hardware strings"
-FF="$HOME/.config/fastfetch/config.jsonc"
-if [[ -r "$FF" ]] && have lspci; then
-  ff_stale=0
-  while read -r gpu; do
-    [[ -z "$gpu" ]] && continue
-    if ! grep -qF "$gpu" "$FF"; then
-      warn "config does not mention: $gpu"
-      ff_stale=1
-    fi
-  done < <(lspci 2>/dev/null | grep -iE 'vga|3d' \
-            | sed -E 's/.*\[([^]]+)\].*/\1/; s/.*: [^ ]+ [^ ]+ (.*) \(rev.*/\1/' \
-            | sed -E 's/ \(rev.*//')
-  if have kscreen-doctor; then
-    res=$(kscreen-doctor -o 2>/dev/null | grep -oE '[0-9]{3,}x[0-9]{3,}' | head -1)
-    if [[ -n "$res" ]] && ! grep -qF "$res" "$FF"; then
-      warn "config does not mention the current resolution: $res"
-      ff_stale=1
-    fi
-  fi
-  if (( ff_stale )); then
-    warn "edit $FF -- the hardcoded strings are out of date"
-    info "they are the 'command' modules with echo; that is deliberate, for speed"
-  else
-    info "hardcoded GPU and display strings match this machine"
-  fi
-else
-  info "skipped (no config or no lspci)"
-fi
-
 # ── systemd user units ──────────────────────────────────────────────────────
 say "systemd user units"
 # The enablement symlinks under default.target.wants/ and
