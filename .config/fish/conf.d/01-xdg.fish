@@ -1,6 +1,6 @@
 # XDG relocation for tools that honour it. Recovered from the pre-rewrite config
-# (fish.old/conf.d/xdg.fish), which set around twenty-five of these; only the
-# ones whose data actually lives at the XDG path are set here. The base XDG_*
+# (~/.config/fish.old, deleted 2026-08-28), which set around twenty-five of
+# these; only the ones whose data actually lives at the XDG path are set here. The base XDG_*
 # directories are in 00-env.fish and must be set before this file runs.
 
 # These two are not cosmetic. ~/.cargo and ~/go do not exist, while

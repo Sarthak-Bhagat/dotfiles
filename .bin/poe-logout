@@ -1,2 +1,7 @@
 #!/bin/bash
-sudo -n ss -K dport = 6112 || sudo -n ss -K sport = 6112
+# Drops Path of Exile's game socket, forcing a logout to character select.
+#
+# Calls the root helper rather than `sudo ss` directly: the sudoers rule grants
+# exactly /usr/local/bin/poe-kill-port, so `sudo -n ss -K ...` fails with
+# "a password is required" and, because of -n, can never prompt for one.
+exec sudo -n /usr/local/bin/poe-kill-port
