@@ -21,6 +21,9 @@
 # Never track — secrets and credentials
 .ssh/*
 !.ssh/config
+# per-machine config alternates (##user.x / ##hostname.x). Still only ever
+# `config` and its variants -- no key material can match this.
+!.ssh/config##*
 .local/share/kwalletd/
 .gnupg/
 **/*.pem
